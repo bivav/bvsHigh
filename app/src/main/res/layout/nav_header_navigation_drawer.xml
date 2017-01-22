@@ -22,9 +22,6 @@
         app:border_color="#FF0000"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="24dp" />
 
     <TextView

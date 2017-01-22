@@ -61,6 +61,7 @@
     <string name="teacher_s_contact">Teacher\'s Contact</string>
     <string name="calendar">Calendar</string>
     <string name="dashboard">Dashboard</string>
+    <string name="view_profile">View Profile</string>
 
 
 </resources>
