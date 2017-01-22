@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5c1913">
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/bvs_logo_small"
+        android:layout_marginTop="30dp"
+        android:id="@+id/imageView2"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:text="@string/bvs_high"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/bvsHigh"
+        android:textSize="20sp" />
+
+    <TextView
+        android:text="@string/please_select"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_margin="15dp"
+        android:textColor="@android:color/white"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textSize="18sp" />
+
+    <Button
+        android:text="@string/student"
+        android:layout_width="250dp"
+        android:elevation="3dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:background="@android:color/holo_orange_dark"
+        android:id="@+id/student_button"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:text="@string/teacher"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:elevation="3dp"
+        android:layout_marginBottom="2dp"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_height="wrap_content"
+        android:id="@+id/teacher_button"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:text="@string/parents_guardian"
+        android:layout_gravity="center"
+        android:layout_width="250dp"
+        android:elevation="3dp"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_height="wrap_content"
+        android:id="@+id/parents_button"
+        tools:targetApi="lollipop" />
+
+    <Button
+        android:text="@string/contact_us"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/contact_us"
+        android:layout_marginTop="50dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"/>
+
+
+
+</LinearLayout>

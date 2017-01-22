@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">BVS HIGH</string>
+    <string name="admission_number">Admission Number</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="bvs_high">BVS HIGH</string>
+    <string name="please_select">Please Select</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="parents_guardian">Parents/Guardian</string>
+    <string name="contact_us">Contact Us</string>
+
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_name">Fullname</string>
+    <string name="btn_login">LOGIN</string>
+    <string name="btn_register">REGISTER</string>
+    <string name="btn_link_to_register">Not a member? Sign up now.</string>
+    <string name="btn_link_to_login">Already registred! Login Me.</string>
+    <string name="welcome">Welcome</string>
+    <string name="btn_logout">LOGOUT</string>
+    <string name="name">Fullname</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="settings">Settings</string>
+    <string name="homework">Homework</string>
+    <string name="colon"> :</string>
+
+    <!-- Teachers Names -->
+
+    <string name="phy">PHY</string>
+    <string name="chem">CHE</string>
+    <string name="eng">ENG</string>
+    <string name="math">MATH</string>
+    <string name="com_lab">Comp. Lab</string>
+    <string name="bvk">BVK</string>
+    <string name="sb">SB</string>
+    <string name="sr">SR</string>
+    <string name="sk">SK</string>
+    <string name="bw">BW</string>
+    <string name="dg">DG</string>
+    <string name="ag">AG</string>
+    <string name="trk">TRK</string>
+    <string name="bn">BN</string>
+    <string name="title_activity_navigation_drawer">navigation_drawer</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="routine">Routine</string>
+    <string name="attendance">Attendance</string>
+    <string name="results">Results</string>
+    <string name="tution_fees">Tution Fees</string>
+    <string name="events">Events</string>
+    <string name="alerts">Alerts</string>
+    <string name="teacher_s_contact">Teacher\'s Contact</string>
+    <string name="calendar">Calendar</string>
+    <string name="dashboard">Dashboard</string>
+
+
+</resources>

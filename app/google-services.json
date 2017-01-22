@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "432325869312",
+    "firebase_url": "https://bvs-high.firebaseio.com",
+    "project_id": "bvs-high",
+    "storage_bucket": "bvs-high.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432325869312:android:15b9fee0691ce604",
+        "android_client_info": {
+          "package_name": "np.edu.bvs.bvshigh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432325869312-imuunh41q2p0v762tgn7kc7r49omh50o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqfkraMMhMyjclM2BYv8Lbxf9L-KfFNKI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
