@@ -62,6 +62,8 @@
     <string name="calendar">Calendar</string>
     <string name="dashboard">Dashboard</string>
     <string name="view_profile">View Profile</string>
+    <string name="display_my_routine">Display My Routine</string>
+    <string name="display_enitre_routine">Display Enitre Routine</string>
 
 
 </resources>
