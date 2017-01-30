@@ -3,6 +3,7 @@
     <color name="colorPrimary">#8d271e</color>
     <color name="colorPrimaryDark">#5c1913</color>
     <color name="colorAccent">#ff5252</color>
+    <color name="tabsScrollColor">#ffffff</color>
 
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>

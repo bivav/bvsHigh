@@ -1,5 +1,6 @@
 package np.edu.bvs.bvshigh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -36,6 +37,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
             }
         });
         */
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -83,7 +85,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(MenuItem item) {
 
         // Handle navigation view item clicks here.
-
         int id = item.getItemId();
 
         if (id == R.id.nav_dashboard){
@@ -95,10 +96,12 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.nav_routine) {
 
-            fragment_routine fragment = new fragment_routine();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            startActivity(new Intent(getApplicationContext(), fragment_routine.class));
+
+//            fragment_routine fragment = new fragment_routine();
+//            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.replace(R.id.frame_activity, fragment);
+//            transaction.commit();
 
         } else if (id == R.id.nav_attendance) {
 

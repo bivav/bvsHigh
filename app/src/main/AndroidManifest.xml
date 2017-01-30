@@ -14,19 +14,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
         <activity android:name=".select_category">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".log_in" />
+
         <activity
             android:name=".Main_activity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
-        <activity android:name=".RecyclerView_Homework"></activity>
+
+        <activity android:name=".RecyclerView_Homework"/>
+
+        <activity
+            android:name=".fragment_routine"
+            android:parentActivityName=".Main_activity">
+
+
+
+
+        </activity>
     </application>
 
 </manifest>

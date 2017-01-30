@@ -1,6 +1,7 @@
 package np.edu.bvs.bvshigh;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,14 @@ public class Home_page extends android.support.v4.app.Fragment {
 
         tabs = (SlidingTabLayout)view.findViewById(R.id.tabs);
         tabs.setDistributeEvenly(true);
+
+        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            @Override
+            public int getIndicatorColor(int position) {
+                return ContextCompat.getColor(getContext(),R.color.tabsScrollColor);
+            }
+        });
+
         tabs.setViewPager(pager);
 
         return view;

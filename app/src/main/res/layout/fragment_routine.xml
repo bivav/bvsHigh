@@ -1,147 +1,25 @@
-<RelativeLayout
+<LinearLayout
     android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_columnSpan="4"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    android:background="@color/white">
 
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:text="@string/display_my_routine"
-            android:layout_height="wrap_content"
-            android:id="@+id/display_my_rotutine"
-            android:layout_gravity="center_horizontal"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_width="200dp" />
-
-        <Button
-            android:text="@string/display_enitre_routine"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/display_entire"
-            android:layout_gravity="center_horizontal"
-            android:layout_row="1"
-            android:layout_column="1" />
-    </GridLayout>
-
-
-    <!--
-    <TableLayout
+    <np.edu.bvs.bvshigh.SlidingTabLayout
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:layout_margin="5dp">
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content">
+    </np.edu.bvs.bvshigh.SlidingTabLayout>
 
-        <TextView
-            android:id="@+id/dropDownVegetable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cauliflower"
-            android:textSize="20sp"
-            android:paddingBottom="10dp" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/routine_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v4.view.ViewPager>
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/SciName"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Scientific name of vegetables"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-            <TextView
-                android:id="@+id/SciNameValue"
-                android:layout_weight="1"
-                android:text="Brassica oleracea var. botrytis"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/SciName"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Scientific name of vegetables"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-            <TextView
-                android:id="@+id/SciNameValue"
-                android:layout_weight="1"
-                android:text="Brassica oleracea var. botrytis"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/SciName"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Scientific name of vegetables"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-            <TextView
-                android:id="@+id/SciNameValue"
-                android:layout_weight="1"
-                android:text="Brassica oleracea var. botrytis"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
-
-            <TextView
-                android:id="@+id/SciName"
-                android:layout_weight="1"
-                android:padding="8dp"
-                android:text="Scientific name of vegetables"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-            <TextView
-                android:id="@+id/SciNameValue"
-                android:layout_weight="1"
-                android:text="Brassica oleracea var. botrytis"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:layout_width="match_parent" />
-
-        </TableRow>
-    </TableLayout>
-    -->
-</RelativeLayout>
+</LinearLayout>
