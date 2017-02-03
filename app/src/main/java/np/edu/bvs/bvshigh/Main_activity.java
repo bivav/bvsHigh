@@ -19,7 +19,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         setContentView(R.layout.activity_navigation_drawer);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(getResources().getString(R.string.app_name));
         setSupportActionBar(toolbar);
 
         Home_page fragment = new Home_page();
@@ -149,13 +148,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         } else if (id == R.id.nav_calendar){
 
             fragment_calendar fragment = new fragment_calendar();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
-
-        } else if (id == R.id.nav_share) {
-
-            fragment_result fragment = new fragment_result();
             android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_activity, fragment);
             transaction.commit();

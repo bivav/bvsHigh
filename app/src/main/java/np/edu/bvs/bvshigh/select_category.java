@@ -21,13 +21,15 @@ public class select_category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Main_activity.class));
+                finish();
             }
         });
 
         teacher_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), RecyclerView_Homework.class));
+                startActivity(new Intent(getApplicationContext(), Register_Student.class));
+                finish();
             }
         });
 

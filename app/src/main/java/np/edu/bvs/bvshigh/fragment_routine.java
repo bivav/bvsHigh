@@ -28,13 +28,13 @@ public class fragment_routine extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_black));
+        toolbar.setNavigationIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_black));
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getApplicationContext(), "WORKING", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), Main_activity.class));
-                finishActivity(2);
+                finish();
             }
         });
 
@@ -54,11 +54,5 @@ public class fragment_routine extends AppCompatActivity {
         });
 
         tabs.setViewPager(pager);
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        this.finish();
     }
 }

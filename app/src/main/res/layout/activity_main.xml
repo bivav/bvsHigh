@@ -9,10 +9,6 @@
     android:background="#eee"
     tools:context="np.edu.bvs.bvshigh.Main_activity">
 
-    <include
-        layout="@layout/toolbar"
-        android:id="@+id/toolbar"/>
-
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

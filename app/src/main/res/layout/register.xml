@@ -1,114 +1,97 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#5c1913">
+    android:background="@color/colorPrimaryDark"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fitsSystemWindows="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_register"
-        android:id="@+id/imageView"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="20dp"
-        tools:ignore="ContentDescription"
-        android:gravity="center_vertical"
-        android:fontFamily="sans-serif-condensed"
-        android:textSize="26sp"
-        android:textColor="@android:color/white" />
-
-
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="@string/name"
-        android:textColorHint="@android:color/holo_green_light">
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
 
-        <EditText
-            android:inputType="textEmailAddress"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:id="@+id/name"
+        <ImageView
+            android:background="@drawable/bvs_logo_small"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
+            tools:ignore="ContentDescription" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_marginTop="8dp"
+            android:textColorHint="@color/white"
+            android:layout_marginBottom="8dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/editTextUsername"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/name" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:hint="@string/email"
-        android:textColorHint="@android:color/holo_green_light">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:inputType="textEmailAddress"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:id="@+id/email"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_marginTop="8dp"
+            android:textColorHint="@color/white"
+            android:layout_marginBottom="8dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:inputType="textPassword"
+                android:hint="@string/password"/>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColorHint="@android:color/holo_green_light">
+        </android.support.design.widget.TextInputLayout>
 
-        <EditText
-            android:inputType="textPassword"
-            android:textColorHint="@android:color/white"
-            android:hint="@string/password"
-            android:id="@+id/password"
-            android:layout_gravity="center"
-            android:layout_width="300dp"
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:layout_marginTop="8dp"
+            android:textColorHint="@color/white"
+            android:layout_marginBottom="8dp">
 
-    </android.support.design.widget.TextInputLayout>
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email" />
 
-    <Button
-        android:text="@string/btn_register"
-        android:layout_width="300dp"
-        android:layout_gravity="center"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="10dp"
-        android:background="@android:color/holo_orange_dark"
-        android:textColor="@android:color/white"
-        android:layout_height="wrap_content"
-        android:id="@+id/register" />
+        </android.support.design.widget.TextInputLayout>
 
-    <Button
-        android:text="@string/btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/log_in"
-        android:layout_marginTop="30dp"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:fontFamily="sans-serif-condensed" />
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/buttonRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/white"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="10dp"
+            android:text="@string/btn_register"/>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/linkSignup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginBottom="24dp"
+            android:text="Already Registered? Login Here"
+            android:gravity="center"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+</ScrollView>

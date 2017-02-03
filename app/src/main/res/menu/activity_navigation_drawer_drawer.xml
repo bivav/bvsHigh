@@ -32,10 +32,7 @@
             android:id="@+id/nav_alerts"
             android:icon="@drawable/ic_menu_alerts"
             android:title="@string/alerts" />
-        <item
-            android:id="@+id/nav_teacherContact"
-            android:icon="@drawable/ic_menu_teachers"
-            android:title="@string/teacher_s_contact" />
+
         <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_menu_calendar"
@@ -45,14 +42,16 @@
 
     <item android:title="Communicate">
         <menu>
+
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_teacherContact"
+                android:icon="@drawable/ic_menu_teachers"
+                android:title="@string/teacher_s_contact" />
+
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="@string/contact_us" />
         </menu>
     </item>
 

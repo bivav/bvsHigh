@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="np.edu.bvs.bvshigh.fees_fragment">
+    tools:context="np.edu.bvs.bvshigh.fragment_fees">
 
 
     <Button
@@ -13,4 +13,5 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/button4" />
+
 </RelativeLayout>
