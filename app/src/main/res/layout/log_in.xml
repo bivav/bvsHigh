@@ -24,10 +24,11 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:hint="@string/admission_number"
-        android:textColorHint="@android:color/holo_green_light">
+        android:textColorHint="@android:color/holo_orange_light">
 
         <EditText
             android:inputType="textEmailAddress"
+            android:id="@+id/editTextUsername"
             android:textColorHint="@android:color/white"
             android:layout_gravity="center"
             android:layout_width="300dp"
@@ -43,13 +44,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:textColorHint="@android:color/holo_green_light">
+        android:textColorHint="@android:color/holo_orange_light">
 
         <EditText
             android:inputType="textPassword"
             android:textColorHint="@android:color/white"
             android:hint="@string/password"
-            android:id="@+id/password"
+            android:id="@+id/editTextPassword"
             android:textColorHighlight="@color/white"
             android:shadowColor="@color/white"
             android:textColorLink="@color/white"
@@ -61,29 +62,29 @@
 
     </android.support.design.widget.TextInputLayout>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:text="@string/log_in"
         android:layout_width="300dp"
         android:layout_gravity="center"
         android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
         android:layout_marginTop="10dp"
-        android:background="@android:color/holo_orange_dark"
+        android:background="@color/colorPrimary"
         android:textColor="@android:color/white"
         android:layout_height="wrap_content"
         android:id="@+id/log_in" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:text="@string/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/register"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@android:color/white"
-        android:textSize="16sp"
-        android:fontFamily="sans-serif-condensed" />
+        android:textSize="14sp"
+        android:fontFamily="sans-serif" />
 
 </LinearLayout>

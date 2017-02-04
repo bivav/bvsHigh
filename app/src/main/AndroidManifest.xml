@@ -24,7 +24,7 @@
         </activity>
 
         <activity
-            android:name=".log_in" />
+            android:name=".Login_Student" />
 
         <activity
             android:name=".Main_activity"

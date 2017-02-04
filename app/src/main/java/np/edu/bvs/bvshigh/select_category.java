@@ -21,7 +21,13 @@ public class select_category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Main_activity.class));
-                finish();
+            }
+        });
+
+        parents_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Login_Student.class));
             }
         });
 
@@ -32,11 +38,6 @@ public class select_category extends AppCompatActivity {
             }
         });
 
-        parents_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Main_activity.class));
-            }
-        });
+
     }
 }
