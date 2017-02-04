@@ -64,6 +64,7 @@
     <string name="view_profile">View Profile</string>
     <string name="display_my_routine">Display My Routine</string>
     <string name="display_enitre_routine">Display Enitre Routine</string>
+    <string name="homework_details">Homework Details</string>
 
 
 </resources>

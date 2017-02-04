@@ -62,7 +62,7 @@
                     android:layout_alignStart="@id/grade_sec"
                     android:layout_below="@id/grade_sec"
                     android:layout_alignLeft="@id/grade_sec"
-                    android:text="@string/homework"/>
+                    android:text="@string/homework_details"/>
 
 
                 <TextView

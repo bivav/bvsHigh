@@ -29,7 +29,6 @@ public class select_category extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Register_Student.class));
-                finish();
             }
         });
 

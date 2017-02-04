@@ -19,6 +19,7 @@ public class log_in extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Main_activity.class));
+                finish();
             }
         });
 
