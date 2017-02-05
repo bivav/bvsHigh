@@ -22,6 +22,12 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if (!SharedPrefManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(getApplicationContext(), Login_Student.class));
+        }
+
+
         Home_page fragment = new Home_page();
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_activity, fragment);

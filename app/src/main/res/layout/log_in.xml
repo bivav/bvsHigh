@@ -23,11 +23,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:hint="@string/admission_number"
+        android:hint="@string/username"
         android:textColorHint="@android:color/holo_orange_light">
 
         <EditText
-            android:inputType="textEmailAddress"
+            android:inputType="text|textEmailAddress"
             android:id="@+id/editTextUsername"
             android:textColorHint="@android:color/white"
             android:layout_gravity="center"

@@ -65,6 +65,7 @@
     <string name="display_my_routine">Display My Routine</string>
     <string name="display_enitre_routine">Display Enitre Routine</string>
     <string name="homework_details">Homework Details</string>
+    <string name="username">Username</string>
 
 
 </resources>

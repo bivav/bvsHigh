@@ -20,21 +20,21 @@ public class select_category extends AppCompatActivity {
         student_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Main_activity.class));
+                startActivity(new Intent(getApplicationContext(), Login_Student.class));
             }
         });
 
         parents_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Login_Student.class));
+                startActivity(new Intent(getApplicationContext(), Main_activity.class));
             }
         });
 
         teacher_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Register_Student.class));
+                startActivity(new Intent(getApplicationContext(), Main_activity.class));
             }
         });
 

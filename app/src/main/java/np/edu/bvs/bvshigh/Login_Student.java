@@ -1,6 +1,7 @@
 package np.edu.bvs.bvshigh;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,6 +32,13 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.log_in);
+
+        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(getApplicationContext(), Main_activity.class));
+            return;
+        }
+
 
         log_in = (Button)findViewById(R.id.log_in);
 
@@ -70,7 +78,9 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                                         object.getString("username"),
                                         object.getString("email"));
 
-                                Toast.makeText(getApplicationContext(), "User Login Successful!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "User Login Successful!", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(getApplicationContext(), Main_activity.class));
+                                finish();
 
                             }else {
                                 Toast.makeText(getApplicationContext(), "Username or Password is wrong. Please try again",
@@ -86,7 +96,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Can't Connect. Please try again.", Toast.LENGTH_LONG).show();
 
                     }
                 }){
