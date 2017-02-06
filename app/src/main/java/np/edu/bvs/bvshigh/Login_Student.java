@@ -24,7 +24,7 @@ import java.util.Map;
 public class Login_Student extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextUsername, editTextPassword;
-    private Button log_in, register;
+    private Button log_in;
     private ProgressDialog progressDialog;
 
     @Override
@@ -40,7 +40,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
         }
 
         log_in = (Button)findViewById(R.id.log_in);
-        register = (Button)findViewById(R.id.register);
+        Button register = (Button) findViewById(R.id.register);
 
         editTextUsername = (EditText)findViewById(R.id.editTextUsername);
         editTextPassword = (EditText)findViewById(R.id.editTextPassword);

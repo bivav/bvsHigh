@@ -15,8 +15,6 @@ import android.widget.TextView;
 
 public class Main_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private TextView student_name, student_email;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +30,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
             startActivity(new Intent(getApplicationContext(), Login_Student.class));
         }
 
-
+        // Main Homepage activity aka Dashboard
         Home_page fragment = new Home_page();
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_activity, fragment);
@@ -59,13 +57,14 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+
+        // Setting up username and email for navigationView Drawer Activity
         View headerView = navigationView.getHeaderView(0);
-        student_name = (TextView)headerView.findViewById(R.id.student_name);
+        TextView student_name = (TextView) headerView.findViewById(R.id.student_name);
         student_name.setText(SharedPrefManager.getInstance(this).getUsername().toUpperCase());
 
-        student_email = (TextView)headerView.findViewById(R.id.student_email);
+        TextView student_email = (TextView) headerView.findViewById(R.id.student_email);
         student_email.setText(SharedPrefManager.getInstance(this).getEmail());
-
 
     }
 
