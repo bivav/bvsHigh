@@ -81,6 +81,7 @@ public class Register_Student extends AppCompatActivity implements View.OnClickL
                 params.put("email", email);
                 params.put("password", password);
                 return params;
+
             }
         };
 
