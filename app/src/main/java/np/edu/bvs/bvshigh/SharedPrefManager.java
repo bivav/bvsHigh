@@ -4,6 +4,7 @@ package np.edu.bvs.bvshigh;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+@SuppressWarnings("ALL")
 class SharedPrefManager {
 
     private static SharedPrefManager mInstance;
@@ -63,4 +64,13 @@ class SharedPrefManager {
         return true;
     }
 
+    public String getUsername(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_USERNAME, null);
+    }
+
+    public String getEmail(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_USER_EMAIL, null);
+    }
 }

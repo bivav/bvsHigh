@@ -1,15 +1,11 @@
 package np.edu.bvs.bvshigh;
 
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.widget.Toast;
-
+import android.view.MenuItem;
 
 public class fragment_routine extends AppCompatActivity {
 
@@ -19,7 +15,6 @@ public class fragment_routine extends AppCompatActivity {
     CharSequence Titles[] = {"SUN", "MON"};
     int NumOfTabs = 2;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,15 +23,13 @@ public class fragment_routine extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        toolbar.setNavigationIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_black));
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "WORKING", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), Main_activity.class));
-                finish();
-            }
-        });
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
+        // Only to change the color of back button
+        // toolbar.setNavigationIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_black));
 
         adapter = new fragment_routine_week(getSupportFragmentManager(), Titles, NumOfTabs);
 
@@ -54,5 +47,10 @@ public class fragment_routine extends AppCompatActivity {
         });
 
         tabs.setViewPager(pager);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

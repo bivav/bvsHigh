@@ -11,45 +11,51 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:layout_margin="10dp">
 
         <ImageView
             android:background="@drawable/bvs_logo_small"
             android:layout_gravity="center_horizontal"
-            android:layout_width="110dp"
-            android:layout_height="120dp"
+            android:layout_width="105dp"
+            android:layout_height="115dp"
             tools:ignore="ContentDescription" />
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="8dp">
+            android:layout_marginTop="10dp"
+            android:textColorHint="@android:color/holo_orange_light">
 
-            <EditText
-                android:id="@+id/editTextUsername"
-                android:layout_width="match_parent"
-                android:textColor="@color/white"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:hint="@string/name" />
+        <EditText
+            android:id="@+id/editTextUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:padding="10dp"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:hint="@string/name" />
 
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="8dp">
+            android:textColorHint="@android:color/holo_orange_light">
 
             <EditText
                 android:id="@+id/editTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:inputType="textPassword"
                 android:hint="@string/password"/>
 
@@ -58,15 +64,18 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColorHint="@color/white"
-            android:layout_marginBottom="8dp">
+            android:textColorHint="@android:color/holo_orange_light">
 
             <EditText
                 android:id="@+id/editTextEmail"
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
                 android:inputType="textEmailAddress"
                 android:hint="@string/email" />
 
@@ -75,12 +84,12 @@
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/buttonRegister"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="10dp"
             android:background="@color/colorPrimary"
-            android:textColor="@color/white"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
-            android:padding="10dp"
+            android:textColor="@android:color/white"
+            android:layout_height="wrap_content"
             android:text="@string/btn_register"/>
 
         <TextView
@@ -88,6 +97,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="24dp"
             android:text="Already Registered? Login Here"
             android:gravity="center"

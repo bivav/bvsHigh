@@ -16,7 +16,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity android:name=".select_category">
+        <activity
+            android:name=".select_category">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -24,7 +25,7 @@
         </activity>
 
         <activity
-            android:name=".Login_Student" />
+            android:name=".Login_Student"/>
 
         <activity
             android:name=".Main_activity"
@@ -36,9 +37,11 @@
 
         <activity
             android:name=".fragment_routine"
-            android:parentActivityName=".Main_activity"/>
+            android:parentActivityName="np.edu.bvs.bvshigh.Main_activity">
+        </activity>
 
-        <activity android:name=".Register_Student"/>
+        <activity
+            android:name=".Register_Student"/>
 
     </application>
 </manifest>
