@@ -70,17 +70,22 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                         progressDialog.dismiss();
                         try {
 
+                            // creating JSONobject to get data
                             JSONObject object = new JSONObject(response);
-
                             if (!object.getBoolean("error")){
 
                                 // getting details from sharedPref activity
                                 SharedPrefManager.getInstance(getApplicationContext()).userLogin(
                                         object.getInt("id"),
                                         object.getString("username"),
-                                        object.getString("email"));
+                                        object.getString("email"),
+                                        object.getString("fullname"),
+                                        object.getString("grade"),
+                                        object.getString("sec"),
+                                        object.getString("branch"));
 
-                                Toast.makeText(getApplicationContext(), "User Login Successful!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "User Login Successful!",
+                                        Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getApplicationContext(), Main_activity.class));
                                 finish();
 
@@ -99,7 +104,8 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                     public void onErrorResponse(VolleyError error) {
 
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Can't Connect. Please try again.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Can't Connect. Please try again.",
+                                Toast.LENGTH_LONG).show();
 
                     }
                 })

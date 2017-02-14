@@ -66,6 +66,11 @@
     <string name="display_enitre_routine">Display Enitre Routine</string>
     <string name="homework_details">Homework Details</string>
     <string name="username">Username</string>
+    <string name="grade_sec">Grade:</string>
+    <string name="sec">Sec:</string>
+    <string name="branch">Branch:</string>
+    <string name="id_no">ID no:</string>
+    <string name="logout">Logout</string>
 
 
 </resources>

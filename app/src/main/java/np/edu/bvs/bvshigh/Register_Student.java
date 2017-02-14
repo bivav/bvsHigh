@@ -59,7 +59,8 @@ public class Register_Student extends AppCompatActivity implements View.OnClickL
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"),
+                                    Toast.LENGTH_LONG).show();
 
                         } catch (JSONException e) {
                             e.printStackTrace();

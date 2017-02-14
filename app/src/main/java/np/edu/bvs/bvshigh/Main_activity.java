@@ -1,5 +1,6 @@
 package np.edu.bvs.bvshigh;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -7,14 +8,18 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 
 public class Main_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    private ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +66,10 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         // Setting up username and email for navigationView Drawer Activity
         View headerView = navigationView.getHeaderView(0);
         TextView student_name = (TextView) headerView.findViewById(R.id.student_name);
-        student_name.setText(SharedPrefManager.getInstance(this).getUsername().toUpperCase());
+        student_name.setText(SharedPrefManager.getInstance(this).getFullName());
 
         TextView student_email = (TextView) headerView.findViewById(R.id.student_email);
-        student_email.setText(SharedPrefManager.getInstance(this).getEmail());
+        student_email.setText("Brihaspati Vidyasadan");
 
     }
 
@@ -89,17 +94,24 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()){
+
+            case R.id.action_settings:
+                Toast.makeText(getApplicationContext(), "You clicked it man!", Toast.LENGTH_SHORT).show();
+                break;
+
+            case R.id.logout:
+                SharedPrefManager.getInstance(this).isLoggedOut();
+                progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Logging Out...");
+                finish();
+                progressDialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), select_category.class));
+                break;
         }
 
-        return super.onOptionsItemSelected(item);
+        return true;
     }
 
     @Override
