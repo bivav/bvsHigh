@@ -18,7 +18,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     @Override
     public RecyclerAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_homework, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_homework, parent, false));
     }
 
     @Override
@@ -37,7 +37,7 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            info = (TextView)itemView.findViewById(R.id.info_text);
+            info = (TextView)itemView.findViewById(R.id.teacher_name);
         }
     }
 }

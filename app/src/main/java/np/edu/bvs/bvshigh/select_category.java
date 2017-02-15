@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class select_category extends AppCompatActivity {
+public class Select_Category extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class select_category extends AppCompatActivity {
         setContentView(R.layout.category);
 
 
-        // Checking if user is logged in -> profile is displayed
+        // Checking if user is logged in already -> profile is displayed
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
             startActivity(new Intent(getApplicationContext(), Main_activity.class));
@@ -50,7 +50,5 @@ public class select_category extends AppCompatActivity {
                 finish();
             }
         });
-
-
     }
 }

@@ -18,7 +18,7 @@
         android:id="@+id/profile_image"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/bivav_raj"
+        android:src="@drawable/image"
         app:border_color="#FF0000"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="10dp"

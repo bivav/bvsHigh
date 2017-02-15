@@ -17,7 +17,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <activity
-            android:name=".select_category">
+            android:name=".Select_Category">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -31,9 +31,6 @@
             android:name=".Main_activity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
-
-        <activity
-            android:name=".RecyclerView_Homework"/>
 
         <activity
             android:name=".fragment_routine"
