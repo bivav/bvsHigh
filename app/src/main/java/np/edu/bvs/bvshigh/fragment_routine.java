@@ -29,7 +29,7 @@ public class fragment_routine extends AppCompatActivity {
         }
 
         // Only to change the color of back button
-        // toolbar.setNavigationIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_black));
+        //toolbar.setNavigationIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_arrow_back_black));
 
         adapter = new fragment_routine_week(getSupportFragmentManager(), Titles, NumOfTabs);
 

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="np.edu.bvs.bvshigh">
 
@@ -16,29 +15,50 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
-        <activity
-            android:name=".Select_Category">
+        <activity android:name=".Select_Category">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".Login_Student"/>
-
+        <activity android:name=".Login_Student" />
         <activity
             android:name=".Main_activity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" />
 
         <activity
-            android:name=".fragment_routine"
+            android:name=".Student_Profile_Edit"
+            android:parentActivityName=".Student_Profile">
+
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="np.edu.bvs.bvshigh.Student_Profile"/>
+
+
+        </activity>
+
+
+        <activity
+            android:name=".Student_Profile"
             android:parentActivityName="np.edu.bvs.bvshigh.Main_activity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="np.edu.bvs.bvshigh.Main_activity"/>
+
         </activity>
 
         <activity
-            android:name=".Register_Student"/>
+            android:name=".fragment_routine"
+            android:parentActivityName=".Main_activity">
+        </activity>
+
+        <activity android:name=".Register_Student" />
+
 
     </application>
+
 </manifest>

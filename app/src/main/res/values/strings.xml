@@ -69,12 +69,16 @@
     <string name="grade_sec">Grade:</string>
     <string name="sec">Sec:</string>
     <string name="branch">Branch:</string>
+    <string name="branch_name">Branch</string>
     <string name="id_no">ID no:</string>
     <string name="logout">Logout</string>
     <string name="loading">Loading</string>
 
     <string name="brihaspati">Brihaspati Vidyasadan</string>
     <string name="date">DATE:</string>
+    <string name="dob">DOB</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="guardian_name">Guardian Name</string>
 
 
 </resources>
