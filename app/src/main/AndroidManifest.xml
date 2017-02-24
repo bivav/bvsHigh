@@ -58,6 +58,16 @@
 
         <activity android:name=".Register_Student" />
 
+        <activity
+            android:name=".fragment_calendar"
+            android:parentActivityName="np.edu.bvs.bvshigh.Main_activity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="np.edu.bvs.bvshigh.Main_activity"/>
+
+        </activity>
+
 
     </application>
 

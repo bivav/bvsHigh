@@ -174,10 +174,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.nav_calendar){
 
-            fragment_calendar fragment = new fragment_calendar();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
 
         } else if (id == R.id.nav_send) {
 

@@ -8,9 +8,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Student_Profile extends AppCompatActivity {
+
+    TextView student_name, branch_name, student_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,13 @@ public class Student_Profile extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        student_name = (TextView)findViewById(R.id.student_name);
+        branch_name = (TextView)findViewById(R.id.branch_name);
+        student_email = (TextView)findViewById(R.id.student_email);
 
+        student_name.setText(SharedPrefManager.getInstance(getApplicationContext()).getFullName());
+        branch_name.setText(SharedPrefManager.getInstance(getApplicationContext()).getBranch());
+        student_email.setText(SharedPrefManager.getInstance(getApplicationContext()).getEmail());
 
     }
 
