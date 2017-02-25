@@ -53,6 +53,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="routine">Routine</string>
+    <string name="routine_big">ROUTINE</string>
     <string name="attendance">Attendance</string>
     <string name="results">Results</string>
     <string name="tution_fees">Tution Fees</string>
@@ -79,6 +80,8 @@
     <string name="dob">DOB</string>
     <string name="phone_number">Phone Number</string>
     <string name="guardian_name">Guardian Name</string>
+    <string name="time">Time</string>
+    <string name="subject">Subject</string>
 
 
 </resources>

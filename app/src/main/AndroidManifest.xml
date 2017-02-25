@@ -53,6 +53,7 @@
 
         <activity
             android:name=".fragment_routine"
+            android:label="@string/routine_big"
             android:parentActivityName=".Main_activity">
         </activity>
 

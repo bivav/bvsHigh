@@ -12,8 +12,8 @@ public class fragment_routine extends AppCompatActivity {
     ViewPager pager;
     SlidingTabLayout tabs;
     fragment_routine_week adapter;
-    CharSequence Titles[] = {"SUN", "MON"};
-    int NumOfTabs = 2;
+    CharSequence Titles[] = {"SUN", "MON", "TUE", "WED", "THU", "FRI"};
+    int NumOfTabs = 6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

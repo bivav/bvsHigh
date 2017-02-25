@@ -39,26 +39,26 @@ public class fragment_home_bottom_1 extends Fragment {
         current_day.setText(day);
 
         listView = (ListView)view.findViewById(R.id.routine_display);
-        routineAdapter adapter = new routineAdapter(getContext(), time, subject, teacher);
+        routineAdapters adapter = new routineAdapters(getContext(), time, subject, teacher);
         listView.setAdapter(adapter);
 
         return view;
     }
 
-    class routineAdapter extends ArrayAdapter {
+    class routineAdapters extends ArrayAdapter {
 
         String[] timeArray;
         String[] subjectArray;
         String[] teacherArray;
 
-        public routineAdapter(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
+        public routineAdapters(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
             super(context, R.layout.fragment_routine_sun, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
             this.subjectArray = msubjecArray;
             this.teacherArray = mteacherArray;
         }
 
-        @NonNull
+
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 

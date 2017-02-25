@@ -23,8 +23,16 @@ public class fragment_routine_week extends FragmentStatePagerAdapter {
 
         if (position == 0)
             return new fragment_routine_sun();
-        else
+        else if(position == 1)
             return new fragment_routine_mon();
+        else if (position == 2)
+            return new fragment_routine_tue();
+        else if (position == 3)
+            return new fragment_routine_wed();
+        else if (position == 4)
+            return new fragment_routine_thur();
+        else
+            return new fragment_routine_fri();
     }
 
     public CharSequence getPageTitle(int position){

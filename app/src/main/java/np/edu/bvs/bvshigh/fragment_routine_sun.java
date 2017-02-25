@@ -20,8 +20,8 @@ import java.util.Date;
 
 public class fragment_routine_sun extends Fragment{
 
-    String[] time = {"6:30 - 7:30", "7:30 - 8:30","8:30 - 9:30","9:30 - 10:30", "10:30 - 11:30","11:30 - 12:30","12:30 - 1:30"};
-    String[] subject = {"Chemisty","Physics","Chemistry","DG","Physics","English"};
+    String[] time = {"6:30 - 7:30", "7:30 - 8:30", "8:30 - 9:30","9:30 - 10:30", "10:30 - 11:30","11:30 - 12:30","12:30 - 1:30"};
+    String[] subject = {"Chemisty","Physics","Chemistry","DG","Physics","English", "ETA"};
     String[] teacher = {"DG", "BN", "SR", "TRK", "DG", "BN", "SB"};
     ListView listView;
 
@@ -52,12 +52,13 @@ public class fragment_routine_sun extends Fragment{
         String[] subjectArray;
         String[] teacherArray;
 
-        public routineAdapter(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
-            super(context, R.layout.fragment_routine_sun, R.id.teacher_name);
+        routineAdapter(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
+            super(context, R.layout.fragment_routine_sun, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
             this.subjectArray = msubjecArray;
             this.teacherArray = mteacherArray;
         }
+
 
         @NonNull
         @Override

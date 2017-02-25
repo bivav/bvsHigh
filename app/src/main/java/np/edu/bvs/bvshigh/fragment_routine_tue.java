@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class fragment_routine_mon extends Fragment {
+public class fragment_routine_tue extends Fragment {
 
     String[] time = {"6:30 - 7:30", "7:30 - 8:30", "8:30 - 9:30","9:30 - 10:30", "10:30 - 11:30","11:30 - 12:30","12:30 - 1:30"};
     String[] subject = {"Chemisty","Physics","Chemistry","DG","Physics","English", "ETA"};
@@ -51,7 +51,7 @@ public class fragment_routine_mon extends Fragment {
         String[] teacherArray;
 
         routineAdapter(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
-            super(context, R.layout.fragment_routine_mon, R.id.teacher_name, mteacherArray);
+            super(context, R.layout.fragment_routine_tue, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
             this.subjectArray = msubjecArray;
             this.teacherArray = mteacherArray;
@@ -63,7 +63,7 @@ public class fragment_routine_mon extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.fragment_routine_mon, parent, false);
+            View row = inflater.inflate(R.layout.fragment_routine_tue, parent, false);
 
             TextView time = (TextView)row.findViewById(R.id.period_time);
             TextView subject_name = (TextView)row.findViewById(R.id.subject_name);

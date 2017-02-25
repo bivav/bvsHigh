@@ -108,9 +108,9 @@
                 app:border_color="#FF0000"
                 android:id="@+id/profile_pic"
                 android:src="@drawable/image"
-                android:layout_width="120dp"
+                android:layout_width="100dp"
                 android:layout_marginTop="20dp"
-                android:layout_height="120dp" />
+                android:layout_height="110dp" />
 
             <Button
                 android:text="@string/view_profile"
