@@ -138,10 +138,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.nav_results) {
 
-            fragment_result fragment = new fragment_result();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            startActivity(new Intent(getApplicationContext(), fragment_result.class));
 
         } else if (id == R.id.nav_fees) {
 
@@ -178,10 +175,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.nav_send) {
 
-            fragment_result fragment = new fragment_result();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            startActivity(new Intent(getApplicationContext(), fragment_result.class));
 
         }
 
