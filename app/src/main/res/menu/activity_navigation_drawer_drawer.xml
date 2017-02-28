@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/nav_dashboard"
-            android:icon="@drawable/ic_menu_dashboard"
-            android:title="@string/dashboard" />
+    <group
+        android:title="Information"
+        android:checkableBehavior="single">
+            <item
+                android:id="@+id/nav_dashboard"
+                android:icon="@drawable/ic_menu_dashboard"
+                android:title="@string/dashboard" />
         <item
             android:id="@+id/nav_routine"
             android:icon="@drawable/ic_menu_routine"
@@ -37,6 +38,7 @@
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_menu_calendar"
             android:title="@string/calendar" />
+
 
     </group>
 

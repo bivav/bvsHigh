@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#e6e6e6"
+    android:background="#f5f5f5"
     android:weightSum="2"
     tools:context="np.edu.bvs.bvshigh.fragment_result">
 
@@ -20,9 +20,13 @@
         android:layout_gravity="center"
         android:layout_margin="5dp"
         android:background="@color/white"
-        card_view:cardCornerRadius="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        card_view:cardCornerRadius="10dp"
         card_view:contentPadding="10dp"
-        card_view:cardElevation="4dp"
+        card_view:cardElevation="5dp"
         card_view:cardBackgroundColor="@android:color/white"
         card_view:cardUseCompatPadding="true">
 
