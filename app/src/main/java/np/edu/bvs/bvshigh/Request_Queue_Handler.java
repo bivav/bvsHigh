@@ -18,7 +18,7 @@ class Request_Queue_Handler{
         mRequestQueue = getRequestQueue();
     }
 
-    public static synchronized Request_Queue_Handler getInstance(Context context) {
+    static synchronized Request_Queue_Handler getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new Request_Queue_Handler(context);
         }
@@ -34,7 +34,7 @@ class Request_Queue_Handler{
         return mRequestQueue;
     }
 
-    public <T> void addToRequestQueue(Request<T> req) {
+    <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
 }

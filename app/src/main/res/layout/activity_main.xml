@@ -6,13 +6,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#eee"
+    android:background="#efefef"
     tools:context="np.edu.bvs.bvshigh.Main_activity">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@drawable/shadow" />
 
     <fragment
         android:layout_width="match_parent"

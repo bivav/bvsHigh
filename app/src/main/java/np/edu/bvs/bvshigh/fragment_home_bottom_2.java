@@ -3,6 +3,7 @@ package np.edu.bvs.bvshigh;
 import android.content.Context;
 import android.os.Bundle;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class fragment_home_bottom_2 extends Fragment {
 
@@ -25,8 +27,6 @@ public class fragment_home_bottom_2 extends Fragment {
 
     ListView homework_customview;
 
-    String current_day;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_homework_customlist_view, container, false);
@@ -37,7 +37,7 @@ public class fragment_home_bottom_2 extends Fragment {
 
         String current_date_pull = DateFormat.getDateInstance().format(new Date());
 
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE" );
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.getDefault());
         Date d = new Date();
         String day = sdf.format(d);
 
@@ -55,7 +55,8 @@ public class fragment_home_bottom_2 extends Fragment {
         String[] teachers;
         String[] homework;
 
-        public homeworkAdapter(Context context, String[] mtitles, String[] mteachers, String[] mhomework) {
+        homeworkAdapter(Context context, String[] mtitles, String[] mteachers, String[] mhomework) {
+            //noinspection unchecked
             super(context, R.layout.fragment_homework,R.id.teacher_name, mteachers);
             this.titles = mtitles;
             this.teachers = mteachers;
@@ -63,8 +64,9 @@ public class fragment_home_bottom_2 extends Fragment {
         }
 
 
+        @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.fragment_homework, parent, false);

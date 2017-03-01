@@ -23,7 +23,6 @@ public class Select_Category extends AppCompatActivity {
 
         Button student_button = (Button)findViewById(R.id.student_button);
         Button teacher_button = (Button)findViewById(R.id.teacher_button);
-        Button parents_button = (Button)findViewById(R.id.parents_button);
 
 
         // button selects first page
@@ -34,14 +33,14 @@ public class Select_Category extends AppCompatActivity {
                 finish();
             }
         });
-
-        parents_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Login_Student.class));
-                finish();
-            }
-        });
+//
+//        parents_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), Login_Student.class));
+//                finish();
+//            }
+//        });
 
         teacher_button.setOnClickListener(new View.OnClickListener() {
             @Override

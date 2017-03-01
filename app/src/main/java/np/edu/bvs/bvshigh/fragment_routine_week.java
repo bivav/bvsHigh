@@ -5,12 +5,12 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 
-public class fragment_routine_week extends FragmentStatePagerAdapter {
+class fragment_routine_week extends FragmentStatePagerAdapter {
 
     private int NumOfTabs;
     private CharSequence Titles[];
 
-    public fragment_routine_week(FragmentManager fm, CharSequence mtitles[], int numOfTabs) {
+    fragment_routine_week(FragmentManager fm, CharSequence mtitles[], int numOfTabs) {
         super(fm);
 
         this.Titles = mtitles;

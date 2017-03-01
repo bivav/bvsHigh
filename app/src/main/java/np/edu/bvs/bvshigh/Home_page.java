@@ -6,20 +6,13 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public class Home_page extends android.support.v4.app.Fragment {
 
     ViewPager pager;
     home_sliding_adapter adapter;
     SlidingTabLayout tabs;
-    CharSequence Titles[] = {"Today's Class", "Homeworks"};
+    CharSequence Titles[] = {"Today's Class", "Homework"};
     int NumbofTabs =2;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,7 +34,6 @@ public class Home_page extends android.support.v4.app.Fragment {
         });
 
         tabs.setViewPager(pager);
-
         return view;
     }
 }

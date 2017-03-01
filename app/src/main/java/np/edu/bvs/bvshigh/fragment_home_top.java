@@ -1,17 +1,13 @@
 package np.edu.bvs.bvshigh;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class fragment_home_top extends Fragment {
 
@@ -33,8 +29,6 @@ public class fragment_home_top extends Fragment {
         grade.setText(SharedPrefManager.getInstance(getContext()).getGrade());
         sec.setText(SharedPrefManager.getInstance(getContext()).getSec());
         branch_name.setText(SharedPrefManager.getInstance(getContext()).getBranch());
-
-
 
         view_profile.setOnClickListener(new View.OnClickListener() {
             @Override

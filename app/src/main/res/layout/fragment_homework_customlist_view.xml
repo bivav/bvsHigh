@@ -16,7 +16,7 @@
         <TextView
             android:id="@+id/current_date"
             android:text="@string/date"
-            android:padding="10dp"
+            android:padding="6dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         <TextView
             android:id="@+id/current_day"
             android:text="@string/date"
-            android:padding="10dp"
+            android:padding="6dp"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

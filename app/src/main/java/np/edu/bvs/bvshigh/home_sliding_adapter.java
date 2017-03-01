@@ -4,18 +4,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-public class home_sliding_adapter extends FragmentStatePagerAdapter {
+class home_sliding_adapter extends FragmentStatePagerAdapter {
 
     private int NumOfTabs;
     private CharSequence Titles[];
 
 
-    public home_sliding_adapter(FragmentManager fm, CharSequence titles[], int numOfTabs) {
+    home_sliding_adapter(FragmentManager fm, CharSequence titles[], int numOfTabs) {
         super(fm);
 
         this.Titles = titles;
         this.NumOfTabs = numOfTabs;
-
     }
 
     @Override
@@ -28,7 +27,6 @@ public class home_sliding_adapter extends FragmentStatePagerAdapter {
 
     public CharSequence getPageTitle(int position){
         return Titles[position];
-
     }
 
     @Override

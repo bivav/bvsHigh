@@ -51,7 +51,8 @@ public class fragment_home_bottom_1 extends Fragment {
         String[] subjectArray;
         String[] teacherArray;
 
-        public routineAdapters(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
+        routineAdapters(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
+            //noinspection unchecked
             super(context, R.layout.fragment_routine_sun, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
             this.subjectArray = msubjecArray;
@@ -59,8 +60,9 @@ public class fragment_home_bottom_1 extends Fragment {
         }
 
 
+        @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.fragment_routine_sun, parent, false);
