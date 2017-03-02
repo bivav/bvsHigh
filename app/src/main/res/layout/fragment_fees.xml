@@ -6,12 +6,13 @@
     tools:context="np.edu.bvs.bvshigh.fragment_fees">
 
 
-    <Button
-        android:text="@string/tution_fees"
+    <TextView
+        android:text="TUTION FEES"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="25sp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button4" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

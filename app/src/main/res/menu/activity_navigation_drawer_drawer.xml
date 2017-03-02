@@ -6,6 +6,7 @@
         <item
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/ic_menu_dashboard"
+            android:checked="true"
             android:title="@string/dashboard" />
         <item
             android:id="@+id/nav_routine"
@@ -38,11 +39,10 @@
             android:icon="@drawable/ic_menu_calendar"
             android:title="@string/calendar" />
 
-
     </group>
 
     <item
-        android:title="Communicate">
+        android:title="@string/communicate">
 
         <menu>
             <item
@@ -51,7 +51,12 @@
                 android:title="@string/teacher_s_contact" />
 
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/about_college"
+                android:icon="@drawable/ic_school"
+                android:title="@string/about_college" />
+
+            <item
+                android:id="@+id/contact_us"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/contact_us" />
         </menu>

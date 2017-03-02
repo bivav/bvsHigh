@@ -175,9 +175,13 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
             startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.contact_us) {
 
-            startActivity(new Intent(getApplicationContext(), fragment_result.class));
+            startActivity(new Intent(getApplicationContext(), contact_us.class));
+
+        } else if (id == R.id.about_college) {
+
+            startActivity(new Intent(getApplicationContext(), about_college.class));
 
         }
 
