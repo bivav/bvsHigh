@@ -43,6 +43,7 @@ public class fragment_home_bottom_2 extends Fragment {
 
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
+
         current_date.setText(current_date_pull);
         current_day.setText(day);
 

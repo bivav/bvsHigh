@@ -1,6 +1,7 @@
 package np.edu.bvs.bvshigh;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,16 +11,29 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class Main_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    /**Right Slide Function**/
+    String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
+    String[] description_alert = {"Results for class 11 is out. Please check results tab and refresh to download the result",
+            "Routine has been updated for grade 12. Kindly update.", "Welcome to BVS to all students!! Hope you have a good time."};
 
+    ListView rightView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +76,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
         // Setting up username and email for navigationView Drawer Activity
         View headerView = navigationView.getHeaderView(0);
         TextView student_name = (TextView) headerView.findViewById(R.id.student_name);
@@ -71,7 +84,52 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         TextView student_email = (TextView) headerView.findViewById(R.id.student_email);
         student_email.setText(getResources().getString(R.string.brihaspati));
 
+
+        // Calling the alerts layout and implementing using custom list view
+
+        rightView = (ListView)findViewById(R.id.right_slide);
+        alertsDisplay alerts = new alertsDisplay(getApplicationContext(), titles_alert, description_alert);
+
+        rightView.setAdapter(alerts);
+
+
     }
+
+
+    public class alertsDisplay extends ArrayAdapter {
+
+        String[] titles_alert;
+        String[] description_alert;
+
+        alertsDisplay(Context context, String[] mtitles, String[] mDescription) {
+            super(context, R.layout.fragment_alerts, R.id.title_alerts, mtitles);
+
+            this.titles_alert = mtitles;
+            this.description_alert = mDescription;
+        }
+
+        @NonNull
+        @Override
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+
+            LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.fragment_alerts, parent, false);
+
+            String date = DateFormat.getDateInstance().format(new Date());
+
+            TextView alert_date = (TextView)view.findViewById(R.id.alert_date);
+            alert_date.setText(date);
+
+            TextView titles = (TextView)view.findViewById(R.id.title_alerts);
+            TextView description = (TextView)view.findViewById(R.id.alert_description);
+
+            titles.setText(titles_alert[position]);
+            description.setText(description_alert[position]);
+
+            return view;
+        }
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -81,14 +139,14 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         } else {
             super.onBackPressed();
         }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_drawer, menu);
-
-
         return true;
     }
 
@@ -96,7 +154,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-
             case R.id.action_settings:
                 Toast.makeText(getApplicationContext(), "You clicked settings", Toast.LENGTH_SHORT).show();
                 break;
@@ -109,6 +166,16 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 progressDialog.dismiss();
                 startActivity(new Intent(getApplicationContext(), Select_Category.class));
                 break;
+
+            case R.id.alerts:
+                DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START);
+                } else {
+                    drawer.openDrawer(GravityCompat.END);
+                }
+                break;
+
         }
 
         return true;
@@ -121,11 +188,11 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         final int id = item.getItemId();
 
         if (id == R.id.nav_dashboard){
+
             Home_page fragment = new Home_page();
             android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame_activity, fragment);
             transaction.commit();
-
 
         } else if (id == R.id.nav_routine) {
 
@@ -149,7 +216,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
             transaction.replace(R.id.frame_activity, fragment);
             transaction.commit();
 
-
         } else if (id == R.id.nav_events){
 
             fragment_events fragment = new fragment_events();
@@ -159,10 +225,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         } else if (id == R.id.nav_alerts){
 
-            fragment_alerts fragment = new fragment_alerts();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            startActivity(new Intent(getApplicationContext(), fragment_alerts.class));
 
         } else if (id == R.id.nav_teacherContact){
 
@@ -183,6 +246,14 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
             startActivity(new Intent(getApplicationContext(), about_college.class));
 
+        } else if (id == R.id.feedback) {
+
+            startActivity(new Intent(getApplicationContext(), feedback.class));
+        } else if (id == R.id.message_to_school) {
+
+            message_us_alert_box message_us_alert_box = new message_us_alert_box();
+            message_us_alert_box.showDialog(this);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -191,5 +262,4 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         return true;
     }
-
 }

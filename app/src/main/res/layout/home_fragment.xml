@@ -125,7 +125,7 @@
         android:layout_toRightOf="@+id/grade_sec"
         android:layout_marginLeft="5dp"
         android:layout_marginStart="5dp"
-        android:textColor="@color/common_plus_signin_btn_text_light_default" />
+        android:textColor="@android:color/primary_text_light" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -139,7 +139,7 @@
         android:layout_marginStart="5dp"
         android:layout_toRightOf="@+id/sec_name"
         android:layout_toEndOf="@+id/sec_name"
-        android:textColor="@color/common_plus_signin_btn_text_light_default" />
+        android:textColor="@android:color/primary_text_light" />
 
     <TextView
         android:text="123456789"
@@ -152,7 +152,7 @@
         android:layout_alignBottom="@+id/admission"
         android:layout_toRightOf="@+id/grade_sec"
         android:layout_toEndOf="@+id/grade_sec"
-        android:textColor="@color/common_plus_signin_btn_text_light_default" />
+        android:textColor="@android:color/primary_text_light"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -165,6 +165,6 @@
         android:layout_alignBottom="@+id/branch"
         android:layout_toRightOf="@+id/branch"
         android:layout_toEndOf="@+id/branch"
-        android:textColor="@color/common_plus_signin_btn_text_light_default" />
+        android:textColor="@android:color/primary_text_light" />
 
 </RelativeLayout>

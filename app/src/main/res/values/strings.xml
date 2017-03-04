@@ -82,9 +82,13 @@
     <string name="guardian_name">Guardian Name</string>
     <string name="time">Time</string>
     <string name="subject">Subject</string>
-    <string name="title_activity_nnnnnnnnnn">nnnnnnnnnn</string>
     <string name="about_college">About College</string>
     <string name="communicate">Communicate</string>
+    <string name="feedback">Feedback</string>
+    <string name="feedback_text">Thank you for taking some of your time to write us feedback. Please tell us about the services that you have received so far. We appreciate your suggestion and comments and want to make sure we meet your expectations.</string>
+    <string name="send">Send</string>
+    <string name="write_your_feedback">Write your feedback</string>
+    <string name="message">Message</string>
 
 
 </resources>

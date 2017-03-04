@@ -7,15 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <android.support.v4.widget.DrawerLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/drawer_layout"
-        app:layout_scrollFlags="scroll|enterAlways"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_scrollFlags="scroll|enterAlways"
         android:fitsSystemWindows="true"
         tools:openDrawer="start">
 
@@ -28,6 +27,7 @@
 
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
+            android:background="@color/white"
             app:headerLayout="@layout/nav_header_navigation_drawer"
             app:menu="@menu/activity_navigation_drawer_drawer"
             app:layout_scrollFlags="scroll|enterAlways"
@@ -37,5 +37,36 @@
             android:fitsSystemWindows="true" />
 
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/colorPrimary"
+            android:layout_gravity="end">
+
+            <TextView
+                android:text="@string/alerts"
+                android:layout_margin="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/title_alerts"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:elevation="5dp"
+                android:textSize="16sp"
+                tools:targetApi="lollipop" />
+
+            <ListView
+                android:layout_width="240dp"
+                android:id="@+id/right_slide"
+                android:background="@color/white"
+                android:choiceMode="singleChoice"
+                android:layout_height="match_parent">
+            </ListView>
+
+        </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
+
+
+
 </android.support.design.widget.CoordinatorLayout>
