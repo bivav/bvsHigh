@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -16,9 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 
 public class fragment_alerts extends AppCompatActivity {
@@ -49,12 +46,13 @@ public class fragment_alerts extends AppCompatActivity {
 
     }
 
-    public class alertsDisplay extends ArrayAdapter {
+    private class alertsDisplay extends ArrayAdapter {
 
         String[] titles_alert;
         String[] description_alert;
 
         alertsDisplay(Context context, String[] mtitles, String[] mDescription) {
+            //noinspection unchecked
             super(context, R.layout.fragment_alerts, R.id.title_alerts, mtitles);
 
             this.titles_alert = mtitles;
@@ -82,5 +80,4 @@ public class fragment_alerts extends AppCompatActivity {
             return view;
         }
     }
-
 }

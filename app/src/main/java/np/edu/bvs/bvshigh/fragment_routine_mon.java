@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class fragment_routine_mon extends Fragment {
@@ -28,7 +29,7 @@ public class fragment_routine_mon extends Fragment {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
 
         String current_date_pull = DateFormat.getDateInstance().format(new Date());
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
         Date d = new Date();
         String day = sdf.format(d);
 
@@ -44,13 +45,14 @@ public class fragment_routine_mon extends Fragment {
         return view;
     }
 
-    class routineAdapter extends ArrayAdapter {
+    private class routineAdapter extends ArrayAdapter {
 
         String[] timeArray;
         String[] subjectArray;
         String[] teacherArray;
 
         routineAdapter(Context context, String[] mtimeArray, String[] msubjecArray, String[] mteacherArray) {
+            //noinspection unchecked
             super(context, R.layout.fragment_routine_mon, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
             this.subjectArray = msubjecArray;
@@ -60,7 +62,7 @@ public class fragment_routine_mon extends Fragment {
 
         @NonNull
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.fragment_routine_mon, parent, false);

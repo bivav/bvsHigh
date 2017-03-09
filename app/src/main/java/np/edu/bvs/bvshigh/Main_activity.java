@@ -28,7 +28,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -128,6 +127,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         String[] description_alert;
 
         alertsDisplay(Context context, String[] mtitles, String[] mDescription) {
+            //noinspection unchecked
             super(context, R.layout.fragment_alerts, R.id.title_alerts, mtitles);
 
             this.titles_alert = mtitles;

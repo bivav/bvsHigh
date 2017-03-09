@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-
 class fragment_routine_week extends FragmentStatePagerAdapter {
 
     private int NumOfTabs;
@@ -12,10 +11,8 @@ class fragment_routine_week extends FragmentStatePagerAdapter {
 
     fragment_routine_week(FragmentManager fm, CharSequence mtitles[], int numOfTabs) {
         super(fm);
-
         this.Titles = mtitles;
         this.NumOfTabs = numOfTabs;
-
     }
 
     @Override

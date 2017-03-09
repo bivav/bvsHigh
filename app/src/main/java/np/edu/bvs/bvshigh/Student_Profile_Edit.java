@@ -44,5 +44,4 @@ public class Student_Profile_Edit extends AppCompatActivity {
         }
         return true;
     }
-
 }

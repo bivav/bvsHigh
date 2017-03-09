@@ -54,7 +54,6 @@ public class Student_Profile extends AppCompatActivity {
         branch_name.setText(SharedPrefManager.getInstance(getApplicationContext()).getBranch());
         student_email.setText(SharedPrefManager.getInstance(getApplicationContext()).getEmail());
 
-
         edit_pic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -105,20 +104,19 @@ public class Student_Profile extends AppCompatActivity {
             // Storing the image in internal memory /data/data/"appName"/app_image
             BitmapDrawable drawable = (BitmapDrawable) imageView.getDrawable();
             Bitmap bitmap = drawable.getBitmap();
+
             saveToInternalStorage(bitmap);
 
         }
     }
 
     private String getRealPathFromURI(Uri contentURI) {
-
         Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
         if (cursor == null) {
-            // Source is Dropbox or other similar local file path
+            // Source is Drop box or other similar local file path
             return contentURI.getPath();
 
         } else {
-
             cursor.moveToFirst();
             int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
             String filePathColumn = cursor.getString(idx);
@@ -126,7 +124,6 @@ public class Student_Profile extends AppCompatActivity {
             return filePathColumn;
         }
     }
-
 
     private String saveToInternalStorage(Bitmap bitmapImage){
         ContextWrapper cw = new ContextWrapper(getApplicationContext());
@@ -148,13 +145,10 @@ public class Student_Profile extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return directory.getAbsolutePath();
     }
 
-
     public void loadImageFromStorage(String path) {
-
         try {
             File f = new File(path, "profile.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));

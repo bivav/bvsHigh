@@ -13,7 +13,6 @@ public class Select_Category extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.category);
 
-
         // Checking if user is logged in already -> profile is displayed
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
@@ -24,7 +23,6 @@ public class Select_Category extends AppCompatActivity {
         Button student_button = (Button)findViewById(R.id.student_button);
         Button teacher_button = (Button)findViewById(R.id.teacher_button);
 
-
         // button selects first page
         student_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,14 +31,6 @@ public class Select_Category extends AppCompatActivity {
                 finish();
             }
         });
-//
-//        parents_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), Login_Student.class));
-//                finish();
-//            }
-//        });
 
         teacher_button.setOnClickListener(new View.OnClickListener() {
             @Override

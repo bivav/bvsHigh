@@ -1,6 +1,6 @@
 package np.edu.bvs.bvshigh;
 
-
+import android.annotation.SuppressLint;
 import android.content.Context;
 
 import com.android.volley.Request;
@@ -9,9 +9,10 @@ import com.android.volley.toolbox.Volley;
 
 class Request_Queue_Handler{
 
+    @SuppressLint("StaticFieldLeak")
     private static Request_Queue_Handler mInstance;
     private RequestQueue mRequestQueue;
-    private static Context mCtx;
+    private Context mCtx;
 
     private Request_Queue_Handler(Context context) {
         mCtx = context;

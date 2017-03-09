@@ -2,13 +2,10 @@ package np.edu.bvs.bvshigh;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-
 
 class message_us_alert_box {
 
@@ -28,7 +25,6 @@ class message_us_alert_box {
                 dialog.dismiss();
             }
         });
-
 
         dialog.setCanceledOnTouchOutside(true);
         dialog.show();

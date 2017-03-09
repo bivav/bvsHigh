@@ -50,7 +50,7 @@ public class fragment_home_bottom_2 extends Fragment {
         return view;
     }
 
-    class homeworkAdapter extends ArrayAdapter {
+    private class homeworkAdapter extends ArrayAdapter {
 
         String[] titles;
         String[] teachers;
