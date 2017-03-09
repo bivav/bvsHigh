@@ -3,9 +3,12 @@ package np.edu.bvs.bvshigh;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -21,6 +24,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,6 +39,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     String[] description_alert = {"Results for class 11 is out. Please check results tab and refresh to download the result",
             "Routine has been updated for grade 12. Kindly update.", "Welcome to BVS to all students!! Hope you have a good time."};
 
+    de.hdodenhof.circleimageview.CircleImageView imageView;
     ListView rightView;
 
     @Override
@@ -80,9 +87,15 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         View headerView = navigationView.getHeaderView(0);
         TextView student_name = (TextView) headerView.findViewById(R.id.student_name);
         student_name.setText(SharedPrefManager.getInstance(this).getFullName());
+        imageView = (de.hdodenhof.circleimageview.CircleImageView)headerView.findViewById(R.id.profile_image);
+
 
         TextView student_email = (TextView) headerView.findViewById(R.id.student_email);
         student_email.setText(getResources().getString(R.string.brihaspati));
+
+        //loading the image saved in above directory
+        String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
+        loadImageFromStorage(path);
 
 
         // Calling the alerts layout and implementing using custom list view
@@ -95,8 +108,21 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
     }
 
+    public void loadImageFromStorage(String path) {
 
-    public class alertsDisplay extends ArrayAdapter {
+        try {
+            File f = new File(path, "profile.jpg");
+            Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
+            imageView.setImageBitmap(b);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+
+    private class alertsDisplay extends ArrayAdapter {
 
         String[] titles_alert;
         String[] description_alert;
@@ -154,18 +180,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            case R.id.action_settings:
-                Toast.makeText(getApplicationContext(), "You clicked settings", Toast.LENGTH_SHORT).show();
-                break;
-
-            case R.id.logout:
-                SharedPrefManager.getInstance(this).isLoggedOut();
-                ProgressDialog progressDialog = new ProgressDialog(this);
-                progressDialog.setMessage("Logging Out...");
-                finish();
-                progressDialog.dismiss();
-                startActivity(new Intent(getApplicationContext(), Select_Category.class));
-                break;
 
             case R.id.alerts:
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -175,7 +189,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                     drawer.openDrawer(GravityCompat.END);
                 }
                 break;
-
         }
 
         return true;
@@ -254,6 +267,28 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
             message_us_alert_box message_us_alert_box = new message_us_alert_box();
             message_us_alert_box.showDialog(this);
 
+        }else if (id == R.id.logout){
+            SharedPrefManager.getInstance(this).isLoggedOut();
+            ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setMessage("Logging Out...");
+
+            //loading the image saved in above directory
+            String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
+            File file = new File(path, "profile.jpg");
+            if (file.exists()) {
+                //noinspection ResultOfMethodCallIgnored
+                file.delete();
+            }else{
+                imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.image));
+            }
+
+            finish();
+            progressDialog.dismiss();
+            startActivity(new Intent(getApplicationContext(), Select_Category.class));
+
+
+        }else if (id == R.id.action_settings){
+            Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

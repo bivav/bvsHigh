@@ -1,6 +1,5 @@
 package np.edu.bvs.bvshigh;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 
 public class fragment_home_bottom_1 extends Fragment {
@@ -29,7 +29,7 @@ public class fragment_home_bottom_1 extends Fragment {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
 
         String current_date_pull = DateFormat.getDateInstance().format(new Date());
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
         Date d = new Date();
         String day = sdf.format(d);
 
@@ -45,7 +45,7 @@ public class fragment_home_bottom_1 extends Fragment {
         return view;
     }
 
-    class routineAdapters extends ArrayAdapter {
+    private class routineAdapters extends ArrayAdapter {
 
         String[] timeArray;
         String[] subjectArray;

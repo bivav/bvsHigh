@@ -3,12 +3,20 @@ package np.edu.bvs.bvshigh;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v4.content.ContextCompat;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 class SharedPrefManager {
 
     private static SharedPrefManager mInstance;
     private static Context mCtx;
+    de.hdodenhof.circleimageview.CircleImageView imageView;
+
 
     private static String SHARED_PREF_NAME = "savedPref";
     private static String KEY_USERNAME = "username";

@@ -16,7 +16,6 @@
         android:layout_height="4dp"
         android:background="@drawable/shadow" />
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
@@ -32,11 +31,20 @@
             android:layout_gravity="center"
             android:id="@+id/profile_pic"
             android:src="@drawable/image"
-            android:layout_width="100dp"
-            android:layout_marginBottom="20dp"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
             android:drawablePadding="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_height="100dp" />
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:id="@+id/edit_pic"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/navViewColor"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_profile_picture" />
 
         <TextView
             android:hint="@string/name"

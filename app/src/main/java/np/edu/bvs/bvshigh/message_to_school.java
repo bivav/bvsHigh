@@ -16,7 +16,5 @@ public class message_to_school extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.message_to_school);
 
-
-
     }
 }

@@ -89,6 +89,8 @@
     <string name="send">Send</string>
     <string name="write_your_feedback">Write your feedback</string>
     <string name="message">Message</string>
+    <string name="account">Account</string>
+    <string name="edit_profile_picture">Edit Profile Picture</string>
 
 
 </resources>

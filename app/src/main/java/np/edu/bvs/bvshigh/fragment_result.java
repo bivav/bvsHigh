@@ -48,7 +48,7 @@ public class fragment_result extends AppCompatActivity {
         });
 
 
-        /****** This is for monthly test results *******/
+        /* This is for monthly test results *******/
         ListView monthly_test_view = (ListView)findViewById(R.id.monthly_test_view);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, monthly_test);
         monthly_test_view.setAdapter(arrayAdapter);
@@ -92,7 +92,7 @@ public class fragment_result extends AppCompatActivity {
         });
 
 
-        /** This is for MAIN exam results**/
+        /* This is for MAIN exam results**/
         ListView main_exam_view = (ListView)findViewById(R.id.main_exam_view);
         ArrayAdapter<String> main_exam_array_adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, main_exam);
