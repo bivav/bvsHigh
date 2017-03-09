@@ -91,6 +91,10 @@
     <string name="message">Message</string>
     <string name="account">Account</string>
     <string name="edit_profile_picture">Edit Profile Picture</string>
+    <string name="details">Details</string>
+    <string name="monthly_tests_results">MONTHLY TESTS RESULTS</string>
+    <string name="main_exam_results">MAIN EXAM RESULTS</string>
+    <string name="message_college">MESSAGE COLLEGE</string>
 
 
 </resources>

@@ -7,7 +7,7 @@
     tools:context="np.edu.bvs.bvshigh.fragment_events">
 
     <TextView
-        android:text="EVENTS"
+        android:text="@string/events"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"

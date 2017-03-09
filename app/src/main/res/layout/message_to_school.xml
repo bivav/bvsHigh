@@ -11,7 +11,7 @@
     tools:context="np.edu.bvs.bvshigh.message_to_school">
 
     <TextView
-        android:text="MESSAGE COLLEGE"
+        android:text="@string/message_college"
         android:textSize="16sp"
         android:background="@color/colorPrimaryDark"
         android:padding="15dp"

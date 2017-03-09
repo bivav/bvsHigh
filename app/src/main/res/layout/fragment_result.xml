@@ -33,7 +33,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:text="MONTHLY TESTS RESULTS"
+                android:text="@string/monthly_tests_results"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/monthly_test"
@@ -87,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:text="MAIN EXAM RESULT"
+                android:text="@string/main_exam_results"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/test_results"
