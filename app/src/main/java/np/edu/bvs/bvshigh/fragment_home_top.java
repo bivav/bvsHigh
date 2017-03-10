@@ -1,7 +1,6 @@
 package np.edu.bvs.bvshigh;
 
 import android.app.Activity;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
@@ -28,21 +27,18 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-
 public class fragment_home_top extends Fragment {
 
     TextView name, grade, sec, branch_name, id_no;
     Button view_profile;
     de.hdodenhof.circleimageview.CircleImageView imageView;
     private static int RESULT_LOAD_IMAGE = 1;
-
     Main_activity mActivity;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivity = (Main_activity)this.getActivity();
-
     }
 
     @Override
@@ -56,14 +52,15 @@ public class fragment_home_top extends Fragment {
         id_no = (TextView)view.findViewById(R.id.id_no);
         view_profile = (Button)view.findViewById(R.id.view_profile);
 
-        imageView = (de.hdodenhof.circleimageview.CircleImageView)
-                view.findViewById(R.id.user_pic);
+        imageView = (de.hdodenhof.circleimageview.CircleImageView)view.findViewById(R.id.user_pic);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // Pop Up alert for changing the picture
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(mActivity);
-                alertDialog.setPositiveButton("EDIT", new DialogInterface.OnClickListener() {
+                alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -107,6 +104,7 @@ public class fragment_home_top extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+        // image is extracted and displayed in the image view
         if (requestCode == RESULT_LOAD_IMAGE && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
             String filePathColumn = getRealPathFromURI(selectedImage);
@@ -129,7 +127,6 @@ public class fragment_home_top extends Fragment {
             return contentURI.getPath();
 
         } else {
-
             cursor.moveToFirst();
             int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
             String filePathColumn = cursor.getString(idx);
@@ -138,20 +135,24 @@ public class fragment_home_top extends Fragment {
         }
     }
 
+    // func to save the picture as profile.jpg inside the app directory not external
     private String saveToInternalStorage(Bitmap bitmapImage){
+
         ContextWrapper cw = new ContextWrapper(getContext());
 
         // path to /data/data/yourapp/app_data/imageDir
         File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
 
-        // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
+        // Create imageDir along with keep profile.jpg
+        File mypath = new File(directory,"profile.jpg");
 
         FileOutputStream fos;
         try {
+
             fos = new FileOutputStream(mypath);
 
             // Use the compress method on the BitMap object to write image to the OutputStream
+            // the image saves in jpg but compressing in png
             bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
             fos.close();
 
@@ -162,8 +163,10 @@ public class fragment_home_top extends Fragment {
         return directory.getAbsolutePath();
     }
 
+    // loading the image from app directory
     public void loadImageFromStorage(String path) {
         try {
+            // calling the profile.jpg
             File f = new File(path, "profile.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             imageView.setImageBitmap(b);
@@ -173,5 +176,4 @@ public class fragment_home_top extends Fragment {
             e.printStackTrace();
         }
     }
-
 }

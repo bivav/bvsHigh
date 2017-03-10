@@ -33,7 +33,7 @@ import java.util.Date;
 
 public class Main_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    /**Right Slide Function**/
+    /**Right Slide Alert Function Values**/
     String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
     String[] description_alert = {"Results for class 11 is out. Please check results tab and refresh to download the result",
             "Routine has been updated for grade 12. Kindly update.", "Welcome to BVS to all students!! Hope you have a good time."};
@@ -61,16 +61,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         transaction.replace(R.id.frame_activity, fragment);
         transaction.commit();
 
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Do Something.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-//            }
-//        });
-
-
         // Setting up Side Drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
@@ -84,10 +74,11 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
         // Setting up username and email for navigationView Drawer Activity
         View headerView = navigationView.getHeaderView(0);
+
         TextView student_name = (TextView) headerView.findViewById(R.id.student_name);
         student_name.setText(SharedPrefManager.getInstance(this).getFullName());
-        imageView = (de.hdodenhof.circleimageview.CircleImageView)headerView.findViewById(R.id.profile_image);
 
+        imageView = (de.hdodenhof.circleimageview.CircleImageView)headerView.findViewById(R.id.profile_image);
 
         TextView student_email = (TextView) headerView.findViewById(R.id.student_email);
         student_email.setText(getResources().getString(R.string.brihaspati));
@@ -96,14 +87,11 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
         loadImageFromStorage(path);
 
-
         // Calling the alerts layout and implementing using custom list view
-
         rightView = (ListView)findViewById(R.id.right_slide);
         alertsDisplay alerts = new alertsDisplay(getApplicationContext(), titles_alert, description_alert);
 
         rightView.setAdapter(alerts);
-
 
     }
 
@@ -119,7 +107,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
             e.printStackTrace();
         }
     }
-
 
     private class alertsDisplay extends ArrayAdapter {
 
@@ -165,12 +152,10 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         } else {
             super.onBackPressed();
         }
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_drawer, menu);
         return true;
@@ -180,7 +165,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-
             case R.id.alerts:
                 DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
                 if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -191,6 +175,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 break;
         }
 
+
         return true;
     }
 
@@ -198,102 +183,111 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     public boolean onNavigationItemSelected(@NonNull final MenuItem item) {
 
         // Handle navigation view item clicks here.
-        final int id = item.getItemId();
+        switch (item.getItemId()){
 
-        if (id == R.id.nav_dashboard){
+            case R.id.nav_dashboard:
+                Home_page fragment_dash = new Home_page();
+                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_activity, fragment_dash);
+                Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+                toolbar.setTitle(getResources().getString(R.string.bvs_high));
+                transaction.commit();
+                break;
 
-            Home_page fragment = new Home_page();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            case R.id.nav_routine:
+                startActivity(new Intent(getApplicationContext(), fragment_routine.class));
+                break;
 
-        } else if (id == R.id.nav_routine) {
+            case R.id.nav_attendance:
+                fragment_attendance fragment_attendance = new fragment_attendance();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_activity, fragment_attendance);
+                transaction.commit();
+                break;
 
-            startActivity(new Intent(getApplicationContext(), fragment_routine.class));
+            case R.id.nav_results:
+                startActivity(new Intent(getApplicationContext(), fragment_result.class));
+                break;
 
-        } else if (id == R.id.nav_attendance) {
+            case R.id.nav_fees:
+                fragment_fees fragment_fees = new fragment_fees();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_activity, fragment_fees);
+                toolbar = (Toolbar) findViewById(R.id.toolbar);
+                toolbar.setTitle(getResources().getString(R.string.events));
+                transaction.commit();
+                break;
 
-            fragment_attendance fragment = new fragment_attendance();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            case R.id.nav_events:
+                fragment_events fragment_events = new fragment_events();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_activity, fragment_events);
+                transaction.commit();
+                break;
 
-        } else if (id == R.id.nav_results) {
+            case R.id.nav_alerts:
+                startActivity(new Intent(getApplicationContext(), fragment_alerts.class));
+                break;
 
-            startActivity(new Intent(getApplicationContext(), fragment_result.class));
+            case R.id.nav_teacherContact:
+                fragment_Teachers_Contact fragment = new fragment_Teachers_Contact();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_activity, fragment);
+                transaction.commit();
+                break;
 
-        } else if (id == R.id.nav_fees) {
+            case R.id.nav_calendar:
+                startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
+                break;
 
-            fragment_fees fragment = new fragment_fees();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            case R.id.contact_us:
+                startActivity(new Intent(getApplicationContext(), contact_us.class));
+                break;
 
-        } else if (id == R.id.nav_events){
+            case R.id.about_college:
+                startActivity(new Intent(getApplicationContext(), about_college.class));
+                break;
 
-            fragment_events fragment = new fragment_events();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+            case R.id.feedback:
+                startActivity(new Intent(getApplicationContext(), feedback.class));
+                break;
 
-        } else if (id == R.id.nav_alerts){
+            case R.id.message_to_school:
+                message_us_alert_box message_us_alert_box = new message_us_alert_box();
+                message_us_alert_box.showDialog(this);
+                break;
 
-            startActivity(new Intent(getApplicationContext(), fragment_alerts.class));
+            case R.id.action_settings:
+                Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+                break;
 
-        } else if (id == R.id.nav_teacherContact){
+            case R.id.logout:
+                SharedPrefManager.getInstance(this).isLoggedOut();
+                ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setMessage("Logging Out...");
 
-            fragment_teachersContact fragment = new fragment_teachersContact();
-            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_activity, fragment);
-            transaction.commit();
+                //loading the default image saved in app directory
+                String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
+                File file = new File(path, "profile.jpg");
 
-        } else if (id == R.id.nav_calendar){
+                if (file.exists()) {
+                    //noinspection ResultOfMethodCallIgnored
+                    file.delete();
+                }else{
+                    imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.image));
+                }
 
-            startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
+                finish();
+                progressDialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), Select_Category.class));
+                break;
 
-        } else if (id == R.id.contact_us) {
-
-            startActivity(new Intent(getApplicationContext(), contact_us.class));
-
-        } else if (id == R.id.about_college) {
-
-            startActivity(new Intent(getApplicationContext(), about_college.class));
-
-        } else if (id == R.id.feedback) {
-
-            startActivity(new Intent(getApplicationContext(), feedback.class));
-        } else if (id == R.id.message_to_school) {
-
-            message_us_alert_box message_us_alert_box = new message_us_alert_box();
-            message_us_alert_box.showDialog(this);
-
-        }else if (id == R.id.logout){
-            SharedPrefManager.getInstance(this).isLoggedOut();
-            ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setMessage("Logging Out...");
-
-            //loading the image saved in above directory
-            String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
-            File file = new File(path, "profile.jpg");
-            if (file.exists()) {
-                //noinspection ResultOfMethodCallIgnored
-                file.delete();
-            }else{
-                imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.image));
-            }
-
-            finish();
-            progressDialog.dismiss();
-            startActivity(new Intent(getApplicationContext(), Select_Category.class));
-
-
-        }else if (id == R.id.action_settings){
-            Toast.makeText(getApplicationContext(), "Settings", Toast.LENGTH_SHORT).show();
+            default:
+                finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-
 
         return true;
     }

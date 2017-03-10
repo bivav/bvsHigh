@@ -12,7 +12,7 @@
         layout="@layout/toolbar" />
 
     <TextView
-        android:text="Contact Us"
+        android:text="@string/contact_us"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"

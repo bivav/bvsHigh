@@ -4,13 +4,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="np.edu.bvs.bvshigh.fragment_teachersContact">
+    tools:context="np.edu.bvs.bvshigh.fragment_Teachers_Contact">
 
+    <np.edu.bvs.bvshigh.SlidingTabLayout
+        android:id="@+id/slide_tab"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:layout_height="wrap_content">
+    </np.edu.bvs.bvshigh.SlidingTabLayout>
 
-    <Button
-        android:text="@string/teacher_s_contact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/button7" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/shadow" />
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:id="@+id/pager"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+
 </LinearLayout>
