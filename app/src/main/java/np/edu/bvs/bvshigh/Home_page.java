@@ -13,27 +13,30 @@ public class Home_page extends android.support.v4.app.Fragment {
     SlidingTabLayout tabs;
     CharSequence Titles[] = {"Today's Class", "Homework"};
     int NumbofTabs =2;
+    View view;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_main, container, false);
 
-        adapter = new home_sliding_adapter(getFragmentManager(), Titles, NumbofTabs);
+        if (view == null) {
+            view = inflater.inflate(R.layout.activity_main, container, false);
+            adapter = new home_sliding_adapter(getFragmentManager(), Titles, NumbofTabs);
 
-        pager = (ViewPager)view.findViewById(R.id.home_pager);
-        pager.setAdapter(adapter);
+            pager = (ViewPager)view.findViewById(R.id.home_pager);
+            pager.setAdapter(adapter);
 
-        tabs = (SlidingTabLayout)view.findViewById(R.id.tabs);
-        tabs.setDistributeEvenly(true);
+            tabs = (SlidingTabLayout)view.findViewById(R.id.tabs);
+            tabs.setDistributeEvenly(true);
 
-        tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return ContextCompat.getColor(getContext(),R.color.tabsScrollColor);
-            }
-        });
+            tabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+                @Override
+                public int getIndicatorColor(int position) {
+                    return ContextCompat.getColor(getContext(),R.color.tabsScrollColor);
+                }
+            });
+            tabs.setViewPager(pager);
+        }
 
-        tabs.setViewPager(pager);
         return view;
     }
 }

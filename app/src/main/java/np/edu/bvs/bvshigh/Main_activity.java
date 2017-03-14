@@ -149,8 +149,10 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            getSupportFragmentManager().popBackStack();
         } else {
-            super.onBackPressed();
+            finish();
         }
     }
 
@@ -202,6 +204,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 fragment_attendance fragment_attendance = new fragment_attendance();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment_attendance);
+                transaction.addToBackStack("BACK");
                 transaction.commit();
                 break;
 
@@ -215,6 +218,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 transaction.replace(R.id.frame_activity, fragment_fees);
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle(getResources().getString(R.string.events));
+                transaction.addToBackStack("BACK");
                 transaction.commit();
                 break;
 
@@ -222,6 +226,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 fragment_events fragment_events = new fragment_events();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment_events);
+                transaction.addToBackStack("BACK");
                 transaction.commit();
                 break;
 
@@ -233,6 +238,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 fragment_Teachers_Contact fragment = new fragment_Teachers_Contact();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment);
+                transaction.addToBackStack("BACK");
                 transaction.commit();
                 break;
 
