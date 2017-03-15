@@ -8,40 +8,66 @@
     android:orientation="horizontal"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:weightSum="3"
+        android:orientation="horizontal">
 
         <TextView
-            android:text="@string/loading"
-            android:gravity="center_horizontal|center_vertical"
-            android:layout_weight="1"
-            android:id="@+id/period_time"
-            android:textSize="15sp"
+            android:text="@string/start"
+            android:gravity="end"
+            android:id="@+id/start_time"
+            android:textSize="14sp"
+            android:layout_weight="1.45"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            tools:ignore="NestedWeights" />
+
+        <TextView
+            android:text="@string/dash"
+            android:gravity="center"
+            android:layout_weight="0.1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:textColor="@android:color/black" />
 
+        <TextView
+            android:text="@string/end"
+            android:gravity="start"
+            android:layout_weight="1.45"
+            android:id="@+id/end_time"
+            android:textSize="14sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textColor="@android:color/black" />
 
-            <TextView
-                android:text="this is test"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/subject_name"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:textColor="@android:color/black"
-                android:padding="8dp"
-                android:textAlignment="center" />
+    </LinearLayout>
 
-            <TextView
-                android:text="this is test"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/teacher_name"
-                android:padding="8dp"
-                android:textAlignment="center"
-                android:textColor="@android:color/black" />
+        <TextView
+            android:text="@string/subject"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/subject_name"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:padding="8dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="@string/teacher"
+            android:layout_weight="1"
+            android:textSize="14sp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/teacher_name"
+            android:padding="8dp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black" />
 
 </LinearLayout>

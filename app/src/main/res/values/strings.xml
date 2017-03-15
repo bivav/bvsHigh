@@ -95,6 +95,9 @@
     <string name="monthly_tests_results">MONTHLY TESTS RESULTS</string>
     <string name="main_exam_results">MAIN EXAM RESULTS</string>
     <string name="message_college">MESSAGE COLLEGE</string>
+    <string name="start">start</string>
+    <string name="dash">-</string>
+    <string name="end">end</string>
 
 
 </resources>
