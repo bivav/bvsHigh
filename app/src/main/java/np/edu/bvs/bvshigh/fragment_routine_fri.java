@@ -41,15 +41,15 @@ public class fragment_routine_fri extends Fragment {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
 
         String current_date_pull = DateFormat.getDateInstance().format(new Date());
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
-        Date d = new Date();
-        String day = sdf.format(d);
+//        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
+//        Date d = new Date();
+//        String day = sdf.format(d);
 
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
 
         current_date.setText(current_date_pull);
-        current_day.setText(day);
+        current_day.setText(getResources().getString(R.string.friday));
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 

@@ -49,10 +49,9 @@ class home_sliding_adapter extends FragmentStatePagerAdapter {
                     return new fragment_routine_fri();
 
                 case "Saturday":
-                    return null;
+                    return new fragment_routine_sat();
 
             }
-
             return null;
         }
 

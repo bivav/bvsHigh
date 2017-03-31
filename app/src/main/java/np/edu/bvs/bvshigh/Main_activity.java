@@ -55,15 +55,12 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer);
 
-        // Allowing NETWORK on the MAIN THREAD.... <<<---------NOT A GOOD PRACTICE BUT DOES THE WORK FOR NOW----------->>>
-        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
-
         // Initialize the Firebase messaging service by passing subscribeToTopic method
         FirebaseMessaging.getInstance().subscribeToTopic("message");
         FirebaseInstanceId.getInstance().getToken();
 
         String disp = FirebaseInstanceId.getInstance().getToken();
-        Toast.makeText(this, disp, Toast.LENGTH_LONG).show();
+        Log.d(TAG, "TOKEN : " + disp);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

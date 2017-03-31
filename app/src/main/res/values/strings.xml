@@ -100,4 +100,15 @@
     <string name="end">end</string>
 
 
+    <string name="sunday">SUNDAY</string>
+    <string name="monday">MONDAY</string>
+    <string name="tuesday">TUESDAY</string>
+    <string name="wednesday">WEDNESDAY</string>
+    <string name="thursday">THURSDAY</string>
+    <string name="friday">FRIDAY</string>
+    <string name="saturday">SATURDAY</string>
+    <string name="quoteForTheDay1">There\'s No More Difficult Transition Than Saturday To Sunday!</string>
+    <string name="quoteForTheDay2">Hope you have a good Saturday!</string>
+
+
 </resources>
