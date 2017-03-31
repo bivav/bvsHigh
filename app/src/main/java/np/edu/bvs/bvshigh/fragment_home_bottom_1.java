@@ -1,8 +1,8 @@
 package np.edu.bvs.bvshigh;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -30,11 +30,6 @@ import java.util.Locale;
 
 public class fragment_home_bottom_1 extends Fragment {
 
-//    String[] time = {"6:30", "7:30", "8:30","9:30", "10:30","11:30","12:30"};
-//    String[] end_time = {"7:30", "8:30", "9:30","10:30", "11:30","12:30","1:30"};
-//    String[] subject = {"Chemistry","Physics","Chemistry","DG","Physics","English", "ETA"};
-//    String[] teacher = {"DG", "BN", "SR", "TRK", "DG", "BN", "SB"};
-
     ListView listView;
     String address = "http://mitocha.com/android/v1/routine_sci_11_bio_sun.php";
     InputStream inputStream;
@@ -57,106 +52,125 @@ public class fragment_home_bottom_1 extends Fragment {
         current_date.setText(current_date_pull);
         current_day.setText(day);
 
-
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        // Allowing NETWORK on the MAIN THREAD.... <<<---------NOT A GOOD PRACTICE BUT DOES THE WORK FOR NOW----------->>>
-        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
+//        Allowing NETWORK on the MAIN THREAD.... <<<---------NOT A GOOD PRACTICE BUT DOES THE WORK FOR NOW----------->>>
+//        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
 
-        // get the data from database
-        getData();
-
-        routineAdapter adapter = new routineAdapter(getActivity(), start_time, end_time, subject, teacher);
-        listView.setAdapter(adapter);
-
+        // Getting Routine from background
+        new GetResultFromServer().execute();
         return view;
 
     }
 
-    private void getData() {
-
-        try {
-
-            // Get url and open the connection
-            URL url = new URL(address);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-
-            // set the method to GET
-            con.setRequestMethod("GET");
-
-            // use InputStream to get the InputStream content
-            inputStream = new BufferedInputStream(con.getInputStream());
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Read the InputStream content as String
-
-        try {
-            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder stringBuilder = new StringBuilder();
-
-            while ((line = br.readLine()) != null) {
-                stringBuilder.append(line).append("\n");
-
-            }
-
-            inputStream.close();
-            result = stringBuilder.toString();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // Try to pass JSON DATA
-
-        try {
-            JSONArray jsonArray = new JSONArray(result);
-            JSONObject jsonObject;
-
-            start_time = new String[jsonArray.length()];
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-                jsonObject = jsonArray.getJSONObject(i);
-                start_time[i] = jsonObject.getString("start_time");
-
-            }
-
-            end_time = new String[jsonArray.length()];
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-                jsonObject = jsonArray.getJSONObject(i);
-                end_time[i] = jsonObject.getString("end_time");
-
-            }
-
-            subject = new String[jsonArray.length()];
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-                jsonObject = jsonArray.getJSONObject(i);
-                subject[i] = jsonObject.getString("subject");
-
-            }
-
-            teacher = new String[jsonArray.length()];
-
-            for (int i = 0; i < jsonArray.length(); i++) {
-
-                jsonObject = jsonArray.getJSONObject(i);
-                teacher[i] = jsonObject.getString("teacher");
-
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        new GetResultFromServer().execute();
     }
 
+    private class GetResultFromServer extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try {
+                // Get url and open the connection
+                URL url = new URL(address);
+                HttpURLConnection con = (HttpURLConnection)url.openConnection();
+
+                // set the method to GET
+                con.setRequestMethod("GET");
+
+                // use InputStream to get the InputStream content
+                inputStream = new BufferedInputStream(con.getInputStream());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Read the InputStream content as String
+            try {
+
+                // reading the inputStream and converting into string using stringBuilder
+                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder = new StringBuilder();
+
+                while ((line = br.readLine()) != null) {
+                    stringBuilder.append(line).append("\n");
+                }
+
+                inputStream.close();
+
+                // the data are converted as a string JSON
+                result = stringBuilder.toString();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            // Try to pass JSON DATA
+            try {
+
+                // passing the result string JSON into JSONArray
+                JSONArray jsonArray = new JSONArray(result);
+                JSONObject jsonObject;
+
+                start_time = new String[jsonArray.length()];
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    jsonObject = jsonArray.getJSONObject(i);
+                    start_time[i] = jsonObject.getString("start_time");
+
+                }
+
+                end_time = new String[jsonArray.length()];
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    jsonObject = jsonArray.getJSONObject(i);
+                    end_time[i] = jsonObject.getString("end_time");
+
+                }
+
+                subject = new String[jsonArray.length()];
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    jsonObject = jsonArray.getJSONObject(i);
+                    subject[i] = jsonObject.getString("subject");
+
+                }
+
+                teacher = new String[jsonArray.length()];
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    jsonObject = jsonArray.getJSONObject(i);
+                    teacher[i] = jsonObject.getString("teacher");
+
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+
+            routineAdapter adapter = new routineAdapter(getActivity(), start_time, end_time, subject, teacher);
+            listView.setAdapter(adapter);
+        }
+    }
 
     private class routineAdapter extends ArrayAdapter{
 
@@ -195,5 +209,4 @@ public class fragment_home_bottom_1 extends Fragment {
             return row;
         }
     }
-
 }
