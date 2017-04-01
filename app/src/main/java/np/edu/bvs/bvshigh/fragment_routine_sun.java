@@ -79,7 +79,8 @@ public class fragment_routine_sun extends Fragment{
         protected void onPreExecute() {
             super.onPreExecute();
 
-            address = "http://mitocha.com/android/v1/routine_sci_11_bio_sun.php";
+//            address = "http://mitocha.com/android/v1/routine_sci_11_bio_sun.php";
+            address = Constants.URL_Routine_Sci_Bio_11_SUN;
         }
 
         @Override

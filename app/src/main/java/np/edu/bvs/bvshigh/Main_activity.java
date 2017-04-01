@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -27,13 +26,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -60,6 +57,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         FirebaseInstanceId.getInstance().getToken();
 
         String disp = FirebaseInstanceId.getInstance().getToken();
+        Toast.makeText(this, disp, Toast.LENGTH_LONG).show();
         Log.d(TAG, "TOKEN : " + disp);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -112,10 +110,10 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
     }
 
-    public void loadImageFromStorage(String path) {
+    public void loadImageFromStorage(String pathImg) {
 
         try {
-            File f = new File(path, "profile.jpg");
+            File f = new File(pathImg, "profile.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             imageView.setImageBitmap(b);
         }
@@ -291,12 +289,9 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
                 //loading the default image saved in app directory
                 String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
-                File file = new File(path, "profile.jpg");
+                File file = new File(path);
 
                 if (file.exists()) {
-                    //noinspection ResultOfMethodCallIgnored
-                    file.delete();
-                }else{
                     imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.image));
                 }
 

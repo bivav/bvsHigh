@@ -75,7 +75,8 @@ public class fragment_routine_tue extends Fragment {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            address = "http://172.16.11.247/bvs_high/v1/routine_sci_11_bio_tue.php";
+            //address = "http://172.16.11.247/bvs_high/v1/routine_sci_11_bio_tue.php";
+            address = Constants.URL_Routine_Sci_Bio_11_TUE;
         }
 
         @Override

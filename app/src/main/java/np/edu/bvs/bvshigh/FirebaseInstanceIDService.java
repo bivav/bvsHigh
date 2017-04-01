@@ -33,7 +33,7 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://172.16.11.247/notification_bvs/register.php")
+                .url("http://mitocha.com/bvs_high/fcm_bvs/register.php")
                 .post(body)
                 .build();
 
