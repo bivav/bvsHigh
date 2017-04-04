@@ -56,11 +56,12 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         FirebaseMessaging.getInstance().subscribeToTopic("message");
         FirebaseInstanceId.getInstance().getToken();
 
+        // Displaying DEVICE TOKEN, some devices the token doesn't work so just checking
         String displayToken = FirebaseInstanceId.getInstance().getToken();
         if (FirebaseInstanceId.getInstance().getToken() == null) {
             Toast.makeText(this, "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Welcome!" + displayToken, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
         }
 
 
