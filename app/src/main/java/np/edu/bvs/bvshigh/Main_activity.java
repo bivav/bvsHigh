@@ -56,9 +56,15 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         FirebaseMessaging.getInstance().subscribeToTopic("message");
         FirebaseInstanceId.getInstance().getToken();
 
-        String disp = FirebaseInstanceId.getInstance().getToken();
-        Toast.makeText(this, disp, Toast.LENGTH_LONG).show();
-        Log.d(TAG, "TOKEN : " + disp);
+        String displayToken = FirebaseInstanceId.getInstance().getToken();
+        if (FirebaseInstanceId.getInstance().getToken() == null) {
+            Toast.makeText(this, "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Welcome!" + displayToken, Toast.LENGTH_LONG).show();
+        }
+
+
+        Log.d(TAG, "DEVICE TOKEN ------> " + displayToken);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
