@@ -29,6 +29,7 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     public void registerToken(String device, String token) {
 
+        // Using OKHTTPClient to connect to remote database and fetching data
         OkHttpClient client = new OkHttpClient();
 
         RequestBody body = new FormBody.Builder()
