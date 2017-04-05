@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.firebase.messaging.RemoteMessage;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

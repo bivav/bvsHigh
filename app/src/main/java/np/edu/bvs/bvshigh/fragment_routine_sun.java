@@ -2,6 +2,7 @@ package np.edu.bvs.bvshigh;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -41,6 +42,8 @@ public class fragment_routine_sun extends Fragment{
     String[] start_time, end_time, subject, teacher;
     ArrayAdapter<String> adapter;
 
+    MyDBHandler handler;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
@@ -53,6 +56,8 @@ public class fragment_routine_sun extends Fragment{
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
 
+        handler = new MyDBHandler(getContext(), null, null, 1);
+
         current_date.setText(current_date_pull);
         current_day.setText(getResources().getString(R.string.sunday));
 
@@ -62,9 +67,10 @@ public class fragment_routine_sun extends Fragment{
 //        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
 
         // Getting Routine from background
-        new GetResultFromServer().execute();
-        return view;
+        GetResultFromServer getResult = new GetResultFromServer();
+        getResult.execute();
 
+        return view;
     }
 
     @Override
@@ -85,6 +91,8 @@ public class fragment_routine_sun extends Fragment{
 
         @Override
         protected String doInBackground(String... strings) {
+
+            Cursor cursor;
 
             try {
 

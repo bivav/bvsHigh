@@ -41,8 +41,13 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
     /**Right Slide Alert Function Values**/
     String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
-    String[] description_alert = {"Results for class 11 is out. Please check results tab and refresh to download the result",
-            "Routine has been updated for grade 12. Kindly update.", "Welcome to BVS to all students!! Hope you have a good time."};
+    String[] description_alert =
+            {
+                "Results for class 11 is out. Please check results tab and refresh to download the result",
+                "Routine has been updated for grade 12. Kindly update.",
+                "Welcome to BVS to all students!! Hope you have a good time."
+            };
+
 
     de.hdodenhof.circleimageview.CircleImageView imageView;
     ListView rightView;
@@ -63,7 +68,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         } else {
             Toast.makeText(this, "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
         }
-
 
         Log.d(TAG, "DEVICE TOKEN ------> " + displayToken);
 
@@ -86,8 +90,8 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         // Setting up Side Drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar,
-                R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
+                R.string.navigation_drawer_open,
+                R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
@@ -165,7 +169,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         }
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -198,8 +201,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 }
                 break;
         }
-
-
         return true;
     }
 
