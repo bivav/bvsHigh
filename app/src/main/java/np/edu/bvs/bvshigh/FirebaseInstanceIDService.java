@@ -37,7 +37,8 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
                 .add("Token",token)
                 .build();
 
-        Request request = new Request.Builder().url("http://192.168.43.59/notification_bvs/register.php")
+        Request request = new Request.Builder()
+                .url("http://192.168.43.59/notification_bvs/register.php")
                 .post(body)
                 .build();
 
