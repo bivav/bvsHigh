@@ -85,14 +85,12 @@ public class fragment_routine_sun extends Fragment{
         protected void onPreExecute() {
             super.onPreExecute();
 
-//            address = "http://mitocha.com/android/v1/routine_sci_11_bio_sun.php";
+            //address = "http://mitocha.com/android/v1/routine_sci_11_bio_sun.php";
             address = Constants.URL_Routine_Sci_Bio_11_SUN;
         }
 
         @Override
         protected String doInBackground(String... strings) {
-
-            Cursor cursor;
 
             try {
 
@@ -111,7 +109,6 @@ public class fragment_routine_sun extends Fragment{
             }
 
             // Read the InputStream content as String
-
             try {
 
                 // reading the inputStream and converting into string using stringBuilder
@@ -139,7 +136,6 @@ public class fragment_routine_sun extends Fragment{
                 JSONObject jsonObject;
 
                 start_time = new String[jsonArray.length()];
-
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject = jsonArray.getJSONObject(i);
@@ -148,7 +144,6 @@ public class fragment_routine_sun extends Fragment{
                 }
 
                 end_time = new String[jsonArray.length()];
-
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject = jsonArray.getJSONObject(i);
@@ -157,7 +152,6 @@ public class fragment_routine_sun extends Fragment{
                 }
 
                 subject = new String[jsonArray.length()];
-
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject = jsonArray.getJSONObject(i);
@@ -166,14 +160,12 @@ public class fragment_routine_sun extends Fragment{
                 }
 
                 teacher = new String[jsonArray.length()];
-
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject = jsonArray.getJSONObject(i);
                     teacher[i] = jsonObject.getString("teacher");
 
                 }
-
 
             } catch (Exception e) {
                 e.printStackTrace();
