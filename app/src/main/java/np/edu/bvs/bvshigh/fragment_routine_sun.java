@@ -1,14 +1,17 @@
 package np.edu.bvs.bvshigh;
 
 import android.app.ProgressDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +32,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -41,8 +45,15 @@ public class fragment_routine_sun extends Fragment{
     String line, result;
     String[] start_time, end_time, subject, teacher;
     ArrayAdapter<String> adapter;
-
+    private SQLiteDatabase sqLiteDatabase;
+    DatabaseManager dbm;
     MyDBHandler handler;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbm = DatabaseManager.getInstance(getActivity());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -131,41 +142,30 @@ public class fragment_routine_sun extends Fragment{
             // Try to pass JSON DATA
             try {
 
+                ContentValues contentValues = new ContentValues();
+
                 // passing the result string JSON into JSONArray
                 JSONArray jsonArray = new JSONArray(result);
                 JSONObject jsonObject;
 
                 start_time = new String[jsonArray.length()];
+                end_time = new String[jsonArray.length()];
+
+                subject = new String[jsonArray.length()];
+                teacher = new String[jsonArray.length()];
+
                 for (int i = 0; i < jsonArray.length(); i++) {
 
                     jsonObject = jsonArray.getJSONObject(i);
                     start_time[i] = jsonObject.getString("start_time");
-
-                }
-
-                end_time = new String[jsonArray.length()];
-                for (int i = 0; i < jsonArray.length(); i++) {
-
-                    jsonObject = jsonArray.getJSONObject(i);
                     end_time[i] = jsonObject.getString("end_time");
-
-                }
-
-                subject = new String[jsonArray.length()];
-                for (int i = 0; i < jsonArray.length(); i++) {
-
-                    jsonObject = jsonArray.getJSONObject(i);
                     subject[i] = jsonObject.getString("subject");
-
-                }
-
-                teacher = new String[jsonArray.length()];
-                for (int i = 0; i < jsonArray.length(); i++) {
-
-                    jsonObject = jsonArray.getJSONObject(i);
                     teacher[i] = jsonObject.getString("teacher");
+                    Routine_Database routine_database = new Routine_Database(start_time[i],end_time[i],subject[i],teacher[i]);
+                    dbm.saveData(routine_database);
 
                 }
+
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -176,7 +176,6 @@ public class fragment_routine_sun extends Fragment{
 
         @Override
         protected void onPostExecute(String s) {
-
             routineAdapter adapter = new routineAdapter(getActivity(), start_time, end_time, subject, teacher);
             listView.setAdapter(adapter);
         }
@@ -189,7 +188,8 @@ public class fragment_routine_sun extends Fragment{
         String[] subjectArray;
         String[] teacherArray;
 
-        routineAdapter(Context context, String[] mtimeArray, String[] mtimeEndArray, String[] msubjecArray, String[] mteacherArray) {
+        routineAdapter(Context context, String[] mtimeArray, String[] mtimeEndArray,
+                       String[] msubjecArray, String[] mteacherArray) {
             //noinspection unchecked
             super(context, R.layout.fragment_routine_sun, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
