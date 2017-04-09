@@ -1,10 +1,13 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.routine_bvs;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,15 +30,31 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.sqLite_handler.DatabaseManager;
+import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
+import np.edu.bvs.bvshigh.sqLite_handler.Routine_Database;
 
-public class fragment_routine_thur extends Fragment {
+
+public class fragment_routine_mon extends Fragment {
+
 
     ListView listView;
     String address;
     InputStream inputStream;
     String line, result;
     String[] start_time, end_time, subject, teacher;
-    ArrayAdapter<String> adapter;
+    MyDBHandler handler;
+    SQLiteDatabase sqLiteDatabase;
+    DatabaseManager dbManager;
+    String TAG = "routineMON";
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        dbManager = DatabaseManager.getInstance(getActivity());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -49,13 +68,12 @@ public class fragment_routine_thur extends Fragment {
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
 
+        handler = new MyDBHandler(getContext(),null,null,1);
+
         current_date.setText(current_date_pull);
-        current_day.setText(getResources().getString(R.string.thursday));
+        current_day.setText(getResources().getString(R.string.monday));
 
         listView = (ListView)view.findViewById(R.id.routine_display);
-
-//        Allowing NETWORK on the MAIN THREAD.... <<<---------NOT A GOOD PRACTICE BUT DOES THE WORK FOR NOW----------->>>
-//        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
 
         // Getting Routine from background
         new GetResultFromServer().execute();
@@ -63,20 +81,12 @@ public class fragment_routine_thur extends Fragment {
 
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        new GetResultFromServer().execute();
-    }
-
     private class GetResultFromServer extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            address = "http://172.16.11.247/bvs_high/v1/routine_sci_11_bio_thur.php";
-            address = Constants.URL_Routine_Sci_Bio_11_THUR;
+            address = Constants.URL_Routine_Sci_Bio_11_MON;
         }
 
         @Override
@@ -99,9 +109,7 @@ public class fragment_routine_thur extends Fragment {
             }
 
             // Read the InputStream content as String
-
             try {
-
                 // reading the inputStream and converting into string using stringBuilder
                 BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
                 StringBuilder stringBuilder = new StringBuilder();
@@ -109,12 +117,12 @@ public class fragment_routine_thur extends Fragment {
                 while ((line = br.readLine()) != null) {
                     stringBuilder.append(line).append("\n");
                 }
-
                 inputStream.close();
 
                 // the data are converted as a string JSON
                 result = stringBuilder.toString();
 
+                Log.i("MONDAY_routine", result);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -127,45 +135,41 @@ public class fragment_routine_thur extends Fragment {
                 JSONObject jsonObject;
 
                 start_time = new String[jsonArray.length()];
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-
-                    jsonObject = jsonArray.getJSONObject(i);
-                    start_time[i] = jsonObject.getString("start_time");
-
-                }
-
                 end_time = new String[jsonArray.length()];
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-
-                    jsonObject = jsonArray.getJSONObject(i);
-                    end_time[i] = jsonObject.getString("end_time");
-
-                }
-
                 subject = new String[jsonArray.length()];
-
-                for (int i = 0; i < jsonArray.length(); i++) {
-
-                    jsonObject = jsonArray.getJSONObject(i);
-                    subject[i] = jsonObject.getString("subject");
-
-                }
-
                 teacher = new String[jsonArray.length()];
 
-                for (int i = 0; i < jsonArray.length(); i++) {
+                sqLiteDatabase = getContext().openOrCreateDatabase("bvs_high.db", Context.MODE_PRIVATE, null);
 
-                    jsonObject = jsonArray.getJSONObject(i);
-                    teacher[i] = jsonObject.getString("teacher");
+                if (sqLiteDatabase != null) {
+                    sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_mon);
+                    sqLiteDatabase.execSQL(MyDBHandler.mon_routine_table());
 
+                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                        jsonObject = jsonArray.getJSONObject(i);
+                        start_time[i] = jsonObject.getString("start_time");
+                        end_time[i] = jsonObject.getString("end_time");
+                        subject[i] = jsonObject.getString("subject");
+                        teacher[i] = jsonObject.getString("teacher");
+
+                        Routine_Database routine_database = new Routine_Database(start_time[i], end_time[i], subject[i], teacher[i]);
+                        dbManager.saveDataMON(routine_database);
+                        Log.i(TAG, "DATA in json Format : " + start_time[i]);
+                    }
+                } else {
+
+                    Log.i(TAG, "DATA in json Format : " + start_time.length);
+                    Log.i(TAG, "DATA in json Format : " + end_time.length);
+                    Log.i(TAG, "DATA in json Format : " + subject.length);
+                    Log.i(TAG, "DATA in json Format : " + teacher.length);
                 }
-
-            } catch (Exception e) {
+                sqLiteDatabase.close();
+            }
+            catch (Exception e)
+            {
                 e.printStackTrace();
             }
-
             return null;
         }
 
@@ -214,7 +218,6 @@ public class fragment_routine_thur extends Fragment {
             return row;
         }
     }
-
 }
 
 

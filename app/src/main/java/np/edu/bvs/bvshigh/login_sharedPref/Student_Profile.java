@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.login_sharedPref;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,12 +19,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.firebase.messaging.RemoteMessage;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+
+import np.edu.bvs.bvshigh.R;
 
 public class Student_Profile extends AppCompatActivity {
 

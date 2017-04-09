@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.login_sharedPref;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -19,7 +19,7 @@ class Request_Queue_Handler{
         mRequestQueue = getRequestQueue();
     }
 
-    static synchronized Request_Queue_Handler getInstance(Context context) {
+    public static synchronized Request_Queue_Handler getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new Request_Queue_Handler(context);
         }
@@ -35,7 +35,7 @@ class Request_Queue_Handler{
         return mRequestQueue;
     }
 
-    <T> void addToRequestQueue(Request<T> req) {
+    public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
 }

@@ -19,7 +19,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <service
-            android:name=".FirebaseMessagingService"
+            android:name=".firebase_notification.FirebaseMessagingService"
             android:permission="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -27,7 +27,7 @@
         </service>
 
         <service
-            android:name=".FirebaseInstanceIDService"
+            android:name=".firebase_notification.FirebaseInstanceIDService"
             android:permission="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
@@ -43,9 +43,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Login_Student" />
+        <activity android:name=".login_sharedPref.Login_Student" />
 
-        <activity android:name=".Register_Student" />
+        <activity android:name=".login_sharedPref.Register_Student" />
 
         <activity
             android:name=".Main_activity"
@@ -54,15 +54,15 @@
             android:theme="@style/AppTheme"/>
 
         <activity
-            android:name=".Student_Profile_Edit"
-            android:parentActivityName=".Student_Profile">
+            android:name=".login_sharedPref.Student_Profile_Edit"
+            android:parentActivityName=".login_sharedPref.Student_Profile">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="np.edu.bvs.bvshigh.Student_Profile" />
+                android:value="np.edu.bvs.bvshigh.login_sharedPref.Student_Profile" />
         </activity>
 
         <activity
-            android:name=".Student_Profile"
+            android:name=".login_sharedPref.Student_Profile"
             android:parentActivityName=".Main_activity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -70,7 +70,7 @@
         </activity>
 
         <activity
-            android:name=".fragment_routine"
+            android:name=".routine_bvs.fragment_routine"
             android:label="@string/routine_big"
             android:parentActivityName=".Main_activity">
         </activity>

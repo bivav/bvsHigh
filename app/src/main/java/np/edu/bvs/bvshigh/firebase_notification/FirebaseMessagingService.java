@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.firebase_notification;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +11,9 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
+
+import np.edu.bvs.bvshigh.Main_activity;
+import np.edu.bvs.bvshigh.R;
 
 import static android.content.ContentValues.TAG;
 

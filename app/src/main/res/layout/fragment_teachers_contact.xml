@@ -6,12 +6,12 @@
     android:orientation="vertical"
     tools:context="np.edu.bvs.bvshigh.fragment_Teachers_Contact">
 
-    <np.edu.bvs.bvshigh.SlidingTabLayout
+    <np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout
         android:id="@+id/slide_tab"
         android:layout_width="match_parent"
         android:background="@color/colorPrimaryDark"
         android:layout_height="wrap_content">
-    </np.edu.bvs.bvshigh.SlidingTabLayout>
+    </np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout>
 
     <View
         android:layout_width="match_parent"

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.sliding_tab_layout_strip;
 
 import android.content.Context;
 import android.graphics.Typeface;
@@ -30,6 +30,8 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import np.edu.bvs.bvshigh.R;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to

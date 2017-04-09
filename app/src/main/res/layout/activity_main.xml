@@ -16,7 +16,7 @@
         android:id="@+id/fragment2"
         tools:layout="@layout/home_fragment" />
 
-    <np.edu.bvs.bvshigh.SlidingTabLayout
+    <np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout
         android:id="@+id/tabs"
         android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"

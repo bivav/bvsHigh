@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.firebase_notification;
 
 import android.os.Build;
 import android.util.Log;

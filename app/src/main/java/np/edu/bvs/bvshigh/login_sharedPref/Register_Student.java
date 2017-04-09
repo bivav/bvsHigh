@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.login_sharedPref;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -19,6 +19,9 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.R;
 
 
 public class Register_Student extends AppCompatActivity implements View.OnClickListener {

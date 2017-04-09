@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.sliding_tab_layout_strip;
 
 /*
  * Copyright 2014 Google Inc. All rights reserved.

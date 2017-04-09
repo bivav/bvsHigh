@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
+import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
+
 public class Select_Category extends AppCompatActivity {
 
     @Override

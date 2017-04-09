@@ -1,15 +1,15 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.sqLite_handler;
 
 
 public class Routine_Database {
 
+    private String _id;
     private String _start_time;
     private String _end_time;
     private String _subject;
     private String _teacher;
 
     public Routine_Database(){
-
 
     }
 
@@ -19,6 +19,7 @@ public class Routine_Database {
         this._subject = subject;
         this._teacher = teacher;
     }
+
 
     // SETTER
     public void set_start_time(String _start_time) {
@@ -39,6 +40,8 @@ public class Routine_Database {
 
 
     // GETTER
+
+
     public String get_start_time() {
         return _start_time;
     }

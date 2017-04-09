@@ -13,7 +13,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +25,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+
+import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
+import np.edu.bvs.bvshigh.login_sharedPref.Student_Profile;
 
 public class fragment_home_top extends Fragment {
 

@@ -8,6 +8,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_fri;
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_mon;
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_sat;
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_sun;
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_thur;
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_tue;
+import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_wed;
+
 class home_sliding_adapter extends FragmentStatePagerAdapter {
 
     private int NumOfTabs;

@@ -1,14 +1,14 @@
 package np.edu.bvs.bvshigh;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout;
 
 public class fragment_Teachers_Contact extends Fragment {
 

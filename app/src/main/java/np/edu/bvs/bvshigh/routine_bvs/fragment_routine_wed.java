@@ -1,13 +1,9 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.routine_bvs;
 
-import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -32,27 +27,31 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
+import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.sqLite_handler.DatabaseManager;
+import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
+import np.edu.bvs.bvshigh.sqLite_handler.Routine_Database;
 
-public class fragment_routine_sun extends Fragment{
+
+public class fragment_routine_wed extends Fragment {
 
     ListView listView;
     String address;
     InputStream inputStream;
     String line, result;
     String[] start_time, end_time, subject, teacher;
-    ArrayAdapter<String> adapter;
-    private SQLiteDatabase sqLiteDatabase;
-    DatabaseManager dbm;
     MyDBHandler handler;
+    DatabaseManager dbManager;
+    SQLiteDatabase sqLiteDatabase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbm = DatabaseManager.getInstance(getActivity());
+        dbManager = DatabaseManager.getInstance(getContext());
     }
 
     @Override
@@ -70,7 +69,7 @@ public class fragment_routine_sun extends Fragment{
         handler = new MyDBHandler(getContext(), null, null, 1);
 
         current_date.setText(current_date_pull);
-        current_day.setText(getResources().getString(R.string.sunday));
+        current_day.setText(getResources().getString(R.string.wednesday));
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
@@ -78,33 +77,23 @@ public class fragment_routine_sun extends Fragment{
 //        StrictMode.setThreadPolicy((new StrictMode.ThreadPolicy.Builder().permitNetwork().build()));
 
         // Getting Routine from background
-        GetResultFromServer getResult = new GetResultFromServer();
-        getResult.execute();
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         new GetResultFromServer().execute();
+        return view;
+
     }
 
-    private class GetResultFromServer extends AsyncTask<String, String, String>{
+    private class GetResultFromServer extends AsyncTask<String, String, String> {
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            //address = "http://mitocha.com/android/v1/routine_sci_11_bio_sun.php";
-            address = Constants.URL_Routine_Sci_Bio_11_SUN;
+            address = Constants.URL_Routine_Sci_Bio_11_WED;
         }
 
         @Override
         protected String doInBackground(String... strings) {
 
             try {
-
                 // Get url and open the connection
                 URL url = new URL(address);
                 HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -120,6 +109,8 @@ public class fragment_routine_sun extends Fragment{
             }
 
             // Read the InputStream content as String
+
+            String TAG = "routine_WED";
             try {
 
                 // reading the inputStream and converting into string using stringBuilder
@@ -135,14 +126,7 @@ public class fragment_routine_sun extends Fragment{
                 // the data are converted as a string JSON
                 result = stringBuilder.toString();
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            // Try to pass JSON DATA
-            try {
-
-                ContentValues contentValues = new ContentValues();
+                Log.i(TAG, result);
 
                 // passing the result string JSON into JSONArray
                 JSONArray jsonArray = new JSONArray(result);
@@ -150,23 +134,37 @@ public class fragment_routine_sun extends Fragment{
 
                 start_time = new String[jsonArray.length()];
                 end_time = new String[jsonArray.length()];
-
                 subject = new String[jsonArray.length()];
                 teacher = new String[jsonArray.length()];
 
-                for (int i = 0; i < jsonArray.length(); i++) {
+                sqLiteDatabase = getContext().openOrCreateDatabase("bvs_high.db", Context.MODE_PRIVATE, null);
 
-                    jsonObject = jsonArray.getJSONObject(i);
-                    start_time[i] = jsonObject.getString("start_time");
-                    end_time[i] = jsonObject.getString("end_time");
-                    subject[i] = jsonObject.getString("subject");
-                    teacher[i] = jsonObject.getString("teacher");
-                    Routine_Database routine_database = new Routine_Database(start_time[i],end_time[i],subject[i],teacher[i]);
-                    dbm.saveData(routine_database);
+                if (sqLiteDatabase != null) {
+                    sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_wed);
+                    sqLiteDatabase.execSQL(MyDBHandler.wed_routine_table());
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+
+                        jsonObject = jsonArray.getJSONObject(i);
+                        start_time[i] = jsonObject.getString("start_time");
+                        end_time[i] = jsonObject.getString("end_time");
+                        subject[i] = jsonObject.getString("subject");
+                        teacher[i] = jsonObject.getString("teacher");
+
+                        Routine_Database routine_database = new Routine_Database(start_time[i], end_time[i], subject[i], teacher[i]);
+                        dbManager.saveDataWED(routine_database);
+                        Log.i(TAG, "DATA in json Format : " + start_time[i]);
+                    }
+
+                } else {
+
+                    Log.i(TAG, "DATA in json Format : " + start_time.length);
+                    Log.i(TAG, "DATA in json Format : " + end_time.length);
+                    Log.i(TAG, "DATA in json Format : " + subject.length);
+                    Log.i(TAG, "DATA in json Format : " + teacher.length);
 
                 }
-
-
+                sqLiteDatabase.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -176,6 +174,7 @@ public class fragment_routine_sun extends Fragment{
 
         @Override
         protected void onPostExecute(String s) {
+
             routineAdapter adapter = new routineAdapter(getActivity(), start_time, end_time, subject, teacher);
             listView.setAdapter(adapter);
         }
@@ -188,8 +187,7 @@ public class fragment_routine_sun extends Fragment{
         String[] subjectArray;
         String[] teacherArray;
 
-        routineAdapter(Context context, String[] mtimeArray, String[] mtimeEndArray,
-                       String[] msubjecArray, String[] mteacherArray) {
+        routineAdapter(Context context, String[] mtimeArray, String[] mtimeEndArray, String[] msubjecArray, String[] mteacherArray) {
             //noinspection unchecked
             super(context, R.layout.fragment_routine_sun, R.id.teacher_name, mteacherArray);
             this.timeArray = mtimeArray;
@@ -219,4 +217,7 @@ public class fragment_routine_sun extends Fragment{
             return row;
         }
     }
+
 }
+
+

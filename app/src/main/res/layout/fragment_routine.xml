@@ -9,12 +9,12 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
-    <np.edu.bvs.bvshigh.SlidingTabLayout
+    <np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
         android:background="@color/colorPrimaryDark"
         android:layout_height="wrap_content">
-    </np.edu.bvs.bvshigh.SlidingTabLayout>
+    </np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout>
 
     <View
         android:layout_width="match_parent"

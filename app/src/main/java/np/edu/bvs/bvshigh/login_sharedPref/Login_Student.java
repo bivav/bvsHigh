@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.login_sharedPref;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -20,6 +20,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.Main_activity;
+import np.edu.bvs.bvshigh.R;
 
 public class Login_Student extends AppCompatActivity implements View.OnClickListener{
 
@@ -106,7 +110,6 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                         progressDialog.dismiss();
                         Toast.makeText(getApplicationContext(), "Can't Connect. Please try again.",
                                 Toast.LENGTH_LONG).show();
-
                     }
                 })
         {
