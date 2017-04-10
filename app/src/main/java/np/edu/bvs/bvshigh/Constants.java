@@ -2,9 +2,9 @@ package np.edu.bvs.bvshigh;
 
 public class Constants {
 
-    //private static final String ROOT_URL = "http://mitochanet.000webhostapp.com/android/v1/";
+    private static final String ROOT_URL = "http://mitochanet.000webhostapp.com/android/v1/";
 
-    private static final String ROOT_URL = "http://172.16.11.247/bvs_high/login/";
+    //private static final String ROOT_URL = "http://172.16.11.247/bvs_high/login/";
 
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
     public static final String URL_LOGIN = ROOT_URL+"userLogin.php";

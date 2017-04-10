@@ -2,6 +2,8 @@ package np.edu.bvs.bvshigh.routine_bvs;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,7 +29,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import np.edu.bvs.bvshigh.Constants;
@@ -39,16 +43,17 @@ import np.edu.bvs.bvshigh.sqLite_handler.Routine_Database;
 
 public class fragment_routine_mon extends Fragment {
 
-
     ListView listView;
-    String address;
+    String address = Constants.URL_Routine_Sci_Bio_11_MON;
     InputStream inputStream;
     String line, result;
     String[] start_time, end_time, subject, teacher;
+    DatabaseManager dbManager;
     MyDBHandler handler;
     SQLiteDatabase sqLiteDatabase;
-    DatabaseManager dbManager;
     String TAG = "routineMON";
+    View cv;
+    List<Routine_Database> routine_list = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,162 +66,222 @@ public class fragment_routine_mon extends Fragment {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
 
         String current_date_pull = DateFormat.getDateInstance().format(new Date());
-//        SimpleDateFormat sdf = new SimpleDateFormat("EEEE", Locale.US);
-//        Date d = new Date();
-//        String day = sdf.format(d);
 
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
 
-        handler = new MyDBHandler(getContext(),null,null,1);
+        handler = new MyDBHandler(getContext(), null, null, 1);
 
         current_date.setText(current_date_pull);
         current_day.setText(getResources().getString(R.string.monday));
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        // Getting Routine from background
-        new GetResultFromServer().execute();
-        return view;
+        if (isConnected(getActivity())) {
+            routine_list = dbManager.gettingAllDataMON();
+            Log.i(TAG, String.valueOf(routine_list));
+            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
+            listView.setAdapter(adapter);
+            // Getting Routine from background
+            GetResultFromServer getResult = new GetResultFromServer();
+            getResult.execute();
+            Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
 
+        } else {
+            routine_list = dbManager.gettingAllDataMON();
+            Log.i(TAG, String.valueOf(routine_list));
+            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
+            listView.setAdapter(adapter);
+            Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+
+
+        return view;
     }
 
-    private class GetResultFromServer extends AsyncTask<String, String, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            address = Constants.URL_Routine_Sci_Bio_11_MON;
-        }
+    private class GetResultFromServer extends AsyncTask<String, Integer, String>{
 
         @Override
         protected String doInBackground(String... strings) {
 
-            try {
-
-                // Get url and open the connection
-                URL url = new URL(address);
-                HttpURLConnection con = (HttpURLConnection)url.openConnection();
-
-                // set the method to GET
-                con.setRequestMethod("GET");
-
-                // use InputStream to get the InputStream content
-                inputStream = new BufferedInputStream(con.getInputStream());
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            // Read the InputStream content as String
-            try {
-                // reading the inputStream and converting into string using stringBuilder
-                BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
-                StringBuilder stringBuilder = new StringBuilder();
-
-                while ((line = br.readLine()) != null) {
-                    stringBuilder.append(line).append("\n");
-                }
-                inputStream.close();
-
-                // the data are converted as a string JSON
-                result = stringBuilder.toString();
-
-                Log.i("MONDAY_routine", result);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            // Try to pass JSON DATA
-            try {
-
-                // passing the result string JSON into JSONArray
-                JSONArray jsonArray = new JSONArray(result);
-                JSONObject jsonObject;
-
-                start_time = new String[jsonArray.length()];
-                end_time = new String[jsonArray.length()];
-                subject = new String[jsonArray.length()];
-                teacher = new String[jsonArray.length()];
-
-                sqLiteDatabase = getContext().openOrCreateDatabase("bvs_high.db", Context.MODE_PRIVATE, null);
-
-                if (sqLiteDatabase != null) {
-                    sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_mon);
-                    sqLiteDatabase.execSQL(MyDBHandler.mon_routine_table());
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-
-                        jsonObject = jsonArray.getJSONObject(i);
-                        start_time[i] = jsonObject.getString("start_time");
-                        end_time[i] = jsonObject.getString("end_time");
-                        subject[i] = jsonObject.getString("subject");
-                        teacher[i] = jsonObject.getString("teacher");
-
-                        Routine_Database routine_database = new Routine_Database(start_time[i], end_time[i], subject[i], teacher[i]);
-                        dbManager.saveDataMON(routine_database);
-                        Log.i(TAG, "DATA in json Format : " + start_time[i]);
-                    }
-                } else {
-
-                    Log.i(TAG, "DATA in json Format : " + start_time.length);
-                    Log.i(TAG, "DATA in json Format : " + end_time.length);
-                    Log.i(TAG, "DATA in json Format : " + subject.length);
-                    Log.i(TAG, "DATA in json Format : " + teacher.length);
-                }
-                sqLiteDatabase.close();
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+//            if (!isConnected()) {
+//                GetDataFromServer();
+//                Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
+//            } else {
+//                Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//            }
+            GetDataFromServer();
             return null;
         }
 
         @Override
-        protected void onPostExecute(String s) {
+        protected void onPostExecute(String resultData) {
 
-            routineAdapter adapter = new routineAdapter(getActivity(), start_time, end_time, subject, teacher);
+            routine_list = dbManager.gettingAllDataMON();
+            Log.i(TAG, String.valueOf(routine_list));
+            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
         }
     }
 
-    private class routineAdapter extends ArrayAdapter{
+    public String GetDataFromServer() {
+        try {
 
-        String[] timeArray;
-        String[] timeEndArray;
-        String[] subjectArray;
-        String[] teacherArray;
+            // Get url and open the connection
+            URL url = new URL(address);
+            HttpURLConnection con = (HttpURLConnection)url.openConnection();
 
-        routineAdapter(Context context, String[] mtimeArray, String[] mtimeEndArray, String[] msubjecArray, String[] mteacherArray) {
-            //noinspection unchecked
-            super(context, R.layout.fragment_routine_sun, R.id.teacher_name, mteacherArray);
-            this.timeArray = mtimeArray;
-            this.timeEndArray = mtimeEndArray;
-            this.subjectArray = msubjecArray;
-            this.teacherArray = mteacherArray;
+            // set the method to GET
+            con.setRequestMethod("GET");
+
+            // use InputStream to get the InputStream content
+            inputStream = new BufferedInputStream(con.getInputStream());
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
+        // Read the InputStream content as String
+        try {
+            // reading the inputStream and converting into string using stringBuilder
+            BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder stringBuilder = new StringBuilder();
+
+            while ((line = br.readLine()) != null) {
+                stringBuilder.append(line).append("\n");
+            }
+            inputStream.close();
+
+            // the data are converted as a string JSON
+            result = stringBuilder.toString();
+
+            Log.i("MONDAY_RESULT", result);
+
+            Log.i("MONDAY_routine", result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Try to pass JSON DATA
+        try {
+
+            // passing the result string JSON into JSONArray
+            JSONArray jsonArray = new JSONArray(result);
+            JSONObject jsonObject;
+
+            start_time = new String[jsonArray.length()];
+            end_time = new String[jsonArray.length()];
+            subject = new String[jsonArray.length()];
+            teacher = new String[jsonArray.length()];
+
+            sqLiteDatabase = getContext().openOrCreateDatabase("bvs_high.db", Context.MODE_PRIVATE, null);
+
+            if (sqLiteDatabase != null) {
+                sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_mon);
+                sqLiteDatabase.execSQL(MyDBHandler.mon_routine_table());
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    jsonObject = jsonArray.getJSONObject(i);
+                    start_time[i] = jsonObject.getString("start_time");
+                    end_time[i] = jsonObject.getString("end_time");
+                    subject[i] = jsonObject.getString("subject");
+                    teacher[i] = jsonObject.getString("teacher");
+
+                    Routine_Database routine_database = new Routine_Database(start_time[i], end_time[i], subject[i], teacher[i]);
+                    dbManager.saveDataMON(routine_database);
+                    Log.i(TAG, "DATA in json Format : " + start_time[i]);
+                }
+            } else {
+
+                Log.i(TAG, "DATA in json Format : " + start_time.length);
+                Log.i(TAG, "DATA in json Format : " + end_time.length);
+                Log.i(TAG, "DATA in json Format : " + subject.length);
+                Log.i(TAG, "DATA in json Format : " + teacher.length);
+            }
+            sqLiteDatabase.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    private class routineAdapter extends ArrayAdapter<Routine_Database> {
+
+        private final List<Routine_Database> list;
+
+        routineAdapter(Context context, List<Routine_Database> list) {
+            super(context, R.layout.fragment_routine_mon, list);
+            this.list = list;
+
+        }
+
+        class ViewHolder {
+            protected TextView start_time;
+            protected TextView end_time;
+            protected TextView subject;
+            protected TextView teacher_name;
+        }
 
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-            LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.fragment_routine_sun, parent, false);
+            ViewHolder viewholder;
+            cv = convertView;
 
-            TextView time = (TextView)row.findViewById(R.id.start_time);
-            TextView end_time = (TextView)row.findViewById(R.id.end_time);
-            TextView subject_name = (TextView)row.findViewById(R.id.subject_name);
-            TextView teacher_name = (TextView)row.findViewById(R.id.teacher_name);
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.fragment_routine_mon, parent, false);
 
-            time.setText(timeArray[position]);
-            end_time.setText(timeEndArray[position]);
-            subject_name.setText(subjectArray[position]);
-            teacher_name.setText(teacherArray[position]);
+                viewholder = new ViewHolder();
 
-            return row;
+                viewholder.start_time = (TextView) convertView.findViewById(R.id.start_time);
+                viewholder.end_time = (TextView) convertView.findViewById(R.id.end_time);
+                viewholder.subject = (TextView) convertView.findViewById(R.id.subject_name);
+                viewholder.teacher_name = (TextView) convertView.findViewById(R.id.teacher_name);
+
+                convertView.setTag(viewholder);
+                convertView.setTag(R.id.start_time, viewholder.start_time);
+                convertView.setTag(R.id.end_time, viewholder.end_time);
+                convertView.setTag(R.id.subject_name, viewholder.subject);
+                convertView.setTag(R.id.teacher_name, viewholder.teacher_name);
+
+            } else {
+                viewholder = (ViewHolder)convertView.getTag();
+            }
+
+            //populating items with data
+            viewholder.start_time.setTag(position);
+            viewholder.start_time.setText(list.get(position).get_start_time());
+
+            viewholder.end_time.setTag(position);
+            viewholder.end_time.setText(list.get(position).get_end_time());
+
+            viewholder.subject.setTag(position);
+            viewholder.subject.setText(list.get(position).get_subject());
+
+            viewholder.teacher_name.setTag(position);
+            viewholder.teacher_name.setText(list.get(position).get_teacher());
+
+            Log.i("printing", list.get(position).get_teacher());
+
+            return convertView;
         }
+    }
+
+    public boolean isConnected(final Context context) {
+        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
+        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }
 

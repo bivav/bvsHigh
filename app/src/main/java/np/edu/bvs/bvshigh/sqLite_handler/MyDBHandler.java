@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import org.json.JSONObject;
+
 
 public class MyDBHandler extends SQLiteOpenHelper {
 
@@ -109,12 +111,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        Log.i(TAG, String.valueOf(sun_routine_table()));
 
         sqLiteDatabase.execSQL(sun_routine_table());
-
-        Log.d(TAG, String.valueOf(sqLiteDatabase));
-
         sqLiteDatabase.execSQL(mon_routine_table());
         sqLiteDatabase.execSQL(tue_routine_table());
         sqLiteDatabase.execSQL(wed_routine_table());
