@@ -4,14 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_fri;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_mon;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_sun;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_thur;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_tue;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_wed;
-
-public class fragment_routine_week extends FragmentStatePagerAdapter {
+class fragment_routine_week extends FragmentStatePagerAdapter {
 
     private int NumOfTabs;
     private CharSequence Titles[];

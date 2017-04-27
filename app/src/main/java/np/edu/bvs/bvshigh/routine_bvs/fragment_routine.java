@@ -22,6 +22,7 @@ public class fragment_routine extends AppCompatActivity {
     SlidingTabLayout tabs;
     fragment_routine_week adapter;
     CharSequence Titles[] = {"SUN", "MON", "TUE", "WED", "THU", "FRI"};
+
     int NumOfTabs = 6;
 
     SwipeRefreshLayout swipeRefreshLayout;
@@ -29,13 +30,13 @@ public class fragment_routine extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_routine);
 
         // Close the activity if internet is not available
         if (!isNetworkAvailable(this)) {
-            Toast.makeText(this, "No Internet connection. Please Connect to Internet.", Toast.LENGTH_LONG).show();
-            finish();
+            Toast.makeText(this, "Please Connect to Internet to get updated data.", Toast.LENGTH_LONG).show();
         }
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -95,10 +96,9 @@ public class fragment_routine extends AppCompatActivity {
             public void run() {
                 progressDialog.dismiss();
             }
-        }, 5000);
+        }, 3000);
 
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -107,10 +107,7 @@ public class fragment_routine extends AppCompatActivity {
 
     public static boolean isNetworkAvailable(Context context) {
         ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if(conMan.getActiveNetworkInfo() != null && conMan.getActiveNetworkInfo().isConnected())
-            return true;
-        else
-            return false;
+        return conMan.getActiveNetworkInfo() != null && conMan.getActiveNetworkInfo().isConnected();
     }
 
     @Override

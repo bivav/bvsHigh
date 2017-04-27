@@ -2,11 +2,9 @@ package np.edu.bvs.bvshigh.routine_bvs;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,11 +25,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import np.edu.bvs.bvshigh.Constants;
 import np.edu.bvs.bvshigh.R;
@@ -75,24 +71,16 @@ public class fragment_routine_fri extends Fragment {
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        if (isConnected(getActivity())) {
+        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_fri, true)) {
             routine_list = dbManager.gettingAllDataFRI();
-            Log.i(TAG, String.valueOf(routine_list));
-            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
+            routineAdapter adapter = new routineAdapter(getContext(), routine_list);
             listView.setAdapter(adapter);
+        }
+        else{
             // Getting Routine from background
             GetResultFromServer getResult = new GetResultFromServer();
             getResult.execute();
-            Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
-
-        } else {
-            routine_list = dbManager.gettingAllDataFRI();
-            Log.i(TAG, String.valueOf(routine_list));
-            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
-            listView.setAdapter(adapter);
-            Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         }
-
 
         return view;
     }
@@ -271,17 +259,9 @@ public class fragment_routine_fri extends Fragment {
         }
     }
 
-    public boolean isConnected(final Context context) {
-        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
-        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
-    }
-
-
     @Override
     public void onDestroy() {
         super.onDestroy();
     }
-
-
 
 }

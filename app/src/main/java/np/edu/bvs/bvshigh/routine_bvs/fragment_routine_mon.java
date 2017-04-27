@@ -2,12 +2,9 @@ package np.edu.bvs.bvshigh.routine_bvs;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -28,11 +25,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import np.edu.bvs.bvshigh.Constants;
 import np.edu.bvs.bvshigh.R;
@@ -77,24 +72,21 @@ public class fragment_routine_mon extends Fragment {
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        if (isConnected(getActivity())) {
+        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_mon, true)) {
+
             routine_list = dbManager.gettingAllDataMON();
-            Log.i(TAG, String.valueOf(routine_list));
             routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
+            Log.i("YAHOOO!!", "CHALYO RANDI KO CHORO!!");
+
+        }
+        else {
+
             // Getting Routine from background
             GetResultFromServer getResult = new GetResultFromServer();
             getResult.execute();
-
-
-        } else {
-            routine_list = dbManager.gettingAllDataMON();
-            Log.i(TAG, String.valueOf(routine_list));
-            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
-            listView.setAdapter(adapter);
-            Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            Log.i("MUJI", "CHALYO RANDI KO CHORO!!");
         }
-
 
         return view;
     }
@@ -103,13 +95,6 @@ public class fragment_routine_mon extends Fragment {
 
         @Override
         protected String doInBackground(String... strings) {
-
-//            if (!isConnected()) {
-//                GetDataFromServer();
-//                Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
-//            } else {
-//                Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//            }
             GetDataFromServer();
             return null;
         }
@@ -272,12 +257,6 @@ public class fragment_routine_mon extends Fragment {
             return convertView;
         }
     }
-
-    public boolean isConnected(final Context context) {
-        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
-        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
-    }
-
 
     @Override
     public void onDestroy() {

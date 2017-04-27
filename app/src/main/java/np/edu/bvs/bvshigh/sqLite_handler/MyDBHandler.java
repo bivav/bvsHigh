@@ -1,13 +1,9 @@
 package np.edu.bvs.bvshigh.sqLite_handler;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import org.json.JSONObject;
 
 
 public class MyDBHandler extends SQLiteOpenHelper {
@@ -28,10 +24,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
     static final String COLUMN_end_time = "end_time";
     static final String COLUMN_subject = "subject";
     static final String COLUMN_teacher = "teacher";
-    /** This is one table for sunday for bio class */
 
-    private String TAG = "Routine";
-
+    @SuppressWarnings("UnusedParameters")
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -112,25 +106,12 @@ public class MyDBHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        sqLiteDatabase.execSQL(sun_routine_table());
-        sqLiteDatabase.execSQL(mon_routine_table());
-        sqLiteDatabase.execSQL(tue_routine_table());
-        sqLiteDatabase.execSQL(wed_routine_table());
-        sqLiteDatabase.execSQL(thur_routine_table());
-        sqLiteDatabase.execSQL(fri_routine_table());
-
-        Log.i(TAG, "Table -> "
-                + TABLE_routine_sci_11_bio_sun
-                + TABLE_routine_sci_11_bio_mon
-                + TABLE_routine_sci_11_bio_tue
-                + TABLE_routine_sci_11_bio_wed
-                + TABLE_routine_sci_11_bio_thur
-                + TABLE_routine_sci_11_bio_fri+ " <- has been created.");
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVer, int newVer) {
+        /* This is one table for sunday for bio class */
+        String TAG = "Routine";
         Log.i(TAG, "Tables exists, dropping the table.");
 
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TABLE_routine_sci_11_bio_sun);
@@ -143,4 +124,5 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         Log.i(TAG, "Tables deleted and new table has been created.");
     }
+
 }

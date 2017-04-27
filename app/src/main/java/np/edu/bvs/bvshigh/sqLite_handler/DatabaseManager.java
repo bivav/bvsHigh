@@ -1,22 +1,17 @@
 package np.edu.bvs.bvshigh.sqLite_handler;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.app.Fragment;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class DatabaseManager {
+
     private SQLiteDatabase db;
-    MyDBHandler handler;
+    private MyDBHandler myDBHandler;
+
 
     private static DatabaseManager ourInstance;
 
@@ -28,7 +23,7 @@ public class DatabaseManager {
     }
 
     private DatabaseManager(Context context) {
-       MyDBHandler myDBHandler = new MyDBHandler(context,null,null,1);
+       myDBHandler = new MyDBHandler(context,null,null,1);
         db = myDBHandler.getWritableDatabase();
     }
 
@@ -203,21 +198,21 @@ public class DatabaseManager {
         return dataList;
     }
 
-
-
+    // function to check if table exists or not
     public boolean isTableExists(String tableName, boolean openDb) {
+
         if(openDb) {
             if(db == null || !db.isOpen()) {
-                db = handler.getReadableDatabase();
+                db = myDBHandler.getReadableDatabase();
             }
 
             if(!db.isReadOnly()) {
                 db.close();
-                db = handler.getReadableDatabase();
+                db = myDBHandler.getReadableDatabase();
             }
         }
 
-        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '"+tableName+"'", null);
+        Cursor cursor = db.rawQuery("select DISTINCT tbl_name from sqlite_master where tbl_name = '" + tableName + "'", null);
         if(cursor!=null) {
             if(cursor.getCount()>0) {
                 cursor.close();

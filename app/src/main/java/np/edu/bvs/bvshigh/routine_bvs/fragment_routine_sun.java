@@ -2,7 +2,6 @@ package np.edu.bvs.bvshigh.routine_bvs;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -73,9 +72,18 @@ public class fragment_routine_sun extends Fragment{
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        // Getting Routine from background
-        GetResultFromServer getResult = new GetResultFromServer();
-        getResult.execute();
+        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_sun, true)) {
+            routine_list = dbManager.gettingAllDataSUN();
+            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
+            listView.setAdapter(adapter);
+        }
+        else {
+
+            // Getting Routine from background
+            GetResultFromServer getResult = new GetResultFromServer();
+            getResult.execute();
+            Log.i("MUJI", "CHALYO RANDI KO CHORO!!");
+        }
 
         return view;
     }
@@ -196,7 +204,6 @@ public class fragment_routine_sun extends Fragment{
             protected TextView teacher_name;
         }
 
-
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
@@ -243,12 +250,6 @@ public class fragment_routine_sun extends Fragment{
             return convertView;
         }
     }
-
-    public boolean isConnected(final Context context) {
-        final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
-        return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
-    }
-
 
     @Override
     public void onDestroy() {
