@@ -9,7 +9,6 @@ public class Constants {
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
     public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
 
-
     // URL for all SCIENCE BIO STUDENTS
     private static final String ROUTINE_URL = "http://mitocha.com/bvs_high/";
 

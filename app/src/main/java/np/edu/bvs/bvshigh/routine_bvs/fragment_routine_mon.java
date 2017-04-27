@@ -85,7 +85,7 @@ public class fragment_routine_mon extends Fragment {
             // Getting Routine from background
             GetResultFromServer getResult = new GetResultFromServer();
             getResult.execute();
-            Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
+
 
         } else {
             routine_list = dbManager.gettingAllDataMON();

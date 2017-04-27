@@ -3,7 +3,6 @@ package np.edu.bvs.bvshigh.routine_bvs;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -25,7 +24,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.InetAddress;
 import java.net.URL;
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -52,6 +50,7 @@ public class fragment_routine_sun extends Fragment{
     View cv;
     List<Routine_Database> routine_list = new ArrayList<>();
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,10 +61,10 @@ public class fragment_routine_sun extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
 
-        String current_date_pull = DateFormat.getDateInstance().format(new Date());
-
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
+
+        String current_date_pull = DateFormat.getDateInstance().format(new Date());
 
         handler = new MyDBHandler(getContext(), null, null, 1);
 
@@ -74,21 +73,9 @@ public class fragment_routine_sun extends Fragment{
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        if (isConnected(getActivity())) {
-            routine_list = dbManager.gettingAllDataSUN();
-            Log.i(TAG, String.valueOf(routine_list));
-            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
-            listView.setAdapter(adapter);
-            // Getting Routine from background
-            GetResultFromServer getResult = new GetResultFromServer();
-            getResult.execute();
-
-        } else {
-            routine_list = dbManager.gettingAllDataSUN();
-            Log.i(TAG, String.valueOf(routine_list));
-            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
-            listView.setAdapter(adapter);
-        }
+        // Getting Routine from background
+        GetResultFromServer getResult = new GetResultFromServer();
+        getResult.execute();
 
         return view;
     }
@@ -97,16 +84,7 @@ public class fragment_routine_sun extends Fragment{
 
         @Override
         protected String doInBackground(String... strings) {
-
-//            if (!isConnected()) {
-//                GetDataFromServer();
-//                Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
-//            } else {
-//                Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-//            }
             GetDataFromServer();
-
-
             return null;
         }
 
@@ -116,12 +94,12 @@ public class fragment_routine_sun extends Fragment{
             routine_list = dbManager.gettingAllDataSUN();
             routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
+
         }
     }
 
     public String GetDataFromServer() {
         try {
-
             // Get url and open the connection
             URL url = new URL(address);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -149,8 +127,8 @@ public class fragment_routine_sun extends Fragment{
 
             // the data are converted as a string JSON
             result = stringBuilder.toString();
-
             Log.i("SUNDAY_routine", result);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -209,7 +187,6 @@ public class fragment_routine_sun extends Fragment{
         routineAdapter(Context context, List<Routine_Database> list) {
             super(context, R.layout.fragment_routine_sun, list);
             this.list = list;
-
         }
 
         class ViewHolder {
@@ -271,6 +248,7 @@ public class fragment_routine_sun extends Fragment{
         final ConnectivityManager connectivityManager = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE));
         return connectivityManager.getActiveNetworkInfo() != null && connectivityManager.getActiveNetworkInfo().isConnected();
     }
+
 
     @Override
     public void onDestroy() {

@@ -20,14 +20,23 @@ import java.util.Date;
 
 public class fragment_alerts extends AppCompatActivity {
 
-    String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
-    String[] description_alert = {"Results for class 11 is out. Please check results tab and refresh to download the result",
-            "Routine has been updated for grade 12. Kindly update.", "Welcome to BVS to all students!! Hope you have a good time."};
+    String[] titles_alert =
+            {
+                    "Results of Class 11 is out",
+                    "Routine for Class 12",
+                    "Come and Enjoy"
+            };
+    String[] description_alert =
+            {
+                    "Results for class 11 is out. Please check results tab and refresh to download the result",
+                    "Routine has been updated for grade 12. Kindly update.",
+                    "Welcome to BVS to all students!! Hope you have a good time."
+            };
 
     ListView alerts_display;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_alerts_customlist_view);
 
