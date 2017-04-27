@@ -96,7 +96,7 @@ public class fragment_routine extends AppCompatActivity {
             public void run() {
                 progressDialog.dismiss();
             }
-        }, 3000);
+        }, 2000);
 
     }
 
