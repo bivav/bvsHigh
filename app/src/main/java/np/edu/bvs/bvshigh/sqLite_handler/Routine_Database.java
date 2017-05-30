@@ -40,8 +40,6 @@ public class Routine_Database {
 
 
     // GETTER
-
-
     public String get_start_time() {
         return _start_time;
     }

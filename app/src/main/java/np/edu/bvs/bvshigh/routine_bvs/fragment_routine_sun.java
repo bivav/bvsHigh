@@ -78,11 +78,9 @@ public class fragment_routine_sun extends Fragment{
             listView.setAdapter(adapter);
         }
         else {
-
             // Getting Routine from background
             GetResultFromServer getResult = new GetResultFromServer();
             getResult.execute();
-            Log.i("MUJI", "CHALYO RANDI KO CHORO!!");
         }
 
         return view;

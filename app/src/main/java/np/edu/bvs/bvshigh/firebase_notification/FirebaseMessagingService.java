@@ -41,7 +41,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         Uri notificationSoundURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder mNotificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.bvs_logo_small)
-                .setContentTitle("MESSAGE TESTING!")
+                .setContentTitle("From Admin")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
                 .setSound(notificationSoundURI)

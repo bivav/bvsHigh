@@ -73,19 +73,15 @@ public class fragment_routine_mon extends Fragment {
         listView = (ListView)view.findViewById(R.id.routine_display);
 
         if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_mon, true)) {
-
             routine_list = dbManager.gettingAllDataMON();
             routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
-            Log.i("YAHOOO!!", "CHALYO RANDI KO CHORO!!");
-
         }
         else {
 
             // Getting Routine from background
             GetResultFromServer getResult = new GetResultFromServer();
             getResult.execute();
-            Log.i("MUJI", "CHALYO RANDI KO CHORO!!");
         }
 
         return view;
