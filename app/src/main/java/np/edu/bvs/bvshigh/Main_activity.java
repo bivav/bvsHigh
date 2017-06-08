@@ -70,7 +70,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         if (FirebaseInstanceId.getInstance().getToken() == null) {
             Toast.makeText(this, "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Welcome!: -> ", Toast.LENGTH_LONG).show();
         }
 
         Log.d(TAG, "DEVICE TOKEN ------> " + displayToken);
@@ -225,6 +225,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_routine:
                 startActivity(new Intent(getApplicationContext(), fragment_routine.class));
+                finish();
                 break;
 
             case R.id.nav_attendance:
@@ -237,6 +238,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_results:
                 startActivity(new Intent(getApplicationContext(), fragment_result.class));
+                finish();
                 break;
 
             case R.id.nav_fees:
@@ -259,6 +261,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_alerts:
                 startActivity(new Intent(getApplicationContext(), fragment_alerts.class));
+                finish();
                 break;
 
             case R.id.nav_teacherContact:
@@ -271,6 +274,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_calendar:
                 startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
+                finish();
                 break;
 
             case R.id.contact_us:
@@ -282,7 +286,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.feedback:
-                startActivity(new Intent(getApplicationContext(), feedback.class));
+                startActivity(new Intent(getApplicationContext(), Dashboard.class));
                 break;
 
             case R.id.message_to_school:

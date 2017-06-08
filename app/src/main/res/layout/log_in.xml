@@ -31,7 +31,7 @@
             android:id="@+id/editTextUsername"
             android:textColorHint="@android:color/white"
             android:layout_gravity="center"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
@@ -55,7 +55,7 @@
             android:shadowColor="@color/white"
             android:textColorLink="@color/white"
             android:layout_gravity="center"
-            android:layout_width="300dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
@@ -74,17 +74,17 @@
         android:layout_height="wrap_content"
         android:id="@+id/log_in" />
 
-    <android.support.v7.widget.AppCompatButton
-        android:text="@string/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/register"
-        android:layout_marginTop="20dp"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat"
-        android:textColor="@android:color/white"
-        android:textSize="14sp"
-        android:fontFamily="sans-serif" />
+    <!--<android.support.v7.widget.AppCompatButton-->
+        <!--android:text="@string/register"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/register"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--style="@style/Widget.AppCompat.Button.Borderless"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:textAppearance="@style/TextAppearance.AppCompat"-->
+        <!--android:textColor="@android:color/white"-->
+        <!--android:textSize="14sp"-->
+        <!--android:fontFamily="sans-serif" />-->
 
 </LinearLayout>

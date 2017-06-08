@@ -19,7 +19,7 @@ public class Select_Category extends AppCompatActivity {
         // Checking if user is logged in already -> profile is displayed
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(getApplicationContext(), Main_activity.class));
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
             return;
         }
 

@@ -22,6 +22,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.Dashboard;
 import np.edu.bvs.bvshigh.Main_activity;
 import np.edu.bvs.bvshigh.R;
 
@@ -39,12 +40,12 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
         // Checking if user is logged in -> profile is displayed
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(getApplicationContext(), Main_activity.class));
+            startActivity(new Intent(getApplicationContext(), Dashboard.class));
             return;
         }
 
         log_in = (Button)findViewById(R.id.log_in);
-        Button register = (Button) findViewById(R.id.register);
+        //Button register = (Button) findViewById(R.id.register);
 
         editTextUsername = (EditText)findViewById(R.id.editTextUsername);
         editTextPassword = (EditText)findViewById(R.id.editTextPassword);
@@ -53,7 +54,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
         progressDialog.setMessage("Please wait...");
 
         log_in.setOnClickListener(this);
-        register.setOnClickListener(this);
+        //register.setOnClickListener(this);
 
     }
 
@@ -90,7 +91,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
 
                                 Toast.makeText(getApplicationContext(), "User Login Successful!",
                                         Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Main_activity.class));
+                                startActivity(new Intent(getApplicationContext(), Dashboard.class));
                                 finish();
 
                             }else {

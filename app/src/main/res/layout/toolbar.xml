@@ -7,4 +7,5 @@
     android:theme="@style/Base.ThemeOverlay.AppCompat.Dark"
     android:elevation="3dp"
     android:background="@color/colorPrimaryDark"
-    tools:targetApi="lollipop" />
+    tools:targetApi="lollipop">
+</android.support.v7.widget.Toolbar>

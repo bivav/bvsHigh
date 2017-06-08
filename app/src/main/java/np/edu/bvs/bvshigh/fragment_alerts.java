@@ -2,6 +2,7 @@ package np.edu.bvs.bvshigh;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -47,6 +48,12 @@ public class fragment_alerts extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         alerts_display = (ListView)findViewById(R.id.alerts_display);
         alertsDisplay alerts = new alertsDisplay(getApplicationContext(), titles_alert, description_alert);
@@ -89,4 +96,11 @@ public class fragment_alerts extends AppCompatActivity {
             return view;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), Main_activity.class));
+        finish();
+    }
+
 }

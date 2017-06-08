@@ -1,6 +1,7 @@
 package np.edu.bvs.bvshigh;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,12 @@ public class fragment_result extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         // Initializing Alert Box
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
@@ -130,5 +137,11 @@ public class fragment_result extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getApplicationContext(), Main_activity.class));
+        finish();
     }
 }

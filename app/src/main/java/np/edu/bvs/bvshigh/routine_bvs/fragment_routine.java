@@ -2,6 +2,7 @@ package np.edu.bvs.bvshigh.routine_bvs;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,8 +12,10 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
+import np.edu.bvs.bvshigh.Main_activity;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout;
 
@@ -58,7 +61,15 @@ public class fragment_routine extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
         executeCode();
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -112,7 +123,8 @@ public class fragment_routine extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(), Main_activity.class));
         finish();
     }
+
 }

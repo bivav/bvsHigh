@@ -111,4 +111,15 @@
     <string name="quoteForTheDay2">Hope you have a good Saturday!</string>
 
 
+    <string-array name="dash_content">
+        <item>Home</item>
+        <item>Routine</item>
+        <item>Calender</item>
+        <item>Notifications</item>
+        <item>Results</item>
+        <item>Events</item>
+
+    </string-array>
+
+
 </resources>

@@ -11,7 +11,7 @@
             android:title="@string/dashboard" />
         <item
             android:id="@+id/nav_routine"
-            android:icon="@drawable/ic_menu_routine"
+            android:icon="@drawable/icons_routine"
             android:title="@string/routine" />
         <item
             android:id="@+id/nav_attendance"
