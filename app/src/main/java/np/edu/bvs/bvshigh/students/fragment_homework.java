@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.students;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,7 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class fragment_home_bottom_2 extends Fragment {
+import np.edu.bvs.bvshigh.R;
+
+public class fragment_homework extends Fragment {
 
     String[] titles = {"PHY", "CHE", "COM", "MAT", "ENG", "BIO", "ETC"};
     String[] teachers = {"BVK", "BN", "SK", "TRK", "DG", "AG", "RY"};
@@ -63,7 +65,6 @@ public class fragment_home_bottom_2 extends Fragment {
             this.teachers = mteachers;
             this.homework = mhomework;
         }
-
 
         @NonNull
         @Override

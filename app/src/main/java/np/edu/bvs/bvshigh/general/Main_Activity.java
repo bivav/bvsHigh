@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -34,14 +34,19 @@ import java.io.FileNotFoundException;
 import java.text.DateFormat;
 import java.util.Date;
 
+import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
 import np.edu.bvs.bvshigh.routine_bvs.fragment_routine;
+import np.edu.bvs.bvshigh.students.Dashboard;
+import np.edu.bvs.bvshigh.students.fragment_attendance;
+import np.edu.bvs.bvshigh.students.fragment_fees;
+import np.edu.bvs.bvshigh.students.fragment_homework;
+import np.edu.bvs.bvshigh.students.fragment_result_student;
 
 import static android.content.ContentValues.TAG;
 
-
-public class Main_activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Main_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     /**Right Slide Alert Function Values**/
     String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
@@ -51,7 +56,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 "Routine has been updated for grade 12. Kindly update.",
                 "Welcome to BVS to all students!! Hope you have a good time."
             };
-
 
     de.hdodenhof.circleimageview.CircleImageView imageView;
     ListView rightView;
@@ -78,7 +82,6 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         // check if the user is not logged in -> get the user in login page
         if (!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
@@ -86,7 +89,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         }
 
         // Main Homepage activity aka Dashboard
-        Home_page fragment = new Home_page();
+        fragment_home_bottom fragment = new fragment_home_bottom();
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_activity, fragment);
         transaction.commit();
@@ -143,11 +146,11 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         String[] titles_alert;
         String[] description_alert;
 
-        alertsDisplay(Context context, String[] mtitles, String[] mDescription) {
+        alertsDisplay(Context context, String[] mTitles, String[] mDescription) {
             //noinspection unchecked
-            super(context, R.layout.fragment_alerts, R.id.title_alerts, mtitles);
+            super(context, R.layout.fragment_alerts, R.id.title_alerts, mTitles);
 
-            this.titles_alert = mtitles;
+            this.titles_alert = mTitles;
             this.description_alert = mDescription;
         }
 
@@ -176,6 +179,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
@@ -183,6 +187,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         } else {
             finish();
         }
+
     }
 
     @Override
@@ -215,7 +220,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
         switch (item.getItemId()){
 
             case R.id.nav_dashboard:
-                Home_page fragment_dash = new Home_page();
+                fragment_home_bottom fragment_dash = new fragment_home_bottom();
                 android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment_dash);
                 Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -228,6 +233,14 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 finish();
                 break;
 
+            case R.id.homework:
+                fragment_homework fragment_homework = new fragment_homework();
+                transaction = getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frame_activity, fragment_homework);
+                transaction.addToBackStack("back");
+                transaction.commit();
+                break;
+
             case R.id.nav_attendance:
                 fragment_attendance fragment_attendance = new fragment_attendance();
                 transaction = getSupportFragmentManager().beginTransaction();
@@ -237,7 +250,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.nav_results:
-                startActivity(new Intent(getApplicationContext(), fragment_result.class));
+                startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
                 finish();
                 break;
 
@@ -278,7 +291,7 @@ public class Main_activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.contact_us:
-                startActivity(new Intent(getApplicationContext(), contact_us.class));
+                startActivity(new Intent(getApplicationContext(), Contact_Us.class));
                 break;
 
             case R.id.about_college:

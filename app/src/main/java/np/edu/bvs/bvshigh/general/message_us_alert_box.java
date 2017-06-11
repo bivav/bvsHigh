@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.app.Activity;
 import android.app.Dialog;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+
+import np.edu.bvs.bvshigh.R;
 
 class message_us_alert_box {
 

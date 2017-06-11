@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.students;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.general.fragment_alerts;
+import np.edu.bvs.bvshigh.general.fragment_calendar;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
 import np.edu.bvs.bvshigh.routine_bvs.fragment_routine;
@@ -24,7 +27,6 @@ import np.edu.bvs.bvshigh.routine_bvs.fragment_routine;
 public class Dashboard extends AppCompatActivity {
 
     de.hdodenhof.circleimageview.CircleImageView imageView;
-    Main_activity main_activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,26 +71,24 @@ public class Dashboard extends AppCompatActivity {
                         finish();
                         break;
                     case 2:
-                        startActivity(new Intent(getApplicationContext(), fragment_result.class));
+                        startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
                         finish();
                         break;
                     case 3:
-                        startActivity(new Intent(getApplicationContext(), fragment_result.class));
+                        startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
                         finish();
                         break;
                     case 4:
-                        startActivity(new Intent(getApplicationContext(), fragment_result.class));
+                        startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
                         finish();
                         break;
                     case 5:
                         startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
                         finish();
                         break;
-
                 }
             }
         });
-
     }
 
     public void loadImageFromStorage(String pathImg) {

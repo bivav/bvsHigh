@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

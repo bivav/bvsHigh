@@ -9,10 +9,9 @@ import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 
-import np.edu.bvs.bvshigh.Main_activity;
+import np.edu.bvs.bvshigh.general.Main_Activity;
 import np.edu.bvs.bvshigh.R;
 
 import static android.content.ContentValues.TAG;
@@ -34,7 +33,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     private void createNotification(String messageBody) {
 
-        Intent intent = new Intent( this , Main_activity.class );
+        Intent intent = new Intent( this , Main_Activity.class );
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent resultIntent = PendingIntent.getActivity(this , 0, intent, PendingIntent.FLAG_ONE_SHOT);
 

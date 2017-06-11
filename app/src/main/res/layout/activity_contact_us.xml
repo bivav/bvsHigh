@@ -5,7 +5,7 @@
     android:id="@+id/activity_contact_us"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="np.edu.bvs.bvshigh.contact_us">
+    tools:context="np.edu.bvs.bvshigh.general.Contact_Us">
 
     <include
         android:id="@+id/toolbar"

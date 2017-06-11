@@ -34,7 +34,7 @@ import android.widget.TextView;
 import np.edu.bvs.bvshigh.R;
 
 /**
- * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
+ * To be used with ViewPager to provide a tab indicator component which give constant Feedback as to
  * the user's scroll progress.
  * <p>
  * To use the component, simply add it to your view hierarchy. Then in your

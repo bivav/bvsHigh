@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,6 +20,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import np.edu.bvs.bvshigh.R;
 
 public class fragment_events extends Fragment {
 

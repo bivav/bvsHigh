@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="np.edu.bvs.bvshigh.fragment_calendar">
+    tools:context="np.edu.bvs.bvshigh.general.fragment_calendar">
 
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar"/>

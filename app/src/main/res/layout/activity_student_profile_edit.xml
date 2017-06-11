@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context="np.edu.bvs.bvshigh.login_sharedPref.Student_Profile">
+    tools:context="np.edu.bvs.bvshigh.students.Student_Profile">
 
     <include
         android:id="@+id/toolbar"

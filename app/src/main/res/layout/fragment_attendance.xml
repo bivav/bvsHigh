@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="np.edu.bvs.bvshigh.fragment_attendance">
+    tools:context="np.edu.bvs.bvshigh.students.fragment_attendance">
 
 
     <TextView

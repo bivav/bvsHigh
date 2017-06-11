@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.students;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,7 +12,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class fragment_result extends AppCompatActivity {
+import np.edu.bvs.bvshigh.general.Main_Activity;
+import np.edu.bvs.bvshigh.R;
+
+public class fragment_result_student extends AppCompatActivity {
 
     String[] monthly_test = {"Date: 02/04/2017", "Date: 04/05/2017", "Date: 06/06/2017", "Date: 08/07/2017","Date: 10/08/2017"};
     String[] main_exam = {"First Term","Second Term", "Pre Board", "Final Exam"};
@@ -141,7 +144,7 @@ public class fragment_result extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), Main_activity.class));
+        startActivity(new Intent(getApplicationContext(), Main_Activity.class));
         finish();
     }
 }

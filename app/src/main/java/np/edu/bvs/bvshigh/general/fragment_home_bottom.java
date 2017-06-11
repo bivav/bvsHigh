@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -7,12 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout;
 
-public class Home_page extends android.support.v4.app.Fragment {
+public class fragment_home_bottom extends android.support.v4.app.Fragment {
 
     ViewPager pager;
-    home_sliding_adapter adapter;
+    Home_Adapter adapter;
     SlidingTabLayout tabs;
     CharSequence Titles[] = {"Today's Class", "Homework"};
     int NumbofTabs =2;
@@ -23,7 +24,7 @@ public class Home_page extends android.support.v4.app.Fragment {
 
         if (view == null) {
             view = inflater.inflate(R.layout.activity_main, container, false);
-            adapter = new home_sliding_adapter(getFragmentManager(), Titles, NumbofTabs);
+            adapter = new Home_Adapter(getFragmentManager(), Titles, NumbofTabs);
 
             pager = (ViewPager)view.findViewById(R.id.home_pager);
             pager.setAdapter(adapter);

@@ -90,8 +90,6 @@
         android:textSize="16sp" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:border_color="#FF0000"
         android:id="@+id/user_pic"
         android:src="@drawable/image"
         android:layout_width="110dp"

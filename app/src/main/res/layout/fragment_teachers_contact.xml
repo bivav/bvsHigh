@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="np.edu.bvs.bvshigh.fragment_Teachers_Contact">
+    tools:context="np.edu.bvs.bvshigh.general.fragment_Teachers_Contact">
 
     <np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout
         android:id="@+id/slide_tab"

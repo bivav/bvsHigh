@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import np.edu.bvs.bvshigh.Main_activity;
+import np.edu.bvs.bvshigh.general.Main_Activity;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout;
 
@@ -123,7 +123,7 @@ public class fragment_routine extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), Main_activity.class));
+        startActivity(new Intent(getApplicationContext(), Main_Activity.class));
         finish();
     }
 

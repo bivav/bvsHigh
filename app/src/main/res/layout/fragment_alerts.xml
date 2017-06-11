@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    tools:context="np.edu.bvs.bvshigh.fragment_alerts">
+    tools:context="np.edu.bvs.bvshigh.general.fragment_alerts">
 
 
     <TextView

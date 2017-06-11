@@ -4,6 +4,7 @@
 
     <group
         android:checkableBehavior="single">
+
         <item
             android:id="@+id/nav_dashboard"
             android:icon="@drawable/ic_menu_dashboard"
@@ -13,26 +14,37 @@
             android:id="@+id/nav_routine"
             android:icon="@drawable/icons_routine"
             android:title="@string/routine" />
+
+        <item
+            android:id="@+id/homework"
+            android:title="@string/homework"
+            android:icon="@drawable/ic_assignment"/>
+
         <item
             android:id="@+id/nav_attendance"
             android:icon="@drawable/ic_menu_attendance"
             android:title="@string/attendance" />
+
         <item
             android:id="@+id/nav_results"
             android:icon="@drawable/ic_menu_results"
             android:title="@string/results" />
+
         <item
             android:id="@+id/nav_fees"
             android:icon="@drawable/ic_menu_fees"
             android:title="@string/tution_fees" />
+
         <item
             android:id="@+id/nav_events"
             android:icon="@drawable/ic_menu_events"
             android:title="@string/events" />
+
         <item
             android:id="@+id/nav_alerts"
             android:icon="@drawable/ic_menu_alert"
             android:title="@string/alerts" />
+
         <item
             android:id="@+id/nav_calendar"
             android:icon="@drawable/ic_menu_calendar"

@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 
 import android.content.Intent;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+
+import np.edu.bvs.bvshigh.R;
 
 public class fragment_calendar extends AppCompatActivity {
 
@@ -32,7 +34,7 @@ public class fragment_calendar extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), Main_activity.class));
+        startActivity(new Intent(getApplicationContext(), Main_Activity.class));
         finish();
     }
 

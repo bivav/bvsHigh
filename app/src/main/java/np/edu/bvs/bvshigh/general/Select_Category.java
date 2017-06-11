@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
+import np.edu.bvs.bvshigh.students.Dashboard;
 
 public class Select_Category extends AppCompatActivity {
 

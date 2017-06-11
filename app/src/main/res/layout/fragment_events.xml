@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="np.edu.bvs.bvshigh.fragment_events">
+    tools:context="np.edu.bvs.bvshigh.general.fragment_events">
 
     <ListView
         android:layout_width="match_parent"

@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 
 import android.os.Bundle;
@@ -7,19 +7,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import np.edu.bvs.bvshigh.R;
 
-public class fragment_attendance extends Fragment {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class fragment_teacher_contact_science extends Fragment {
 
 
-    public fragment_attendance() {
+    public fragment_teacher_contact_science() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_attendance, container, false);
+        return inflater.inflate(R.layout.fragment_teacher_contact_science, container, false);
     }
 
 }

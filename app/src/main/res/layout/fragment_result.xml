@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="#f0f0f0"
     android:weightSum="2"
-    tools:context="np.edu.bvs.bvshigh.fragment_result">
+    tools:context="np.edu.bvs.bvshigh.students.fragment_result_student">
 
     <include
         layout="@layout/toolbar"

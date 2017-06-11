@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,8 +26,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
+import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.login_sharedPref.Student_Profile;
+import np.edu.bvs.bvshigh.students.Student_Profile;
 
 public class fragment_home_top extends Fragment {
 
@@ -35,12 +36,12 @@ public class fragment_home_top extends Fragment {
     Button view_profile;
     de.hdodenhof.circleimageview.CircleImageView imageView;
     private static int RESULT_LOAD_IMAGE = 1;
-    Main_activity mActivity;
+    Main_Activity mActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivity = (Main_activity)this.getActivity();
+        mActivity = (Main_Activity)this.getActivity();
     }
 
     @Override

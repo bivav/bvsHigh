@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    tools:context="np.edu.bvs.bvshigh.message_to_school">
+    tools:context="np.edu.bvs.bvshigh.general.message_to_school">
 
     <TextView
         android:text="@string/message_college"

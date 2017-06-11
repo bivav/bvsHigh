@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.general.Constants;
 import np.edu.bvs.bvshigh.R;
 
 

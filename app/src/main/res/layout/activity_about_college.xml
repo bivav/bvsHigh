@@ -4,7 +4,7 @@
     android:id="@+id/activity_about_college"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="np.edu.bvs.bvshigh.about_college">
+    tools:context="np.edu.bvs.bvshigh.general.about_college">
 
     <include
         android:id="@+id/toolbar"

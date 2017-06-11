@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.login_sharedPref;
+package np.edu.bvs.bvshigh.students;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
 
 public class Student_Profile extends AppCompatActivity {
 

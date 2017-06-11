@@ -21,9 +21,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import np.edu.bvs.bvshigh.Constants;
-import np.edu.bvs.bvshigh.Dashboard;
-import np.edu.bvs.bvshigh.Main_activity;
+import np.edu.bvs.bvshigh.general.Constants;
+import np.edu.bvs.bvshigh.students.Dashboard;
 import np.edu.bvs.bvshigh.R;
 
 public class Login_Student extends AppCompatActivity implements View.OnClickListener{

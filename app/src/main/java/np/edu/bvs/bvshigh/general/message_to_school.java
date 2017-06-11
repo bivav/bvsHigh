@@ -1,7 +1,9 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import np.edu.bvs.bvshigh.R;
 
 public class message_to_school extends AppCompatActivity {
 

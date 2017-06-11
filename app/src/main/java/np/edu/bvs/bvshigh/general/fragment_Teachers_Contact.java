@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout;
 
 public class fragment_Teachers_Contact extends Fragment {

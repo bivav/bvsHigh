@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh;
+package np.edu.bvs.bvshigh.general;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,16 +15,15 @@ import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_sun;
 import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_thur;
 import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_tue;
 import np.edu.bvs.bvshigh.routine_bvs.fragment_routine_wed;
+import np.edu.bvs.bvshigh.students.fragment_homework;
 
-class home_sliding_adapter extends FragmentStatePagerAdapter {
+class Home_Adapter extends FragmentStatePagerAdapter {
 
     private int NumOfTabs;
     private CharSequence Titles[];
 
-
-    home_sliding_adapter(FragmentManager fm, CharSequence titles[], int numOfTabs) {
+    Home_Adapter(FragmentManager fm, CharSequence titles[], int numOfTabs) {
         super(fm);
-
         this.Titles = titles;
         this.NumOfTabs = numOfTabs;
     }
@@ -64,7 +63,7 @@ class home_sliding_adapter extends FragmentStatePagerAdapter {
         }
 
         else
-            return new fragment_home_bottom_2();
+            return new fragment_homework();
     }
 
     public CharSequence getPageTitle(int position){

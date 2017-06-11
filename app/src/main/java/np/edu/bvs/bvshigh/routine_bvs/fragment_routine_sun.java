@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import np.edu.bvs.bvshigh.Constants;
+import np.edu.bvs.bvshigh.general.Constants;
 import np.edu.bvs.bvshigh.sqLite_handler.DatabaseManager;
 import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
 import np.edu.bvs.bvshigh.R;
