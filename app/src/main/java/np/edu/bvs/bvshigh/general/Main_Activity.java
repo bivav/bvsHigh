@@ -37,12 +37,13 @@ import java.util.Date;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine;
+import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine;
 import np.edu.bvs.bvshigh.students.Dashboard;
 import np.edu.bvs.bvshigh.students.fragment_attendance;
 import np.edu.bvs.bvshigh.students.fragment_fees;
 import np.edu.bvs.bvshigh.students.fragment_homework;
 import np.edu.bvs.bvshigh.students.fragment_result_student;
+import np.edu.bvs.bvshigh.teachers.fragment_assignment;
 
 import static android.content.ContentValues.TAG;
 
@@ -74,7 +75,7 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
         if (FirebaseInstanceId.getInstance().getToken() == null) {
             Toast.makeText(this, "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(this, "Welcome!: -> ", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
         }
 
         Log.d(TAG, "DEVICE TOKEN ------> " + displayToken);
@@ -234,11 +235,14 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.homework:
-                fragment_homework fragment_homework = new fragment_homework();
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_activity, fragment_homework);
-                transaction.addToBackStack("back");
-                transaction.commit();
+
+                startActivity(new Intent(getApplicationContext(), fragment_assignment.class));
+
+//                fragment_homework fragment_homework = new fragment_homework();
+//                transaction = getSupportFragmentManager().beginTransaction();
+//                transaction.replace(R.id.frame_activity, fragment_homework);
+//                transaction.addToBackStack("back");
+//                transaction.commit();
                 break;
 
             case R.id.nav_attendance:

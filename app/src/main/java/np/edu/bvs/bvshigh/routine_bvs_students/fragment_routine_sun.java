@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.routine_bvs;
+package np.edu.bvs.bvshigh.routine_bvs_students;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -30,25 +30,25 @@ import java.util.Date;
 import java.util.List;
 
 import np.edu.bvs.bvshigh.general.Constants;
-import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sqLite_handler.DatabaseManager;
 import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
+import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sqLite_handler.Routine_Database;
 
-
-public class fragment_routine_tue extends Fragment {
+public class fragment_routine_sun extends Fragment{
 
     ListView listView;
-    String address = Constants.URL_Routine_Sci_Bio_11_TUE;
+    String address = Constants.URL_Routine_Sci_Bio_11_SUN;
     InputStream inputStream;
     String line, result;
     String[] start_time, end_time, subject, teacher;
     DatabaseManager dbManager;
     MyDBHandler handler;
     SQLiteDatabase sqLiteDatabase;
-    String TAG = "routineTUE";
+    String TAG = "routineSUN";
     View cv;
     List<Routine_Database> routine_list = new ArrayList<>();
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -60,24 +60,24 @@ public class fragment_routine_tue extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_routine_customlist_view, container, false);
 
-        String current_date_pull = DateFormat.getDateInstance().format(new Date());
-
         TextView current_date = (TextView)view.findViewById(R.id.current_date);
         TextView current_day = (TextView)view.findViewById(R.id.current_day);
+
+        String current_date_pull = DateFormat.getDateInstance().format(new Date());
 
         handler = new MyDBHandler(getContext(), null, null, 1);
 
         current_date.setText(current_date_pull);
-        current_day.setText(getResources().getString(R.string.tuesday));
+        current_day.setText(getResources().getString(R.string.sunday));
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_tue, true)) {
-            routine_list = dbManager.gettingAllDataTUE();
-            routineAdapter adapter = new routineAdapter(getContext(), routine_list);
+        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_sun, true)) {
+            routine_list = dbManager.gettingAllDataSUN();
+            routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
         }
-        else{
+        else {
             // Getting Routine from background
             GetResultFromServer getResult = new GetResultFromServer();
             getResult.execute();
@@ -97,15 +97,15 @@ public class fragment_routine_tue extends Fragment {
         @Override
         protected void onPostExecute(String resultData) {
 
-            routine_list = dbManager.gettingAllDataTUE();
+            routine_list = dbManager.gettingAllDataSUN();
             routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
+
         }
     }
 
     public String GetDataFromServer() {
         try {
-
             // Get url and open the connection
             URL url = new URL(address);
             HttpURLConnection con = (HttpURLConnection)url.openConnection();
@@ -133,10 +133,8 @@ public class fragment_routine_tue extends Fragment {
 
             // the data are converted as a string JSON
             result = stringBuilder.toString();
+            Log.i("SUNDAY_routine", result);
 
-            Log.i("TUESDAY_RESULT", result);
-
-            Log.i("TUESDAY_routine", result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -156,8 +154,8 @@ public class fragment_routine_tue extends Fragment {
             sqLiteDatabase = getContext().openOrCreateDatabase("bvs_high.db", Context.MODE_PRIVATE, null);
 
             if (sqLiteDatabase != null) {
-                sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_tue);
-                sqLiteDatabase.execSQL(MyDBHandler.tue_routine_table());
+                sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_sun);
+                sqLiteDatabase.execSQL(MyDBHandler.sun_routine_table());
 
                 for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -168,7 +166,7 @@ public class fragment_routine_tue extends Fragment {
                     teacher[i] = jsonObject.getString("teacher");
 
                     Routine_Database routine_database = new Routine_Database(start_time[i], end_time[i], subject[i], teacher[i]);
-                    dbManager.saveDataTUE(routine_database);
+                    dbManager.saveDataSUN(routine_database);
                     Log.i(TAG, "DATA in json Format : " + start_time[i]);
                 }
             } else {
@@ -193,9 +191,8 @@ public class fragment_routine_tue extends Fragment {
         private final List<Routine_Database> list;
 
         routineAdapter(Context context, List<Routine_Database> list) {
-            super(context, R.layout.fragment_routine_tue, list);
+            super(context, R.layout.fragment_routine_sun, list);
             this.list = list;
-
         }
 
         class ViewHolder {
@@ -214,7 +211,7 @@ public class fragment_routine_tue extends Fragment {
 
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.fragment_routine_tue, parent, false);
+                convertView = inflater.inflate(R.layout.fragment_routine_sun, parent, false);
 
                 viewholder = new ViewHolder();
 
@@ -256,6 +253,5 @@ public class fragment_routine_tue extends Fragment {
     public void onDestroy() {
         super.onDestroy();
     }
+
 }
-
-

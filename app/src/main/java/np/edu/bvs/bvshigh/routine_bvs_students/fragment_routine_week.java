@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.routine_bvs;
+package np.edu.bvs.bvshigh.routine_bvs_students;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

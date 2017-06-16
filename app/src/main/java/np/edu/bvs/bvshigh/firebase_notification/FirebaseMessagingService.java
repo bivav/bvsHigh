@@ -1,5 +1,6 @@
 package np.edu.bvs.bvshigh.firebase_notification;
 
+import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -13,12 +14,12 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import np.edu.bvs.bvshigh.general.Main_Activity;
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.general.fragment_alerts;
 
 import static android.content.ContentValues.TAG;
 
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService{
-
 
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
@@ -28,13 +29,14 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         //create notification
         createNotification(remoteMessage.getNotification().getBody());
-//        showNotification(remoteMessage.getData().get("message"));
+
     }
 
     private void createNotification(String messageBody) {
 
-        Intent intent = new Intent( this , Main_Activity.class );
+        Intent intent = new Intent( this , fragment_alerts.class );
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         PendingIntent resultIntent = PendingIntent.getActivity(this , 0, intent, PendingIntent.FLAG_ONE_SHOT);
 
         Uri notificationSoundURI = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -43,6 +45,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 .setContentTitle("From Admin")
                 .setContentText(messageBody)
                 .setAutoCancel(true)
+                .setPriority(Notification.PRIORITY_MAX)
                 .setSound(notificationSoundURI)
                 .setContentIntent(resultIntent);
 

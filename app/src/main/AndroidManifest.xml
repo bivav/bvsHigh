@@ -38,6 +38,7 @@
 
         <service
             android:name=".firebase_notification.FirebaseNotificationListener"
+            android:label="@string/service_name"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
@@ -88,9 +89,16 @@
 
 
         <activity
-            android:name=".routine_bvs.fragment_routine"
+            android:name=".routine_bvs_students.fragment_routine"
             android:label="@string/routine_big"
             android:parentActivityName=".general.Main_Activity">
+        </activity>
+
+        <activity
+            android:parentActivityName=".general.Main_Activity"
+            android:label="@string/homework"
+            android:hardwareAccelerated="true"
+            android:name=".teachers.fragment_assignment">
         </activity>
 
 

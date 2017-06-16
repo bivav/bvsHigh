@@ -11,6 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,7 +24,7 @@ import np.edu.bvs.bvshigh.general.fragment_alerts;
 import np.edu.bvs.bvshigh.general.fragment_calendar;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine;
+import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine;
 
 
 public class Dashboard extends AppCompatActivity {
@@ -35,6 +38,13 @@ public class Dashboard extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        String displayToken = FirebaseInstanceId.getInstance().getToken();
+        if (FirebaseInstanceId.getInstance().getToken() == null) {
+            Toast.makeText(this, "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(this, "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
+        }
 
         // check if the user is not logged in -> get the user in login page
         if (!SharedPrefManager.getInstance(this).isLoggedIn()){

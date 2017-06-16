@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.routine_bvs;
+package np.edu.bvs.bvshigh.routine_bvs_students;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -35,18 +35,17 @@ import np.edu.bvs.bvshigh.sqLite_handler.DatabaseManager;
 import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
 import np.edu.bvs.bvshigh.sqLite_handler.Routine_Database;
 
-
-public class fragment_routine_wed extends Fragment {
+public class fragment_routine_fri extends Fragment {
 
     ListView listView;
-    String address = Constants.URL_Routine_Sci_Bio_11_WED;
+    String address = Constants.URL_Routine_Sci_Bio_11_FRI;
     InputStream inputStream;
     String line, result;
     String[] start_time, end_time, subject, teacher;
     DatabaseManager dbManager;
     MyDBHandler handler;
     SQLiteDatabase sqLiteDatabase;
-    String TAG = "routineWEDNESDAY";
+    String TAG = "routineFRINESDAY";
     View cv;
     List<Routine_Database> routine_list = new ArrayList<>();
 
@@ -68,12 +67,12 @@ public class fragment_routine_wed extends Fragment {
         handler = new MyDBHandler(getContext(), null, null, 1);
 
         current_date.setText(current_date_pull);
-        current_day.setText(getResources().getString(R.string.wednesday));
+        current_day.setText(getResources().getString(R.string.friday));
 
         listView = (ListView)view.findViewById(R.id.routine_display);
 
-        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_wed, true)) {
-            routine_list = dbManager.gettingAllDataWED();
+        if (dbManager.isTableExists(MyDBHandler.TABLE_routine_sci_11_bio_fri, true)) {
+            routine_list = dbManager.gettingAllDataFRI();
             routineAdapter adapter = new routineAdapter(getContext(), routine_list);
             listView.setAdapter(adapter);
         }
@@ -91,6 +90,12 @@ public class fragment_routine_wed extends Fragment {
         @Override
         protected String doInBackground(String... strings) {
 
+//            if (!isConnected()) {
+//                GetDataFromServer();
+//                Log.i(TAG, "THEEEEEEEEEEEEEEEEE FUCKKKKKKKKKKKKKKKKKKKKKKKKKK");
+//            } else {
+//                Log.i(TAG, "FUCK YESS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//            }
             GetDataFromServer();
             return null;
         }
@@ -98,7 +103,7 @@ public class fragment_routine_wed extends Fragment {
         @Override
         protected void onPostExecute(String resultData) {
 
-            routine_list = dbManager.gettingAllDataWED();
+            routine_list = dbManager.gettingAllDataFRI();
             Log.i(TAG, String.valueOf(routine_list));
             routineAdapter adapter = new routineAdapter(getActivity(), routine_list);
             listView.setAdapter(adapter);
@@ -136,9 +141,9 @@ public class fragment_routine_wed extends Fragment {
             // the data are converted as a string JSON
             result = stringBuilder.toString();
 
-            Log.i("WED_RESULT", result);
+            Log.i("FRI_RESULT", result);
 
-            Log.i("WED_routine", result);
+            Log.i("FRI_routine", result);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -158,8 +163,8 @@ public class fragment_routine_wed extends Fragment {
             sqLiteDatabase = getContext().openOrCreateDatabase("bvs_high.db", Context.MODE_PRIVATE, null);
 
             if (sqLiteDatabase != null) {
-                sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_wed);
-                sqLiteDatabase.execSQL(MyDBHandler.wed_routine_table());
+                sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + MyDBHandler.TABLE_routine_sci_11_bio_fri);
+                sqLiteDatabase.execSQL(MyDBHandler.fri_routine_table());
 
                 for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -170,7 +175,7 @@ public class fragment_routine_wed extends Fragment {
                     teacher[i] = jsonObject.getString("teacher");
 
                     Routine_Database routine_database = new Routine_Database(start_time[i], end_time[i], subject[i], teacher[i]);
-                    dbManager.saveDataWED(routine_database);
+                    dbManager.saveDataFRI(routine_database);
                     Log.i(TAG, "DATA in json Format : " + start_time[i]);
                 }
             } else {
@@ -195,7 +200,7 @@ public class fragment_routine_wed extends Fragment {
         private final List<Routine_Database> list;
 
         routineAdapter(Context context, List<Routine_Database> list) {
-            super(context, R.layout.fragment_routine_wed, list);
+            super(context, R.layout.fragment_routine_fri, list);
             this.list = list;
 
         }
@@ -216,7 +221,7 @@ public class fragment_routine_wed extends Fragment {
 
             if (convertView == null) {
                 LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = inflater.inflate(R.layout.fragment_routine_wed, parent, false);
+                convertView = inflater.inflate(R.layout.fragment_routine_fri, parent, false);
 
                 viewholder = new ViewHolder();
 
@@ -258,6 +263,5 @@ public class fragment_routine_wed extends Fragment {
     public void onDestroy() {
         super.onDestroy();
     }
+
 }
-
-

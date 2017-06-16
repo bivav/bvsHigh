@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -106,9 +107,8 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
                         progressDialog.dismiss();
-                        Toast.makeText(getApplicationContext(), "Can't Connect. Please try again.",
+                        Toast.makeText(getApplicationContext(), "Can't Connect. Error : "+ error,
                                 Toast.LENGTH_LONG).show();
                     }
                 })
@@ -123,6 +123,11 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
                 return params;
             }
         };
+
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                4000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
         Request_Queue_Handler.getInstance(this).addToRequestQueue(stringRequest);
 

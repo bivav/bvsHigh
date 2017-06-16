@@ -23,7 +23,7 @@ import np.edu.bvs.bvshigh.general.fragment_alerts;
 import np.edu.bvs.bvshigh.general.fragment_calendar;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.routine_bvs.fragment_routine;
+import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine;
 import np.edu.bvs.bvshigh.students.fragment_result_student;
 
 

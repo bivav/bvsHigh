@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.routine_bvs;
+package np.edu.bvs.bvshigh.routine_bvs_students;
 
 import android.app.ProgressDialog;
 import android.content.Context;
