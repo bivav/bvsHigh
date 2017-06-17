@@ -2,7 +2,6 @@ package np.edu.bvs.bvshigh.routine_bvs_students;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import np.edu.bvs.bvshigh.general.Main_Activity;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.sliding_tab_layout_strip.SlidingTabLayout;
 
