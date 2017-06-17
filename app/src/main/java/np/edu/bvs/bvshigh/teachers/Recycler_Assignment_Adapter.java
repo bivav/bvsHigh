@@ -16,7 +16,8 @@ import java.util.List;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.interf.onMoveAndSwipedListener;
 
-class Recycler_Assignment_Adapter extends RecyclerView.Adapter<Recycler_Assignment_Adapter.DetailsHolder> implements onMoveAndSwipedListener {
+class Recycler_Assignment_Adapter extends RecyclerView.Adapter<Recycler_Assignment_Adapter.DetailsHolder>
+        implements onMoveAndSwipedListener {
 
     private List<fragment_assignment.Assignment_Details> detailsList;
     protected int color;

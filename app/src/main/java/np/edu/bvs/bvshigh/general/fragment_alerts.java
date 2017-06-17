@@ -1,15 +1,11 @@
 package np.edu.bvs.bvshigh.general;
 
-
-import android.app.Notification;
-import android.content.BroadcastReceiver;
+import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -20,29 +16,31 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.DateFormat;
 import java.util.Date;
 
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.login_sharedPref.Request_Queue_Handler;
 
 
 public class fragment_alerts extends AppCompatActivity {
 
-    String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12", "Come and Enjoy"};
-    String[] description_alert =
-            {
-                    "Results for class 11 is out. Please check results tab and refresh to download the result",
-                    "Routine has been updated for grade 12. Kindly update.",
-                    "Welcome to BVS to all students!! Hope you have a good time."
-            };
-
-    ListView alerts_display;
-    TextView alerts, sub_text;
+    private ListView alerts_display;
     public static String INTENT_ACTION_NOTIFICATION = "np.edu.bvs.bvshigh.general.notification";
-
-    private MyReceiver myReceiver;
-    String notificationTitle;
-    CharSequence notificationText;
+    private String[] notification_titles, notification_message;
+    private String TAG = "notificationData";
+    private alertsDisplay alertsDisplay;
+    private ProgressDialog dialog;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,21 +49,87 @@ public class fragment_alerts extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        alerts = (TextView)findViewById(R.id.title_alerts_new);
-        sub_text = (TextView)findViewById(R.id.sub_text_new);
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.update_notifications);
+
+        dialog = new ProgressDialog(fragment_alerts.this);
+        dialog.setIndeterminate(false);
+        dialog.setMessage("Please wait");
+        dialog.setCancelable(false);
+        dialog.show();
 
         alerts_display = (ListView)findViewById(R.id.alerts_display);
-        alertsDisplay alerts = new alertsDisplay(getApplicationContext(), titles_alert, description_alert);
-        alerts_display.setAdapter(alerts);
 
-        myReceiver = new MyReceiver();
-        registerReceiver(myReceiver, new IntentFilter(INTENT_ACTION_NOTIFICATION));
+        pullNotification();
 
+        swipeRefreshLayout.setColorSchemeColors(
+                ContextCompat.getColor(this, R.color.google_red),
+                ContextCompat.getColor(this, R.color.google_yellow),
+                ContextCompat.getColor(this, R.color.google_blue),
+                ContextCompat.getColor(this, R.color.google_green)
+        );
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                pullNotification();
+            }
+        });
+
+    }
+
+    private void pullNotification(){
+
+        StringRequest request = new StringRequest(Request.Method.POST,
+                Constants.URL_NOTIFICATIONS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject;
+
+                            notification_titles = new String[jsonArray.length()];
+                            notification_message = new String[jsonArray.length()];
+
+                            for (int i = 0; i<jsonArray.length(); i++) {
+
+                                jsonObject = jsonArray.getJSONObject(i);
+                                notification_titles[i] = jsonObject.getString("titles");
+                                notification_message[i] = jsonObject.getString("notifications");
+                                Log.i(TAG, notification_titles[i] + " --- " + notification_message[i]);
+
+                            }
+
+                            alertsDisplay = new alertsDisplay(getApplicationContext(),
+                                    notification_titles,
+                                    notification_message);
+
+                            alerts_display.setAdapter(alertsDisplay);
+
+                            dialog.dismiss();
+                            swipeRefreshLayout.setRefreshing(false);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "NO Notifications are available");
+
+            }
+        });
+
+        Request_Queue_Handler.getInstance(this).addToRequestQueue(request);
     }
 
     private class alertsDisplay extends ArrayAdapter {
@@ -73,69 +137,61 @@ public class fragment_alerts extends AppCompatActivity {
         String[] titles_alert;
         String[] description_alert;
 
-        alertsDisplay(Context context, String[] mtitles, String[] mDescription) {
+        alertsDisplay(Context context, String[] mTitles, String[] mDescription) {
             //noinspection unchecked
-            super(context, R.layout.fragment_alerts, R.id.title_alerts, mtitles);
+            super(context, R.layout.fragment_alerts, R.id.title_alerts, mTitles);
 
-            this.titles_alert = mtitles;
+            this.titles_alert = mTitles;
             this.description_alert = mDescription;
+        }
+
+        class ViewHolder {
+            protected TextView titles;
+            TextView description;
+
         }
 
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-            LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.fragment_alerts, parent, false);
+            ViewHolder viewHolder;
 
-            String date = DateFormat.getDateInstance().format(new Date());
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.fragment_alerts, parent, false);
 
-            TextView alert_date = (TextView)view.findViewById(R.id.alert_date);
-            alert_date.setText(date);
+                viewHolder = new ViewHolder();
 
-            TextView titles = (TextView)view.findViewById(R.id.title_alerts);
-            TextView description = (TextView)view.findViewById(R.id.alert_description);
+                String date = DateFormat.getDateInstance().format(new Date());
 
-            titles.setText(titles_alert[position]);
-            description.setText(description_alert[position]);
+                TextView alert_date = (TextView) convertView.findViewById(R.id.alert_date);
+                alert_date.setText(date);
 
-            return view;
-        }
-    }
+                viewHolder.titles = (TextView) convertView.findViewById(R.id.title_alerts);
+                viewHolder.description = (TextView) convertView.findViewById(R.id.alert_description);
 
-    public class MyReceiver extends BroadcastReceiver {
+                convertView.setTag(viewHolder);
+                convertView.setTag(R.id.title_alerts, viewHolder.titles);
+                convertView.setTag(R.id.alert_description, viewHolder.description);
 
-        @Override
-        public void onReceive(Context context, Intent intent) {
-
-            if (intent != null) {
-                Bundle extras = intent.getExtras();
-                notificationTitle = extras.getString(Notification.EXTRA_TITLE);
-                notificationText = extras.getCharSequence(Notification.EXTRA_TEXT);
-
-                Log.i("testingNotification", notificationTitle + "___" + notificationText);
-
-                alerts.setText(notificationTitle);
-                sub_text.setText(notificationText);
             } else {
-                Log.i("elseResult", notificationTitle + " ___ " + notificationText);
-
+                viewHolder = (ViewHolder)convertView.getTag();
             }
+
+            viewHolder.titles.setTag(position);
+            viewHolder.titles.setText(titles_alert[position]);
+            viewHolder.description.setTag(position);
+            viewHolder.description.setText(description_alert[position]);
+
+            Log.i("alerts are as follows", titles_alert[position] + " --- " + description_alert[position]);
+
+            return convertView;
         }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        if (myReceiver == null) myReceiver = new MyReceiver();
-        registerReceiver(myReceiver, new IntentFilter(INTENT_ACTION_NOTIFICATION));
+    public void onBackPressed() {
+        super.onBackPressed();
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i("testingNotification", notificationTitle + " ___ " + notificationText);
-        unregisterReceiver(myReceiver);
-    }
-
 }

@@ -25,6 +25,7 @@ import np.edu.bvs.bvshigh.general.fragment_calendar;
 import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
 import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
 import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine;
+import np.edu.bvs.bvshigh.teachers.fragment_assignment;
 
 
 public class Dashboard extends AppCompatActivity {
@@ -74,27 +75,21 @@ public class Dashboard extends AppCompatActivity {
                 switch (position) {
                     case 0:
                         startActivity(new Intent(getApplicationContext(), fragment_routine.class));
-                        finish();
                         break;
                     case 1:
                         startActivity(new Intent(getApplicationContext(), fragment_alerts.class));
-                        finish();
                         break;
                     case 2:
                         startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
-                        finish();
                         break;
                     case 3:
-                        startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
-                        finish();
+                        startActivity(new Intent(getApplicationContext(), fragment_assignment.class));
                         break;
                     case 4:
                         startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
-                        finish();
                         break;
                     case 5:
                         startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
-                        finish();
                         break;
                 }
             }

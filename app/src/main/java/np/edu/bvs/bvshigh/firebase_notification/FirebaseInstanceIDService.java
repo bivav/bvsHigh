@@ -7,6 +7,8 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import java.io.IOException;
+
+import np.edu.bvs.bvshigh.general.Constants;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -38,7 +40,7 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://mitocha.com/bvs_high/fcm_bvs/register.php")
+                .url(Constants.URL_TOKEN_REGISTRATION)
                 .post(body)
                 .build();
 

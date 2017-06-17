@@ -34,8 +34,7 @@ public class fragment_calendar extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), Main_Activity.class));
-        finish();
+        super.onBackPressed();
     }
 
 }

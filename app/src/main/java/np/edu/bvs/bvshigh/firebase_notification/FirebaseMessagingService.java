@@ -12,9 +12,15 @@ import android.util.Log;
 
 import com.google.firebase.messaging.RemoteMessage;
 
-import np.edu.bvs.bvshigh.general.Main_Activity;
+import java.io.IOException;
+
+import np.edu.bvs.bvshigh.general.Constants;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.general.fragment_alerts;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 import static android.content.ContentValues.TAG;
 
@@ -25,10 +31,14 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         //Log data to Log Cat
         Log.d(TAG, "From: " + remoteMessage.getFrom());
-        Log.d(TAG, "Notification Message Body: " + remoteMessage.getNotification().getBody());
+        Log.d(TAG, "Notification_Message_Body: " + remoteMessage.getNotification().getTitle()
+                + " -- " + remoteMessage.getNotification().getBody());
 
         //create notification
         createNotification(remoteMessage.getNotification().getBody());
+
+        //save title and message into server
+        saveNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
 
     }
 
@@ -50,8 +60,27 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 .setContentIntent(resultIntent);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
         notificationManager.notify(0, mNotificationBuilder.build());
     }
 
+    public void saveNotification(String mTitles, String mNotifications) {
+
+        OkHttpClient client = new OkHttpClient();
+
+        RequestBody requestBody = new FormBody.Builder()
+                .add("titles", mTitles)
+                .add("notifications", mNotifications)
+                .build();
+
+        Request request = new Request.Builder()
+                .url(Constants.URL_SAVE_NOTIFICATIONS)
+                .post(requestBody)
+                .build();
+
+        try {
+            client.newCall(request).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

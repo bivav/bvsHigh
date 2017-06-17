@@ -7,7 +7,6 @@
     android:padding="10dp"
     tools:context="np.edu.bvs.bvshigh.general.fragment_alerts">
 
-
     <TextView
         android:text="@string/welcome"
         android:layout_marginTop="10dp"

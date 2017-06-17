@@ -91,11 +91,11 @@
         <activity
             android:name=".routine_bvs_students.fragment_routine"
             android:label="@string/routine_big"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
         </activity>
 
         <activity
-            android:parentActivityName=".general.Main_Activity"
+            android:parentActivityName=".students.Dashboard"
             android:label="@string/homework"
             android:hardwareAccelerated="true"
             android:name=".teachers.fragment_assignment">
@@ -104,7 +104,7 @@
 
         <activity
             android:name=".general.fragment_calendar"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="np.edu.bvs.bvshigh.general.Main_Activity" />
@@ -114,7 +114,7 @@
             android:name=".students.fragment_result_student"
             android:hardwareAccelerated="true"
             android:label="RESULT"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="np.edu.bvs.bvshigh.general.Main_Activity" />
@@ -122,33 +122,34 @@
 
         <activity
             android:name=".general.Contact_Us"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
         </activity>
 
         <activity
             android:name=".general.about_college"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
         </activity>
 
         <activity
             android:name=".general.fragment_alerts"
             android:label="@string/alerts"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
         </activity>
 
         <activity
             android:name=".general.Feedback"
             android:label="Feedback"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Dashboard">
         </activity>
 
         <activity
             android:name=".general.message_to_school"
-            android:parentActivityName=".general.Main_Activity"
+            android:parentActivityName=".students.Dashboard"
             android:label="@string/message">
         </activity>
 
-        <activity android:name=".students.Dashboard"
+        <activity
+            android:name=".students.Dashboard"
             android:hardwareAccelerated="true" />
 
 

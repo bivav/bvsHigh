@@ -25,7 +25,7 @@ public class fragment_assignment extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.content_recycler_view);
+        setContentView(R.layout.fragment_assignment_recycler);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -96,5 +96,10 @@ public class fragment_assignment extends AppCompatActivity {
         detailsList.add(new Assignment_Details("BVk", "Phy", "This is something"));
 
         Log.i("Testing", String.valueOf(detailsList));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

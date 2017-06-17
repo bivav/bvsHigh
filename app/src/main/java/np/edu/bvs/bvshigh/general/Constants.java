@@ -9,6 +9,9 @@ public class Constants {
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
     public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
 
+    //Token Registering
+    public static final String URL_TOKEN_REGISTRATION = "http://mitocha.com/bvs_high/fcm_bvs/register.php";
+
     // URL for all SCIENCE BIO STUDENTS
     private static final String ROUTINE_URL = "http://mitocha.com/bvs_high/";
 
@@ -18,5 +21,9 @@ public class Constants {
     public static final String URL_Routine_Sci_Bio_11_WED = ROUTINE_URL+"routine_sci_bio_11/wed.php";
     public static final String URL_Routine_Sci_Bio_11_THUR = ROUTINE_URL+"routine_sci_bio_11/thur.php";
     public static final String URL_Routine_Sci_Bio_11_FRI = ROUTINE_URL+"routine_sci_bio_11/fri.php";
+
+    //URL for pulling Notifications from Server
+    static final String URL_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/pullNotification.php";
+    public static final String URL_SAVE_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/saveNotification.php";
 
 }

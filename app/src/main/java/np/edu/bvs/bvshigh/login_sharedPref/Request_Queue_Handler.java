@@ -7,7 +7,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
-class Request_Queue_Handler{
+public class Request_Queue_Handler{
 
     @SuppressLint("StaticFieldLeak")
     private static Request_Queue_Handler mInstance;
