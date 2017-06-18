@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.general;
+package np.edu.bvs.bvshigh.teachers;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -35,18 +35,23 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import np.edu.bvs.bvshigh.R;
-import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
-import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine;
-import np.edu.bvs.bvshigh.students.Dashboard;
-import np.edu.bvs.bvshigh.students.fragment_attendance;
-import np.edu.bvs.bvshigh.students.fragment_fees;
+import np.edu.bvs.bvshigh.general.Contact_Us;
+import np.edu.bvs.bvshigh.general.Select_Category;
+import np.edu.bvs.bvshigh.general.SharedPrefManager;
+import np.edu.bvs.bvshigh.general.about_college;
+import np.edu.bvs.bvshigh.general.fragment_alerts;
+import np.edu.bvs.bvshigh.general.fragment_calendar;
+import np.edu.bvs.bvshigh.general.fragment_events;
+import np.edu.bvs.bvshigh.general.message_us_alert_box;
+import np.edu.bvs.bvshigh.students.Dashboard_Students;
+import np.edu.bvs.bvshigh.students.fragment_home_bottom;
 import np.edu.bvs.bvshigh.students.fragment_result_student;
-import np.edu.bvs.bvshigh.teachers.fragment_assignment;
+import np.edu.bvs.bvshigh.students.login_students.Login_Student;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
 
 import static android.content.ContentValues.TAG;
 
-public class Main_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Main_Activity_Teachers extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     /**Right Slide Alert Function Values**/
     String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
@@ -63,7 +68,7 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_drawer);
+        setContentView(R.layout.activity_navigation_drawer_teachers);
 
         // Initialize the Firebase messaging service by passing subscribeToTopic method
         FirebaseMessaging.getInstance().subscribeToTopic("message");
@@ -83,13 +88,13 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
         setSupportActionBar(toolbar);
 
         // check if the user is not logged in -> get the user in login page
-        if (!SharedPrefManager.getInstance(this).isLoggedIn()){
+        if (!SharedPrefManager.getInstance(this).isLoggedInTeachers()){
             finish();
             startActivity(new Intent(getApplicationContext(), Login_Student.class));
         }
 
         // Main Homepage activity aka Dashboard
-        fragment_home_bottom fragment = new fragment_home_bottom();
+        Dashboard_Teacher fragment = new Dashboard_Teacher();
         android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_activity, fragment);
         transaction.commit();
@@ -230,41 +235,14 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_routine:
                 startActivity(new Intent(getApplicationContext(), fragment_routine.class));
-                finish();
                 break;
 
-            case R.id.homework:
-
+            case R.id.assignment:
                 startActivity(new Intent(getApplicationContext(), fragment_assignment.class));
-
-//                fragment_homework fragment_homework = new fragment_homework();
-//                transaction = getSupportFragmentManager().beginTransaction();
-//                transaction.replace(R.id.frame_activity, fragment_homework);
-//                transaction.addToBackStack("back");
-//                transaction.commit();
-                break;
-
-            case R.id.nav_attendance:
-                fragment_attendance fragment_attendance = new fragment_attendance();
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_activity, fragment_attendance);
-                transaction.addToBackStack("BACK");
-                transaction.commit();
                 break;
 
             case R.id.nav_results:
                 startActivity(new Intent(getApplicationContext(), fragment_result_student.class));
-                finish();
-                break;
-
-            case R.id.nav_fees:
-                fragment_fees fragment_fees = new fragment_fees();
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_activity, fragment_fees);
-                toolbar = (Toolbar) findViewById(R.id.toolbar);
-                toolbar.setTitle(getResources().getString(R.string.events));
-                transaction.addToBackStack("BACK");
-                transaction.commit();
                 break;
 
             case R.id.nav_events:
@@ -277,20 +255,10 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
 
             case R.id.nav_alerts:
                 startActivity(new Intent(getApplicationContext(), fragment_alerts.class));
-                finish();
-                break;
-
-            case R.id.nav_teacherContact:
-                fragment_Teachers_Contact fragment = new fragment_Teachers_Contact();
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_activity, fragment);
-                transaction.addToBackStack("BACK");
-                transaction.commit();
                 break;
 
             case R.id.nav_calendar:
                 startActivity(new Intent(getApplicationContext(), fragment_calendar.class));
-                finish();
                 break;
 
             case R.id.contact_us:
@@ -302,7 +270,7 @@ public class Main_Activity extends AppCompatActivity implements NavigationView.O
                 break;
 
             case R.id.feedback:
-                startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                startActivity(new Intent(getApplicationContext(), Dashboard_Students.class));
                 break;
 
             case R.id.message_to_school:

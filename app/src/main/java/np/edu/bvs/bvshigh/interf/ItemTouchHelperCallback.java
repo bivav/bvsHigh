@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.general;
+package np.edu.bvs.bvshigh.interf;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import np.edu.bvs.bvshigh.general.Main_Activity;
 import np.edu.bvs.bvshigh.R;
 
 public class fragment_result_student extends AppCompatActivity {
@@ -144,7 +143,6 @@ public class fragment_result_student extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(getApplicationContext(), Main_Activity.class));
-        finish();
+        super.onBackPressed();
     }
 }

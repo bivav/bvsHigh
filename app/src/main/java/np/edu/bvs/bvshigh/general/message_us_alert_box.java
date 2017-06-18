@@ -9,9 +9,9 @@ import android.widget.EditText;
 
 import np.edu.bvs.bvshigh.R;
 
-class message_us_alert_box {
+public class message_us_alert_box {
 
-    void showDialog(Activity activity){
+    public void showDialog(Activity activity){
         final Dialog dialog = new Dialog(activity);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);

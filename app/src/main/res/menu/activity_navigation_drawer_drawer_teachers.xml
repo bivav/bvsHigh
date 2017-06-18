@@ -16,24 +16,14 @@
             android:title="@string/routine" />
 
         <item
-            android:id="@+id/homework"
-            android:title="@string/homework"
+            android:id="@+id/assignment"
+            android:title="@string/assignment"
             android:icon="@drawable/ic_assignment"/>
-
-        <item
-            android:id="@+id/nav_attendance"
-            android:icon="@drawable/ic_menu_attendance"
-            android:title="@string/attendance" />
 
         <item
             android:id="@+id/nav_results"
             android:icon="@drawable/ic_menu_results"
             android:title="@string/results" />
-
-        <item
-            android:id="@+id/nav_fees"
-            android:icon="@drawable/ic_menu_fees"
-            android:title="@string/tution_fees" />
 
         <item
             android:id="@+id/nav_events"
@@ -54,10 +44,6 @@
             android:title="@string/communicate">
 
             <menu>
-                <item
-                    android:id="@+id/nav_teacherContact"
-                    android:icon="@drawable/ic_menu_teachers"
-                    android:title="@string/teacher_s_contact" />
 
                 <item
                     android:id="@+id/about_college"
@@ -103,5 +89,6 @@
             android:orderInCategory="2"/>
         </menu>
     </item>
+
 
 </menu>

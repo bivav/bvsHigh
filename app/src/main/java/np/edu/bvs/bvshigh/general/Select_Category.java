@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 
 import np.edu.bvs.bvshigh.R;
-import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
-import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.students.Dashboard;
+import np.edu.bvs.bvshigh.students.Dashboard_Students;
+import np.edu.bvs.bvshigh.students.Main_Activity_Students;
+import np.edu.bvs.bvshigh.students.login_students.Login_Student;
+import np.edu.bvs.bvshigh.teachers.Main_Activity_Teachers;
+import np.edu.bvs.bvshigh.teachers.login_teachers.Login_Teacher;
 
 public class Select_Category extends AppCompatActivity {
 
@@ -19,9 +21,13 @@ public class Select_Category extends AppCompatActivity {
         setContentView(R.layout.category);
 
         // Checking if user is logged in already -> profile is displayed
-        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
-            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+            startActivity(new Intent(getApplicationContext(), Main_Activity_Students.class));
+            return;
+        } else if (SharedPrefManager.getInstance(this).isLoggedInTeachers()) {
+            finish();
+            startActivity(new Intent(getApplicationContext(), Main_Activity_Teachers.class));
             return;
         }
 
@@ -40,7 +46,7 @@ public class Select_Category extends AppCompatActivity {
         teacher_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Login_Student.class));
+                startActivity(new Intent(getApplicationContext(), Login_Teacher.class));
                 finish();
             }
         });

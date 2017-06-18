@@ -20,15 +20,17 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.general.SharedPrefManager;
 import np.edu.bvs.bvshigh.general.fragment_alerts;
 import np.edu.bvs.bvshigh.general.fragment_calendar;
-import np.edu.bvs.bvshigh.login_sharedPref.Login_Student;
-import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine;
+import np.edu.bvs.bvshigh.students.Dashboard_Buttons;
+import np.edu.bvs.bvshigh.students.fragment_result_student;
+import np.edu.bvs.bvshigh.students.login_students.Login_Student;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
 import np.edu.bvs.bvshigh.teachers.fragment_assignment;
 
 
-public class Dashboard extends AppCompatActivity {
+public class Dashboard_Students extends AppCompatActivity {
 
     de.hdodenhof.circleimageview.CircleImageView imageView;
 

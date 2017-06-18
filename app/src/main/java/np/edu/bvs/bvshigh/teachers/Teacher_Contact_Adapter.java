@@ -1,8 +1,11 @@
-package np.edu.bvs.bvshigh.general;
+package np.edu.bvs.bvshigh.teachers;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
+import np.edu.bvs.bvshigh.general.fragment_teacher_contact_managment;
+import np.edu.bvs.bvshigh.general.fragment_teacher_contact_science;
 
 class Teacher_Contact_Adapter extends FragmentStatePagerAdapter {
 

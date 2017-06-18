@@ -21,7 +21,7 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
         <service
-            android:name=".firebase_notification.FirebaseMessagingService"
+            android:name=".students.firebase_notification.FirebaseMessagingService"
             android:permission="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
@@ -29,7 +29,7 @@
         </service>
 
         <service
-            android:name=".firebase_notification.FirebaseInstanceIDService"
+            android:name=".students.firebase_notification.FirebaseInstanceIDService"
             android:permission="true">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
@@ -37,7 +37,7 @@
         </service>
 
         <service
-            android:name=".firebase_notification.FirebaseNotificationListener"
+            android:name=".students.firebase_notification.FirebaseNotificationListener"
             android:label="@string/service_name"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
@@ -55,14 +55,14 @@
         </activity>
 
 
-        <activity android:name=".login_sharedPref.Login_Student" />
+        <activity android:name=".students.login_students.Login_Student" />
 
 
-        <activity android:name=".login_sharedPref.Register_Student" />
+        <activity android:name=".students.login_students.Register_Student" />
 
 
         <activity
-            android:name=".general.Main_Activity"
+            android:name=".students.Main_Activity_Students"
             android:hardwareAccelerated="false"
             android:label="@string/app_name"
             android:theme="@style/AppTheme">
@@ -80,22 +80,22 @@
 
         <activity
             android:name=".students.Student_Profile"
-            android:parentActivityName=".general.Main_Activity">
+            android:parentActivityName=".students.Main_Activity_Students">
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="np.edu.bvs.bvshigh.general.Main_Activity" />
+                android:value="np.edu.bvs.bvshigh.students.Main_Activity_Students" />
         </activity>
 
 
         <activity
-            android:name=".routine_bvs_students.fragment_routine"
+            android:name=".students.routine_bvs_students.fragment_routine"
             android:label="@string/routine_big"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
         </activity>
 
         <activity
-            android:parentActivityName=".students.Dashboard"
+            android:parentActivityName=".students.Dashboard_Students"
             android:label="@string/homework"
             android:hardwareAccelerated="true"
             android:name=".teachers.fragment_assignment">
@@ -104,53 +104,60 @@
 
         <activity
             android:name=".general.fragment_calendar"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="np.edu.bvs.bvshigh.general.Main_Activity" />
+                android:value="np.edu.bvs.bvshigh.students.Main_Activity_Students" />
         </activity>
 
         <activity
             android:name=".students.fragment_result_student"
             android:hardwareAccelerated="true"
             android:label="RESULT"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="np.edu.bvs.bvshigh.general.Main_Activity" />
+                android:value="np.edu.bvs.bvshigh.students.Main_Activity_Students" />
         </activity>
 
         <activity
             android:name=".general.Contact_Us"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
         </activity>
 
         <activity
             android:name=".general.about_college"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
         </activity>
 
         <activity
             android:name=".general.fragment_alerts"
             android:label="@string/alerts"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
         </activity>
 
         <activity
             android:name=".general.Feedback"
             android:label="Feedback"
-            android:parentActivityName=".students.Dashboard">
+            android:parentActivityName=".students.Dashboard_Students">
         </activity>
 
         <activity
             android:name=".general.message_to_school"
-            android:parentActivityName=".students.Dashboard"
+            android:parentActivityName=".students.Dashboard_Students"
             android:label="@string/message">
         </activity>
 
         <activity
-            android:name=".students.Dashboard"
+            android:name=".students.Dashboard_Students"
             android:hardwareAccelerated="true" />
+
+        <activity android:name=".teachers.Dashboard_Teachers"/>
+        <activity android:name=".teachers.login_teachers.Login_Teacher"/>
+        <activity
+            android:name=".teachers.Main_Activity_Teachers"
+            android:label="@string/app_name"
+            android:hardwareAccelerated="false"/>
 
 
     </application>

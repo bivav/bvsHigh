@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import np.edu.bvs.bvshigh.R;
-import np.edu.bvs.bvshigh.general.ItemTouchHelperCallback;
+import np.edu.bvs.bvshigh.interf.ItemTouchHelperCallback;
 
 public class fragment_assignment extends AppCompatActivity {
 

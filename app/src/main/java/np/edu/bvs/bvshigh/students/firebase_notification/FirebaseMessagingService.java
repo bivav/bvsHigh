@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.firebase_notification;
+package np.edu.bvs.bvshigh.students.firebase_notification;
 
 import android.app.Notification;
 import android.app.NotificationManager;

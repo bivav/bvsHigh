@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.general;
+package np.edu.bvs.bvshigh.students;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,13 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_fri;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_mon;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_sat;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_sun;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_thur;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_tue;
-import np.edu.bvs.bvshigh.routine_bvs_students.fragment_routine_wed;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_fri;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_mon;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_sat;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_sun;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_thur;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_tue;
+import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine_wed;
 import np.edu.bvs.bvshigh.students.fragment_homework;
 
 class Home_Adapter extends FragmentStatePagerAdapter {

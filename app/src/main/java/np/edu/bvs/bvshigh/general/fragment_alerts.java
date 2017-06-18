@@ -29,7 +29,6 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import np.edu.bvs.bvshigh.R;
-import np.edu.bvs.bvshigh.login_sharedPref.Request_Queue_Handler;
 
 
 public class fragment_alerts extends AppCompatActivity {

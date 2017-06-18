@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.login_sharedPref;
+package np.edu.bvs.bvshigh.students.login_students;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -23,8 +23,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import np.edu.bvs.bvshigh.general.Constants;
-import np.edu.bvs.bvshigh.students.Dashboard;
+import np.edu.bvs.bvshigh.general.Request_Queue_Handler;
+import np.edu.bvs.bvshigh.general.SharedPrefManager;
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.students.Dashboard_Students;
+import np.edu.bvs.bvshigh.students.Main_Activity_Students;
 
 public class Login_Student extends AppCompatActivity implements View.OnClickListener{
 
@@ -40,7 +43,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
         // Checking if user is logged in -> profile is displayed
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(getApplicationContext(), Dashboard.class));
+            startActivity(new Intent(getApplicationContext(), Main_Activity_Students.class));
             return;
         }
 
@@ -52,6 +55,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
 
         log_in.setOnClickListener(this);
         //register.setOnClickListener(this);
@@ -91,7 +95,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
 
                                 Toast.makeText(getApplicationContext(), "User Login Successful!",
                                         Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                                startActivity(new Intent(getApplicationContext(), Main_Activity_Students.class));
                                 finish();
 
                             }else {
@@ -125,7 +129,7 @@ public class Login_Student extends AppCompatActivity implements View.OnClickList
         };
 
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(
-                4000,
+                8000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 

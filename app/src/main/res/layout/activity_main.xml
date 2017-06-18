@@ -7,12 +7,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#efefef"
-    tools:context="np.edu.bvs.bvshigh.general.Main_Activity">
+    tools:context="np.edu.bvs.bvshigh.students.Main_Activity_Students">
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="np.edu.bvs.bvshigh.general.fragment_home_top"
+        android:name="np.edu.bvs.bvshigh.students.fragment_home_top"
         android:id="@+id/fragment2"
         tools:layout="@layout/home_fragment" />
 

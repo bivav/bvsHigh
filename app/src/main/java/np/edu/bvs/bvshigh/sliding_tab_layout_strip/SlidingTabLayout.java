@@ -68,8 +68,8 @@ public class SlidingTabLayout extends HorizontalScrollView {
     }
 
     private static final int TITLE_OFFSET_DIPS = 24;
-    private static final int TAB_VIEW_PADDING_DIPS = 15;
-    private static final int TAB_VIEW_TEXT_SIZE_SP = 11;
+    private static final int TAB_VIEW_PADDING_DIPS = 14;
+    private static final int TAB_VIEW_TEXT_SIZE_SP = 10;
 
     private int mTitleOffset;
 

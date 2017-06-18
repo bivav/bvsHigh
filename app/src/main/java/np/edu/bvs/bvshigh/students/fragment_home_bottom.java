@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.general;
+package np.edu.bvs.bvshigh.students;
 
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;

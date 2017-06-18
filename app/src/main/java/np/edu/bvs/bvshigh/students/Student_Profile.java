@@ -25,7 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 import np.edu.bvs.bvshigh.R;
-import np.edu.bvs.bvshigh.login_sharedPref.SharedPrefManager;
+import np.edu.bvs.bvshigh.general.SharedPrefManager;
 
 public class Student_Profile extends AppCompatActivity {
 

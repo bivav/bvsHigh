@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
-        tools:context="np.edu.bvs.bvshigh.general.Main_Activity">
+        tools:context="np.edu.bvs.bvshigh.students.Main_Activity_Students">
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"

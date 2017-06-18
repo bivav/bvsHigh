@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.login_sharedPref;
+package np.edu.bvs.bvshigh.general;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
