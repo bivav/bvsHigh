@@ -9,7 +9,6 @@
     android:layout_marginLeft="@dimen/card_margin_horizontal"
     android:layout_marginRight="@dimen/card_margin_horizontal"
     android:layout_marginTop="@dimen/card_margin_vertical"
-    android:layout_marginBottom="@dimen/card_margin_vertical"
     android:background="@color/white"
     android:foreground="?attr/selectableItemBackground"
     card_view:cardCornerRadius="@dimen/card_recycler_corner_radius"
@@ -22,43 +21,44 @@
 
         <RelativeLayout
             android:id="@+id/rela_round"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/text_margin"
             android:layout_marginRight="@dimen/text_margin"
-            android:background="@drawable/round"
-            android:backgroundTint="@color/gray_light"
-            android:transitionName="shareView" />
+            android:background="@drawable/phy"
+            android:transitionName="shareView"
+            card_view:targetApi="lollipop" >
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/title_assignment"
+            android:id="@+id/teacher_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/rela_round"
             android:layout_toRightOf="@+id/rela_round"
-            android:text="asodnaskjdanksbdkbkabsd"
+            android:text="Teacher Name"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/texting"
+            android:id="@+id/due_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/title_assignment"
-            android:layout_marginTop="@dimen/text_margin_very_small"
-            android:layout_toEndOf="@id/rela_round"
-            android:layout_toRightOf="@+id/rela_round"
-            android:text="askdbaskdjasd" />
+            android:text="2030-45-50"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
         <TextView
-            android:id="@+id/texting2"
+            android:id="@+id/assignment_details"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/texting"
+            android:layout_below="@id/due_date"
             android:layout_marginTop="@dimen/text_margin_very_small"
             android:layout_toEndOf="@id/rela_round"
             android:layout_toRightOf="@+id/rela_round"
-            android:text="asdasdasd" />
+            android:text="Assignment Details" />
 
     </RelativeLayout>
 

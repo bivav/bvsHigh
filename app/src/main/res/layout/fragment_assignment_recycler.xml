@@ -13,17 +13,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:background="#eee"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#eee">
 
         <android.support.v7.widget.CardView
             android:id="@+id/card_view_item_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/card_margin_vertical"
             android:layout_marginLeft="@dimen/card_margin_horizontal"
             android:layout_marginRight="@dimen/card_margin_horizontal"
             android:layout_marginTop="@dimen/card_margin_vertical"
-            android:layout_marginBottom="@dimen/card_margin_vertical"
             android:background="@color/white"
             android:foreground="?attr/selectableItemBackground"
             card_view:cardCornerRadius="@dimen/card_recycler_corner_radius"
@@ -31,31 +31,53 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
                 android:layout_height="match_parent"
+                android:orientation="vertical"
                 android:padding="@dimen/text_margin">
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Post Assignment"
+                    android:text="@string/assignment"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
                     android:textColor="@color/md_black_1000"
                     android:textSize="16sp" />
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/assignment_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="textMultiLine" />
+                    android:ems="8"
+                    android:textSize="14sp"
+                    android:hint="@string/enter_the_assignment_work"
+                    android:inputType="textMultiLine"
+                    android:textColorHint="@color/gray_deep" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/select_due_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#4CAF50"
+                    android:fontFamily="sans-serif"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="@string/due_date"
+                    android:textColor="@color/white"
+                    android:textSize="13sp" />
+
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/post_assignment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
-                    android:text="SEND" />
+                    android:text="@string/post" />
+
             </LinearLayout>
 
         </android.support.v7.widget.CardView>

@@ -2,11 +2,15 @@ package np.edu.bvs.bvshigh.general;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
+
+import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
+import np.edu.bvs.bvshigh.teachers.login_teachers.Login_Teacher;
 
 public class SharedPrefManager {
 
     private static SharedPrefManager mInstance;
-    private static Context mCtx;
+    private Context mCtx;
     de.hdodenhof.circleimageview.CircleImageView imageView;
 
 
@@ -123,6 +127,9 @@ public class SharedPrefManager {
         // clearing the SharedPref when logged out
         editor.clear();
         editor.apply();
+
+
+
         return true;
     }
 

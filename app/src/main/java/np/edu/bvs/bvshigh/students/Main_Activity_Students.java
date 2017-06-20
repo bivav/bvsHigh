@@ -25,8 +25,16 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -35,7 +43,9 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.general.Constants;
 import np.edu.bvs.bvshigh.general.Contact_Us;
+import np.edu.bvs.bvshigh.general.Request_Queue_Handler;
 import np.edu.bvs.bvshigh.general.Select_Category;
 import np.edu.bvs.bvshigh.general.SharedPrefManager;
 import np.edu.bvs.bvshigh.general.about_college;
@@ -46,20 +56,12 @@ import np.edu.bvs.bvshigh.general.message_us_alert_box;
 import np.edu.bvs.bvshigh.students.login_students.Login_Student;
 import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
 import np.edu.bvs.bvshigh.teachers.fragment_Teachers_Contact;
-import np.edu.bvs.bvshigh.teachers.fragment_assignment;
-
-import static android.content.ContentValues.TAG;
 
 public class Main_Activity_Students extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     /**Right Slide Alert Function Values**/
-    String[] titles_alert = {"Results of Class 11 is out", "Routine for Class 12","Come and Enjoy"};
-    String[] description_alert =
-            {
-                "Results for class 11 is out. Please check results tab and refresh to download the result",
-                "Routine has been updated for grade 12. Kindly update.",
-                "Welcome to BVS to all students!! Hope you have a good time."
-            };
+    private String[] notification_titles, notification_message;
+    private String TAG = "notificationData";
 
     de.hdodenhof.circleimageview.CircleImageView imageView;
     ListView rightView;
@@ -126,9 +128,8 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
 
         // Calling the alerts layout and implementing using custom list view
         rightView = (ListView)findViewById(R.id.right_slide);
-        alertsDisplay alerts = new alertsDisplay(getApplicationContext(), titles_alert, description_alert);
 
-        rightView.setAdapter(alerts);
+        pullNotification();
 
     }
 
@@ -145,6 +146,50 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
         }
     }
 
+    private void pullNotification(){
+
+        StringRequest request = new StringRequest(Request.Method.POST,
+                Constants.URL_NOTIFICATIONS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject;
+
+                            notification_titles = new String[jsonArray.length()];
+                            notification_message = new String[jsonArray.length()];
+
+                            for (int i = 0; i<jsonArray.length(); i++) {
+
+                                jsonObject = jsonArray.getJSONObject(i);
+                                notification_titles[i] = jsonObject.getString("titles");
+                                notification_message[i] = jsonObject.getString("notifications");
+                                Log.i(TAG, notification_titles[i] + " --- " + notification_message[i]);
+
+                            }
+
+                            alertsDisplay alerts = new alertsDisplay(getApplicationContext(), notification_titles, notification_message);
+
+                            rightView.setAdapter(alerts);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.i(TAG, "NO Notifications are available");
+
+            }
+        });
+
+        Request_Queue_Handler.getInstance(this).addToRequestQueue(request);
+    }
+
     private class alertsDisplay extends ArrayAdapter {
 
         String[] titles_alert;
@@ -158,25 +203,48 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
             this.description_alert = mDescription;
         }
 
+        class ViewHolder {
+            protected TextView titles;
+            TextView description;
+
+        }
+
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-            LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.fragment_alerts, parent, false);
+            ViewHolder viewHolder;
 
-            String date = DateFormat.getDateInstance().format(new Date());
+            if (convertView == null) {
+                LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(LAYOUT_INFLATER_SERVICE);
+                convertView = inflater.inflate(R.layout.fragment_alerts, parent, false);
 
-            TextView alert_date = (TextView)view.findViewById(R.id.alert_date);
-            alert_date.setText(date);
+                viewHolder = new ViewHolder();
 
-            TextView titles = (TextView)view.findViewById(R.id.title_alerts);
-            TextView description = (TextView)view.findViewById(R.id.alert_description);
+                String date = DateFormat.getDateInstance().format(new Date());
 
-            titles.setText(titles_alert[position]);
-            description.setText(description_alert[position]);
+                TextView alert_date = (TextView) convertView.findViewById(R.id.alert_date);
+                alert_date.setText(date);
 
-            return view;
+                viewHolder.titles = (TextView) convertView.findViewById(R.id.title_alerts);
+                viewHolder.description = (TextView) convertView.findViewById(R.id.alert_description);
+
+                convertView.setTag(viewHolder);
+                convertView.setTag(R.id.title_alerts, viewHolder.titles);
+                convertView.setTag(R.id.alert_description, viewHolder.description);
+
+            } else {
+                viewHolder = (ViewHolder)convertView.getTag();
+            }
+
+            viewHolder.titles.setTag(position);
+            viewHolder.titles.setText(titles_alert[position]);
+            viewHolder.description.setTag(position);
+            viewHolder.description.setText(description_alert[position]);
+
+            Log.i("alerts are as follows", titles_alert[position] + " --- " + description_alert[position]);
+
+            return convertView;
         }
     }
 

@@ -96,8 +96,9 @@
 
         <activity
             android:parentActivityName=".students.Dashboard_Students"
-            android:label="@string/homework"
+            android:label="@string/assignment"
             android:hardwareAccelerated="true"
+            android:windowSoftInputMode="stateHidden"
             android:name=".teachers.fragment_assignment">
         </activity>
 

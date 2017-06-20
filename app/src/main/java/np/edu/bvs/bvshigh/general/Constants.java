@@ -23,7 +23,7 @@ public class Constants {
     public static final String URL_Routine_Sci_Bio_11_FRI = ROUTINE_URL+"routine_sci_bio_11/fri.php";
 
     //URL for pulling Notifications from Server
-    static final String URL_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/pullNotification.php";
+    public static final String URL_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/pullNotification.php";
     public static final String URL_SAVE_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/saveNotification.php";
 
 
