@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -124,10 +125,12 @@ public class fragment_assignment extends AppCompatActivity {
             }
         });
 
+
+
         recyclerView = (RecyclerView)findViewById(R.id.assignment_recycler);
         recyclerView.hasFixedSize();
 
-        final Recycler_Assignment_Adapter adapter = new Recycler_Assignment_Adapter(getApplicationContext(), detailsList);
+        Recycler_Assignment_Adapter adapter = new Recycler_Assignment_Adapter(getApplicationContext(), detailsList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
@@ -146,18 +149,11 @@ public class fragment_assignment extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        if (color > 4) {
-                            color = 0;
-                        }
-                        //adapter.setItems(++color);
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 2300);
+                refreshData();
+
             }
         });
+
     }
 
     private void storeAssignment(String assignmentText, String assignmentDate, String assignmentSubject,
@@ -205,6 +201,18 @@ public class fragment_assignment extends AppCompatActivity {
         }
     }
 
+    void onItemsLoadComplete(){
+
+        Recycler_Assignment_Adapter adapter = new Recycler_Assignment_Adapter(getApplicationContext(), detailsList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
+
+        Toast.makeText(fragment_assignment.this, "UPDATED!", Toast.LENGTH_SHORT).show();
+
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
     public void initializeData() {
         detailsList = new ArrayList<>();
 
@@ -237,6 +245,60 @@ public class fragment_assignment extends AppCompatActivity {
                             }
                             Log.i("fetched_from_server", Arrays.toString(getAssignmentDateServer) + Arrays.toString(getAssignmentServer) + Arrays.toString(getAssignmentSubjectServer)+Arrays.toString(getAssignmentTeacherNameServer));
 
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Log.i("fetched_from_server", String.valueOf(error));
+
+            }
+        });
+
+        Request_Queue_Handler.getInstance(fragment_assignment.this).addToRequestQueue(request);
+
+
+        Log.i("Testing", String.valueOf(detailsList));
+    }
+
+    public void refreshData() {
+        detailsList = new ArrayList<>();
+
+        StringRequest request = new StringRequest(
+                com.android.volley.Request.Method.POST,
+                "http://192.168.0.109/bvs_high/assignment/pull_assignment.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject;
+
+                            getAssignmentServer = new String[jsonArray.length()];
+                            getAssignmentDateServer = new String[jsonArray.length()];
+                            getAssignmentSubjectServer = new String[jsonArray.length()];
+                            getAssignmentTeacherNameServer = new String[jsonArray.length()];
+
+                            for (int i=0; i<jsonArray.length(); i++) {
+
+                                jsonObject = jsonArray.getJSONObject(i);
+                                getAssignmentServer[i] = jsonObject.getString("assignment");
+                                getAssignmentDateServer[i] = jsonObject.getString("datePosted");
+                                getAssignmentSubjectServer[i] = jsonObject.getString("subject");;
+                                getAssignmentTeacherNameServer[i] = jsonObject.getString("teacher");
+
+                                detailsList.add(new Assignment_Details(getAssignmentServer, getAssignmentDateServer, getAssignmentSubjectServer, getAssignmentTeacherNameServer));
+
+                            }
+                            Log.i("fetched_from_server", Arrays.toString(getAssignmentDateServer) + Arrays.toString(getAssignmentServer) + Arrays.toString(getAssignmentSubjectServer)+Arrays.toString(getAssignmentTeacherNameServer));
+
+                            onItemsLoadComplete();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
