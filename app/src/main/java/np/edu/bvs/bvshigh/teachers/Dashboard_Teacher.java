@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,9 +25,6 @@ import np.edu.bvs.bvshigh.general.fragment_calendar;
 import np.edu.bvs.bvshigh.students.fragment_result_student;
 import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Dashboard_Teacher extends Fragment {
 
 
@@ -45,13 +39,6 @@ public class Dashboard_Teacher extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.dashboard, container, false);
-
-        String displayToken = FirebaseInstanceId.getInstance().getToken();
-        if (FirebaseInstanceId.getInstance().getToken() == null) {
-            Toast.makeText(getContext(), "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(getContext(), "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
-        }
 
         TextView student_name = (TextView) view.findViewById(R.id.student_name);
         student_name.setText(SharedPrefManager.getInstance(getContext()).getFullName());
@@ -99,7 +86,6 @@ public class Dashboard_Teacher extends Fragment {
     }
 
     public void loadImageFromStorage(String pathImg) {
-
         try {
             File f = new File(pathImg, "profile.jpg");
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
@@ -110,5 +96,4 @@ public class Dashboard_Teacher extends Fragment {
             e.printStackTrace();
         }
     }
-
 }

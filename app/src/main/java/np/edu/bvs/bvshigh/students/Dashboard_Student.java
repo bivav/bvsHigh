@@ -13,9 +13,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,12 +23,7 @@ import np.edu.bvs.bvshigh.general.SharedPrefManager;
 import np.edu.bvs.bvshigh.general.fragment_alerts;
 import np.edu.bvs.bvshigh.general.fragment_calendar;
 import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
-import np.edu.bvs.bvshigh.teachers.fragment_assignment;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class Dashboard_Student extends Fragment {
 
     de.hdodenhof.circleimageview.CircleImageView imageView;
@@ -43,13 +35,6 @@ public class Dashboard_Student extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dashboard, container, false);
-
-        String displayToken = FirebaseInstanceId.getInstance().getToken();
-        if (FirebaseInstanceId.getInstance().getToken() == null) {
-            Toast.makeText(getContext(), "Please turn on Internet Connection to receive Notifications.", Toast.LENGTH_LONG).show();
-        } else {
-            Toast.makeText(getContext(), "Welcome!: -> " + displayToken, Toast.LENGTH_LONG).show();
-        }
 
         TextView student_name = (TextView)view.findViewById(R.id.student_name);
         student_name.setText(SharedPrefManager.getInstance(getContext()).getFullName());
@@ -81,7 +66,7 @@ public class Dashboard_Student extends Fragment {
                         startActivity(new Intent(getContext(), fragment_result_student.class));
                         break;
                     case 3:
-                        startActivity(new Intent(getContext(), fragment_assignment.class));
+                        startActivity(new Intent(getContext(), fragment_homework.class));
                         break;
                     case 4:
                         startActivity(new Intent(getContext(), fragment_result_student.class));

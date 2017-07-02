@@ -63,7 +63,7 @@ class Home_Adapter extends FragmentStatePagerAdapter {
         }
 
         else
-            return new fragment_homework();
+            return null;
     }
 
     public CharSequence getPageTitle(int position){

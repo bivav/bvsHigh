@@ -102,6 +102,12 @@
             android:name=".teachers.fragment_assignment">
         </activity>
 
+        <activity
+            android:label="@string/assignment"
+            android:hardwareAccelerated="true"
+            android:parentActivityName=".students.Dashboard_Students"
+            android:name=".students.fragment_homework"/>
+
 
         <activity
             android:name=".general.fragment_calendar"

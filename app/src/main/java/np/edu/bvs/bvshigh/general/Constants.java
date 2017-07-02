@@ -26,8 +26,11 @@ public class Constants {
     public static final String URL_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/pullNotification.php";
     public static final String URL_SAVE_NOTIFICATIONS = "http://mitocha.com/bvs_high/notification_details/saveNotification.php";
 
-
     //Teacher Logins
-    public static final String URL_LOGIN_TEACHERS = "http://192.168.1.103/bvs_high/login/userLogin_teachers.php";
+    public static final String URL_LOGIN_TEACHERS = ROOT_URL + "userLogin_teachers.php";
+
+    //Assignment Save and Pull
+    public static final String URL_ASSIGNMENT_SAVE = "http://mitocha.com/bvs_high/assignment/save_assignment.php";
+    public static final String URL_ASSIGNMENT_PULL = "http://mitocha.com/bvs_high/assignment/pull_assignment.php";
 
 }

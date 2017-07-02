@@ -56,6 +56,7 @@ import np.edu.bvs.bvshigh.general.message_us_alert_box;
 import np.edu.bvs.bvshigh.students.login_students.Login_Student;
 import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
 import np.edu.bvs.bvshigh.teachers.fragment_Teachers_Contact;
+import np.edu.bvs.bvshigh.teachers.fragment_assignment;
 
 public class Main_Activity_Students extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -292,7 +293,7 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
         switch (item.getItemId()){
 
             case R.id.nav_dashboard:
-                fragment_home_bottom fragment_dash = new fragment_home_bottom();
+                Dashboard_Student fragment_dash = new Dashboard_Student();
                 android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment_dash);
                 Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -305,14 +306,7 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
                 break;
 
             case R.id.homework:
-
-//                startActivity(new Intent(getApplicationContext(), fragment_assignment.class));
-
-                fragment_homework fragment_homework = new fragment_homework();
-                transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_activity, fragment_homework);
-                transaction.addToBackStack("back");
-                transaction.commit();
+                startActivity(new Intent(getApplicationContext(), fragment_assignment.class));
                 break;
 
             case R.id.nav_attendance:

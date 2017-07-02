@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.teachers;
+package np.edu.bvs.bvshigh.students;
 
 import android.content.Context;
 import android.os.Build;
@@ -20,10 +20,10 @@ import java.util.Objects;
 import np.edu.bvs.bvshigh.R;
 import np.edu.bvs.bvshigh.interf.onMoveAndSwipedListener;
 
-class Recycler_Assignment_Adapter extends RecyclerView.Adapter<Recycler_Assignment_Adapter.DetailsHolder>
+class Recycler_Homework_Adapter extends RecyclerView.Adapter<Recycler_Homework_Adapter.DetailsHolder>
         implements onMoveAndSwipedListener {
 
-    private List<fragment_assignment.Assignment_Details> detailsList;
+    private List<fragment_homework.Assignment_Details_Students> detailsList;
     protected int color;
     private Context context;
 
@@ -45,7 +45,7 @@ class Recycler_Assignment_Adapter extends RecyclerView.Adapter<Recycler_Assignme
     };
 
 
-    Recycler_Assignment_Adapter(Context context, List<fragment_assignment.Assignment_Details> detailsList){
+    Recycler_Homework_Adapter(Context context, List<fragment_homework.Assignment_Details_Students> detailsList){
         this.context = context;
         this.detailsList = detailsList;
 
@@ -72,7 +72,7 @@ class Recycler_Assignment_Adapter extends RecyclerView.Adapter<Recycler_Assignme
 
     @Override
     public DetailsHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_assignment, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_homework, parent, false);
         return new DetailsHolder(view);
     }
 
@@ -100,10 +100,6 @@ class Recycler_Assignment_Adapter extends RecyclerView.Adapter<Recycler_Assignme
             }else if (Objects.equals(detailsList.get(position).getAssignmentSubjectServer[position], "Technical")) {
                 for (int k = 0; k < detailsList.size(); k++) {
                     holder.relativeLayout.setBackground(ContextCompat.getDrawable(context, icons[3]));
-                }
-            } else if (Objects.equals(detailsList.get(position).getAssignmentSubjectServer[position], "Management")) {
-                for (int k = 0; k < detailsList.size(); k++) {
-                    holder.relativeLayout.setBackground(ContextCompat.getDrawable(context, icons[2]));
                 }
             }
         }

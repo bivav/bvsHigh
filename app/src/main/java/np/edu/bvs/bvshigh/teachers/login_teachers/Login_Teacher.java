@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -82,6 +83,7 @@ public class Login_Teacher extends AppCompatActivity implements View.OnClickList
 
                             // creating JSONobject to get data
                             JSONObject object = new JSONObject(response);
+
                             if (!object.getBoolean("error")){
 
                                 // getting details from sharedPref activity

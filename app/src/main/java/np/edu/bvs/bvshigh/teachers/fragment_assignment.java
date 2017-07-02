@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -33,6 +34,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import np.edu.bvs.bvshigh.R;
+import np.edu.bvs.bvshigh.general.Constants;
 import np.edu.bvs.bvshigh.general.Request_Queue_Handler;
 import np.edu.bvs.bvshigh.general.SharedPrefManager;
 import np.edu.bvs.bvshigh.interf.ItemTouchHelperCallback;
@@ -52,6 +54,7 @@ public class fragment_assignment extends AppCompatActivity {
     private EditText assignment_text;
     String getAssignment, getAssignmentDate, getAssignmentSubject, getAssignmentTeacherName;
     ProgressDialog progressDialog;
+    ProgressBar progressBar;
     String[] getAssignmentServer, getAssignmentDateServer, getAssignmentSubjectServer, getAssignmentTeacherNameServer;
 
 
@@ -75,9 +78,14 @@ public class fragment_assignment extends AppCompatActivity {
 
         initializeData();
 
+        progressBar = new ProgressBar(fragment_assignment.this);
+        progressBar.setIndeterminate(true);
+
+
         progressDialog = new ProgressDialog(fragment_assignment.this);
         progressDialog.setMessage("Posting..");
         progressDialog.setCancelable(false);
+        progressDialog.setIndeterminate(true);
 
         assignment_text = (EditText)findViewById(R.id.assignment_text);
         select_due_date = (Button)findViewById(R.id.select_due_date);
@@ -169,7 +177,7 @@ public class fragment_assignment extends AppCompatActivity {
                 .build();
 
         Request request = new Request.Builder()
-                .url("http://192.168.0.109/bvs_high/assignment/save_assignment.php")
+                .url(Constants.URL_ASSIGNMENT_SAVE)
                 .post(requestBody)
                 .build();
 
@@ -181,6 +189,7 @@ public class fragment_assignment extends AppCompatActivity {
 
         assignment_text.setText("");
         select_due_date.setText(getResources().getString(R.string.due_date));
+        Toast.makeText(fragment_assignment.this, "Assignment Posted. Refresh the page.", Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
 
     }
@@ -218,7 +227,7 @@ public class fragment_assignment extends AppCompatActivity {
 
         StringRequest request = new StringRequest(
                 com.android.volley.Request.Method.POST,
-                "http://192.168.0.109/bvs_high/assignment/pull_assignment.php",
+                Constants.URL_ASSIGNMENT_PULL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -237,7 +246,7 @@ public class fragment_assignment extends AppCompatActivity {
                                 jsonObject = jsonArray.getJSONObject(i);
                                 getAssignmentServer[i] = jsonObject.getString("assignment");
                                 getAssignmentDateServer[i] = jsonObject.getString("datePosted");
-                                getAssignmentSubjectServer[i] = jsonObject.getString("subject");;
+                                getAssignmentSubjectServer[i] = jsonObject.getString("subject");
                                 getAssignmentTeacherNameServer[i] = jsonObject.getString("teacher");
 
                                 detailsList.add(new Assignment_Details(getAssignmentServer, getAssignmentDateServer, getAssignmentSubjectServer, getAssignmentTeacherNameServer));
@@ -271,7 +280,7 @@ public class fragment_assignment extends AppCompatActivity {
 
         StringRequest request = new StringRequest(
                 com.android.volley.Request.Method.POST,
-                "http://192.168.0.109/bvs_high/assignment/pull_assignment.php",
+                Constants.URL_ASSIGNMENT_PULL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -290,7 +299,7 @@ public class fragment_assignment extends AppCompatActivity {
                                 jsonObject = jsonArray.getJSONObject(i);
                                 getAssignmentServer[i] = jsonObject.getString("assignment");
                                 getAssignmentDateServer[i] = jsonObject.getString("datePosted");
-                                getAssignmentSubjectServer[i] = jsonObject.getString("subject");;
+                                getAssignmentSubjectServer[i] = jsonObject.getString("subject");
                                 getAssignmentTeacherNameServer[i] = jsonObject.getString("teacher");
 
                                 detailsList.add(new Assignment_Details(getAssignmentServer, getAssignmentDateServer, getAssignmentSubjectServer, getAssignmentTeacherNameServer));
