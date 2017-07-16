@@ -1,4 +1,4 @@
-package np.edu.bvs.bvshigh.students.firebase_notification;
+package np.edu.bvs.bvshigh.firebase_handler;
 
 import android.os.Build;
 import android.util.Log;
@@ -13,7 +13,6 @@ import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
-
 
 public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
 

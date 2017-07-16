@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import np.edu.bvs.bvshigh.R;
 
-
 public class fragment_routine_sat extends Fragment {
 
     @Override

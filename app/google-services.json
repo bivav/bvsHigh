@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "867328918926",
-    "firebase_url": "https://bvs-high-4acf6.firebaseio.com",
-    "project_id": "bvs-high-4acf6",
-    "storage_bucket": "bvs-high-4acf6.appspot.com"
+    "project_number": "136910061084",
+    "firebase_url": "https://bvshigh-eddfd.firebaseio.com",
+    "project_id": "bvshigh-eddfd",
+    "storage_bucket": "bvshigh-eddfd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:867328918926:android:15b9fee0691ce604",
+        "mobilesdk_app_id": "1:136910061084:android:15b9fee0691ce604",
         "android_client_info": {
           "package_name": "np.edu.bvs.bvshigh"
         }
       },
       "oauth_client": [
         {
-          "client_id": "867328918926-b1rhlbtldc2lmq0bm4ii5aejtcto9vv8.apps.googleusercontent.com",
+          "client_id": "136910061084-mf5bj4j88hl8eej7ucuebes755gtgd2s.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "np.edu.bvs.bvshigh",
-            "certificate_hash": "e4284abee670bc6e0bd648c3e2dd532eb3f5d38d"
+            "certificate_hash": "0f4292064eb78459edb8bfecdc08172c144e2fb1"
           }
         },
         {
-          "client_id": "867328918926-2n5js0u09n6hl7dqkbbo8fa3iccvf4li.apps.googleusercontent.com",
+          "client_id": "136910061084-q3lgj8215ar03brffstc1b2gt8q7bo2b.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBaxDahb_--0u_82gTzr7YQxvTwHbV90R0"
+          "current_key": "AIzaSyBJH6Xcdw-80H9CRxEqEHSltKxqrSHS_Mg"
         }
       ],
       "services": {
@@ -40,7 +40,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "867328918926-2n5js0u09n6hl7dqkbbo8fa3iccvf4li.apps.googleusercontent.com",
+              "client_id": "136910061084-q3lgj8215ar03brffstc1b2gt8q7bo2b.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

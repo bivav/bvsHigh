@@ -27,7 +27,6 @@ public class fragment_routine extends AppCompatActivity {
     int NumOfTabs = 6;
 
     SwipeRefreshLayout swipeRefreshLayout;
-    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +42,6 @@ public class fragment_routine extends AppCompatActivity {
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
 
         swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeToRefresh);
-
-        progressDialog = new ProgressDialog(fragment_routine.this);
-        progressDialog.setMessage("Loading  Data...");
-        progressDialog.show();
-        progressDialog.setCancelable(false);
 
         tabs = (SlidingTabLayout)findViewById(R.id.tabs);
         pager = (ViewPager)findViewById(R.id.routine_slide);
@@ -71,8 +65,6 @@ public class fragment_routine extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                progressDialog.show();
-                progressDialog.setCancelable(false);
                 executeCode();
             }
         });
@@ -98,14 +90,6 @@ public class fragment_routine extends AppCompatActivity {
         });
         tabs.setViewPager(pager);
         swipeRefreshLayout.setRefreshing(false);
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                progressDialog.dismiss();
-            }
-        }, 2000);
 
     }
 

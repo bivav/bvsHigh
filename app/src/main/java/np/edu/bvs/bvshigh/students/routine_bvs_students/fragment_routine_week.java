@@ -9,15 +9,14 @@ class fragment_routine_week extends FragmentStatePagerAdapter {
     private int NumOfTabs;
     private CharSequence Titles[];
 
-    fragment_routine_week(FragmentManager fm, CharSequence mtitles[], int numOfTabs) {
+    fragment_routine_week(FragmentManager fm, CharSequence mTitles[], int numOfTabs) {
         super(fm);
-        this.Titles = mtitles;
+        this.Titles = mTitles;
         this.NumOfTabs = numOfTabs;
     }
 
     @Override
     public Fragment getItem(int position) {
-
         if (position == 0)
             return new fragment_routine_sun();
         else if(position == 1)
@@ -34,7 +33,6 @@ class fragment_routine_week extends FragmentStatePagerAdapter {
 
     public CharSequence getPageTitle(int position){
         return Titles[position];
-
     }
 
     @Override

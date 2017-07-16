@@ -16,7 +16,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="@string/start"
             android:gravity="end"
             android:id="@+id/start_time"
             android:textSize="14sp"
@@ -40,7 +39,6 @@
             android:textColor="@android:color/black" />
 
         <TextView
-            android:text="@string/end"
             android:gravity="start"
             android:layout_weight="1.45"
             android:id="@+id/end_time"
@@ -55,7 +53,7 @@
     </LinearLayout>
 
         <TextView
-            android:text="@string/subject"
+            android:text="@string/no_internet_connection"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/subject_name"
@@ -68,7 +66,6 @@
             android:textAlignment="center" />
 
         <TextView
-            android:text="@string/teacher"
             android:layout_weight="1"
             android:textSize="14sp"
             android:layout_width="0dp"
