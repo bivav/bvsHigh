@@ -166,7 +166,7 @@ public class Main_Activity_Teachers extends AppCompatActivity implements Navigat
                                 jsonObject = jsonArray.getJSONObject(i);
                                 notification_titles[i] = jsonObject.getString("titles");
                                 notification_message[i] = jsonObject.getString("notifications");
-                                Log.i(TAG, notification_titles[i] + " --- " + notification_message[i]);
+                                Log.i(TAG, notification_titles[i] + "\n" + notification_message[i]);
 
                             }
 
@@ -293,11 +293,9 @@ public class Main_Activity_Teachers extends AppCompatActivity implements Navigat
         switch (item.getItemId()){
 
             case R.id.nav_dashboard:
-                fragment_home_bottom fragment_dash = new fragment_home_bottom();
+                Dashboard_Teacher fragment = new Dashboard_Teacher();
                 android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_activity, fragment_dash);
-                Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-                toolbar.setTitle(getResources().getString(R.string.bvs_high));
+                transaction.replace(R.id.frame_activity, fragment);
                 transaction.commit();
                 break;
 

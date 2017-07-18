@@ -1,5 +1,6 @@
 package np.edu.bvs.bvshigh.firebase_handler;
 
+import android.content.Context;
 import android.os.Build;
 import android.util.Log;
 
@@ -17,10 +18,14 @@ import okhttp3.RequestBody;
 public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
 
     private static final String TAG = "MyFirebaseIDService";
+    private String token;
 
     @Override
     public void onTokenRefresh() {
-        String token = FirebaseInstanceId.getInstance().getToken();
+
+        FirebaseInstanceId.getInstance().getId();
+        FirebaseInstanceId.getInstance();
+        token = FirebaseInstanceId.getInstance().getToken();
         Log.d(TAG, "Refreshed token: " + token);
 
         String deviceName = String.valueOf(Build.MODEL);

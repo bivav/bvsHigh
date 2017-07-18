@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.io.IOException;
+
 import np.edu.bvs.bvshigh.sqLite_handler.MyDBHandler;
 import np.edu.bvs.bvshigh.teachers.login_teachers.Login_Teacher;
 
@@ -125,6 +129,7 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         // clearing the SharedPref when logged out
+
         editor.clear();
         editor.apply();
 

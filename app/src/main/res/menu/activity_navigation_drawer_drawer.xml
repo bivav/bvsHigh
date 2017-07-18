@@ -10,10 +10,31 @@
             android:icon="@drawable/ic_menu_dashboard"
             android:checked="true"
             android:title="@string/dashboard" />
+
+        <item
+            android:id="@+id/nav_alerts"
+            android:icon="@drawable/ic_menu_alert"
+            android:title="@string/alerts" />
+
+        <item
+            android:id="@+id/nav_events"
+            android:icon="@drawable/ic_menu_events"
+            android:title="@string/events" />
+
         <item
             android:id="@+id/nav_routine"
-            android:icon="@drawable/icons_routine"
+            android:icon="@drawable/ic_routine"
             android:title="@string/routine" />
+
+        <item
+            android:id="@+id/nav_results"
+            android:icon="@drawable/ic_menu_results"
+            android:title="@string/results" />
+
+        <item
+            android:id="@+id/nav_calendar"
+            android:icon="@drawable/ic_menu_calendar"
+            android:title="@string/calendar" />
 
         <item
             android:id="@+id/homework"
@@ -26,29 +47,11 @@
             android:title="@string/attendance" />
 
         <item
-            android:id="@+id/nav_results"
-            android:icon="@drawable/ic_menu_results"
-            android:title="@string/results" />
-
-        <item
             android:id="@+id/nav_fees"
             android:icon="@drawable/ic_menu_fees"
             android:title="@string/tution_fees" />
 
-        <item
-            android:id="@+id/nav_events"
-            android:icon="@drawable/ic_menu_events"
-            android:title="@string/events" />
 
-        <item
-            android:id="@+id/nav_alerts"
-            android:icon="@drawable/ic_menu_alert"
-            android:title="@string/alerts" />
-
-        <item
-            android:id="@+id/nav_calendar"
-            android:icon="@drawable/ic_menu_calendar"
-            android:title="@string/calendar" />
 
         <item
             android:title="@string/communicate">
@@ -60,14 +63,14 @@
                     android:title="@string/teacher_s_contact" />
 
                 <item
+                    android:id="@+id/message_to_school"
+                    android:icon="@drawable/ic_message"
+                    android:title="@string/message_to_school" />
+
+                <item
                     android:id="@+id/about_college"
                     android:icon="@drawable/ic_school"
                     android:title="@string/about_college" />
-
-                <item
-                    android:id="@+id/message_to_school"
-                    android:icon="@drawable/ic_message"
-                    android:title="Message To School" />
 
                 <item
                     android:id="@+id/feedback"
@@ -87,20 +90,20 @@
     <item
         android:title="@string/account">
 
-    <menu>
-        <item
-            android:id="@+id/action_settings"
-            android:orderInCategory="1"
-            android:icon="@drawable/ic_settings"
-            android:title="@string/action_settings"
-            app:showAsAction="never" />
+        <menu>
+            <item
+                android:id="@+id/action_settings"
+                android:orderInCategory="1"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/action_settings"
+                app:showAsAction="never" />
 
-        <item
-            android:id="@+id/logout"
-            app:showAsAction="never"
-            android:icon="@drawable/ic_logout"
-            android:title="@string/logout"
-            android:orderInCategory="2"/>
+            <item
+                android:id="@+id/logout"
+                app:showAsAction="never"
+                android:icon="@drawable/ic_logout"
+                android:title="@string/logout"
+                android:orderInCategory="2"/>
         </menu>
     </item>
 

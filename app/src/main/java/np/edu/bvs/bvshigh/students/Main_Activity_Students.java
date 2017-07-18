@@ -30,6 +30,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
@@ -39,6 +40,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -313,7 +315,6 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
                 fragment_attendance fragment_attendance = new fragment_attendance();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment_attendance);
-                transaction.addToBackStack("BACK");
                 transaction.commit();
                 break;
 
@@ -327,7 +328,6 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
                 transaction.replace(R.id.frame_activity, fragment_fees);
                 toolbar = (Toolbar) findViewById(R.id.toolbar);
                 toolbar.setTitle(getResources().getString(R.string.events));
-                transaction.addToBackStack("BACK");
                 transaction.commit();
                 break;
 
@@ -377,17 +377,24 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
                 break;
 
             case R.id.logout:
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            FirebaseInstanceId.getInstance().deleteInstanceId();
+                            FirebaseInstanceId.getInstance().deleteToken("bvshigh-eddfd","FCM");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }).start();
+
                 SharedPrefManager.getInstance(this).isLoggedOut();
                 ProgressDialog progressDialog = new ProgressDialog(this);
                 progressDialog.setMessage("Logging Out...");
 
-                //loading the default image saved in app directory
-                String path = String.valueOf(getApplicationContext().getDir("imageDir", Context.MODE_PRIVATE));
-                File file = new File(path);
-
-                if (file.exists()) {
-                    imageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.image));
-                }
+                FirebaseInstanceId.getInstance().getId();
 
                 finish();
                 progressDialog.dismiss();
