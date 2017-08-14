@@ -24,21 +24,19 @@
             app:layout_scrollFlags="scroll|enterAlways"
             android:layout_height="match_parent" />
 
-
         <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
             android:background="@color/white"
             app:headerLayout="@layout/nav_header_navigation_drawer"
             app:menu="@menu/activity_navigation_drawer_drawer_teachers"
             app:layout_scrollFlags="scroll|enterAlways"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true" />
 
-
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="@color/colorPrimary"
@@ -52,12 +50,11 @@
                 android:id="@+id/title_alerts"
                 android:textColor="@android:color/white"
                 android:textStyle="bold"
-                android:elevation="5dp"
                 android:textSize="16sp"
                 tools:targetApi="lollipop" />
 
             <ListView
-                android:layout_width="240dp"
+                android:layout_width="match_parent"
                 android:id="@+id/right_slide"
                 android:background="@color/white"
                 android:choiceMode="singleChoice"
@@ -66,7 +63,5 @@
 
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
-
-
 
 </android.support.design.widget.CoordinatorLayout>

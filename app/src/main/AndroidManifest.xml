@@ -73,6 +73,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="np.edu.bvs.bvshigh.students.Student_Profile" />
         </activity>
+
         <activity
             android:name=".students.Student_Profile"
             android:parentActivityName=".students.Main_Activity_Students">
@@ -80,16 +81,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="np.edu.bvs.bvshigh.students.Main_Activity_Students" />
         </activity>
+
         <activity
             android:name=".students.routine_bvs_students.fragment_routine"
             android:label="@string/routine_big"
-            android:parentActivityName=".students.Dashboard_Students"></activity>
+            android:parentActivityName=".students.Dashboard_Students">
+        </activity>
+
         <activity
             android:name=".teachers.fragment_assignment"
             android:hardwareAccelerated="true"
             android:label="@string/assignment"
             android:parentActivityName=".students.Dashboard_Students"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden">
+        </activity>
+
         <activity
             android:name=".students.fragment_homework"
             android:hardwareAccelerated="true"
@@ -113,14 +119,20 @@
         </activity>
         <activity
             android:name=".general.Contact_Us"
-            android:parentActivityName=".students.Dashboard_Students"></activity>
+            android:parentActivityName=".students.Dashboard_Students">
+        </activity>
+
         <activity
             android:name=".general.about_college"
-            android:parentActivityName=".students.Dashboard_Students"></activity>
+            android:parentActivityName=".students.Dashboard_Students">
+        </activity>
+
         <activity
             android:name=".general.fragment_alerts"
             android:label="@string/alerts"
-            android:parentActivityName=".students.Dashboard_Students"></activity>
+            android:parentActivityName=".students.Dashboard_Students">
+        </activity>
+
         <activity
             android:name=".general.Feedback"
             android:label="Feedback"
