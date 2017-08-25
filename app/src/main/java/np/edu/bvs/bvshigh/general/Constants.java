@@ -8,6 +8,7 @@ public class Constants {
 
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
     public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
+    public static final String URL_STUDENT_NAME = "http://mitochanet.000webhostapp.com/android/pull_detail/student_names.php";
 
     //Token Registering
     public static final String URL_TOKEN_REGISTRATION = "http://mitocha.com/bvs_high/fcm_bvs/register.php";

@@ -2,6 +2,7 @@ package np.edu.bvs.bvshigh.general;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -54,31 +56,40 @@ public class fragment_alerts extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.update_notifications);
+        if (isNetworkAvailable(getApplicationContext()) == true) {
 
-        dialog = new ProgressDialog(fragment_alerts.this);
-        dialog.setIndeterminate(false);
-        dialog.setMessage("Please wait");
-        dialog.setCancelable(false);
-        dialog.show();
+            swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.update_notifications);
 
-        alerts_display = (ListView)findViewById(R.id.alerts_display);
+            dialog = new ProgressDialog(fragment_alerts.this);
+            dialog.setIndeterminate(false);
+            dialog.setMessage("Please wait");
+            dialog.setCancelable(false);
+            dialog.show();
 
-        pullNotification();
+            alerts_display = (ListView)findViewById(R.id.alerts_display);
 
-        swipeRefreshLayout.setColorSchemeColors(
-                ContextCompat.getColor(this, R.color.google_red),
-                ContextCompat.getColor(this, R.color.google_yellow),
-                ContextCompat.getColor(this, R.color.google_blue),
-                ContextCompat.getColor(this, R.color.google_green)
-        );
+            pullNotification();
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                pullNotification();
-            }
-        });
+            swipeRefreshLayout.setColorSchemeColors(
+                    ContextCompat.getColor(this, R.color.google_red),
+                    ContextCompat.getColor(this, R.color.google_yellow),
+                    ContextCompat.getColor(this, R.color.google_blue),
+                    ContextCompat.getColor(this, R.color.google_green)
+            );
+
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    pullNotification();
+                }
+            });
+
+        } else if (isNetworkAvailable(getApplicationContext()) == false){
+            finish();
+            Toast.makeText(getApplicationContext(), "No Internet Connection.\nPlease connect to internet to get alerts.",
+                    Toast.LENGTH_LONG).show();
+        }
+
 
     }
 
@@ -193,4 +204,13 @@ public class fragment_alerts extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+
+    public static boolean isNetworkAvailable(Context context) {
+        ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if(conMan.getActiveNetworkInfo() != null && conMan.getActiveNetworkInfo().isConnected())
+            return true;
+        else
+            return false;
+    }
+
 }

@@ -12,7 +12,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="207dp"
-        android:background="@drawable/bvs_slide"
+        android:background="#eee"
         android:gravity="bottom"
         android:orientation="vertical"
         android:paddingBottom="@dimen/nav_header_vertical_spacing"

@@ -6,6 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import np.edu.bvs.bvshigh.R;
 
@@ -17,11 +20,15 @@ public class fragment_attendance extends Fragment {
         // Required empty public constructor
     }
 
+    String[] sections = {"A", "B", "C", "D"};
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_attendance, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_attendance_choose, container, false);
+
+        return view;
     }
 
 }

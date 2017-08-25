@@ -57,6 +57,7 @@ import np.edu.bvs.bvshigh.general.fragment_events;
 import np.edu.bvs.bvshigh.general.message_us_alert_box;
 import np.edu.bvs.bvshigh.students.login_students.Login_Student;
 import np.edu.bvs.bvshigh.students.routine_bvs_students.fragment_routine;
+import np.edu.bvs.bvshigh.teachers.fragment_Section_Choose;
 import np.edu.bvs.bvshigh.teachers.fragment_Teachers_Contact;
 import np.edu.bvs.bvshigh.teachers.fragment_assignment;
 
@@ -312,10 +313,12 @@ public class Main_Activity_Students extends AppCompatActivity implements Navigat
                 break;
 
             case R.id.nav_attendance:
-                fragment_attendance fragment_attendance = new fragment_attendance();
+                fragment_Section_Choose fragment_attendance = new fragment_Section_Choose();
                 transaction = getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frame_activity, fragment_attendance);
                 transaction.commit();
+
+                //startActivity(new Intent(getApplicationContext(), fragment_attendance_teachers.class));
                 break;
 
             case R.id.nav_results:
