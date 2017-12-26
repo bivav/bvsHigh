@@ -66,6 +66,13 @@ public class fragment_section_science extends Fragment {
             }
         });
 
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
         return view;
     }
 
