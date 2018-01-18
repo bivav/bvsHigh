@@ -1,6 +1,7 @@
 package np.edu.bvs.bvshigh.students.routine_bvs_students;
 
 import android.content.Context;
+import android.content.Loader;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -84,6 +85,7 @@ public class fragment_routine_sun extends Fragment{
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+
                     }
                 }
                 Log.i("testValue", Arrays.toString(start_time)+ "\n" + Arrays.toString(end_time) + "\n" + Arrays.toString(subject));

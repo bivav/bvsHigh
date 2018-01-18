@@ -39,25 +39,18 @@ class Home_Adapter extends FragmentStatePagerAdapter {
             switch (day) {
                 case "Sunday":
                     return new fragment_routine_sun();
-
                 case "Monday":
                     return new fragment_routine_mon();
-
                 case "Tuesday":
                     return new fragment_routine_tue();
-
                 case "Wednesday":
                     return new fragment_routine_wed();
-
                 case "Thursday":
                     return new fragment_routine_thur();
-
                 case "Friday":
                     return new fragment_routine_fri();
-
                 case "Saturday":
                     return new fragment_routine_sat();
-
             }
             return null;
         }
